@@ -1,0 +1,30 @@
+## js/html互转工具
+http://tool.chinaz.com/Tools/Html_Js.aspx
+
+## 导航栏
+<header class="header">
+	<script type="text/javascript" src="js/navigation.js"></script>
+</header>
+	
+## 侧边栏
+<div id="sidebar" class="sidebar py-3">
+	<script type="text/javascript" src="js/sidebar/sidebar.js"></script>
+</div>
+
+<div id="sidebar" class="sidebar py-3">
+	<script type="text/javascript" src="js/sidebar/head_1.js"></script>
+	<script type="text/javascript" src="js/sidebar/goods_2.js"></script>
+	<script type="text/javascript" src="js/sidebar/orders_3.js"></script>
+	<script type="text/javascript" src="js/sidebar/user_4.js"></script>
+	<script type="text/javascript" src="js/sidebar/admin_5.js"></script>
+</div>
+
+## 网站尾部
+<!-- footer begin -->
+	<script type="text/javascript" src="js/footer.js"></script>
+<!-- footer end -->
+
+## 模态框
+调用模态框 → data-toggle="modal" data-target="#myModal"
+<!-- Modal-->
+<script type="text/javascript" src="js/modal.js"></script>

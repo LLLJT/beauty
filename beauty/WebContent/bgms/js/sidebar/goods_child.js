@@ -1,0 +1,15 @@
+document.writeln("	<li class=\'sidebar-list-item\'>");
+document.writeln("	<a href=\'#\' class=\'sidebar-link text-muted\' data-toggle=\'collapse\' data-target=\'#goods\' aria-expanded=\'false\' aria-controls=\'goods\'>");
+document.writeln("	<i class=\'o-sales-up-1 mr-3 text-gray\'></i>");
+document.writeln("		<span>商品管理</span>");
+document.writeln("		</a>");
+document.writeln("		<div id=\'goods\' class=\'collapse\'>");
+document.writeln("			<ul");
+document.writeln("				class=\'sidebar-menu list-unstyled border-left border-primary border-thick\'>");
+document.writeln("				<li class=\'sidebar-list-item\'><a href=\'../goods_type.jsp\'");
+document.writeln("					class=\'sidebar-link text-muted pl-lg-5\'>商品类别</a></li>");
+document.writeln("				<li class=\'sidebar-list-item\'><a href=\'../goods_info.jsp\'");
+document.writeln("					class=\'sidebar-link text-muted pl-lg-5\'>商品详情</a></li>");
+document.writeln("			</ul>");
+document.writeln("		</div>");
+document.writeln("	</li>");
