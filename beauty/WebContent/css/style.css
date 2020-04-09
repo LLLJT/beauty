@@ -891,11 +891,11 @@ h3.title-w3 {
 /* inner page banner */
 .banner_w3lspvt-2 {
     background: url(../images/inner.png) no-repeat top;
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -ms-background-size: cover;
+    background-size: contain;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    -ms-background-size: contain;
 }
 
 /* breadcrumb */

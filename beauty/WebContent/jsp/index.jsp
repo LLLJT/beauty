@@ -49,7 +49,7 @@
 						<div class="search-w3layouts mr-3">
 							<form action="#" method="post"
 								class="search-bottom-wthree d-flex">
-								<input class="search" type="search" placeholder="Search Here..." required="">
+								<input class="search" type="search" placeholder="Search Here..." required>
 								<button class="form-control btn" type="submit">
 									<span class="fa fa-search"></span>
 								</button>
@@ -121,13 +121,13 @@
 	<!-- following uploaders -->
 	<div class="what bg-li py-5" id="what">
 		<div class="container py-xl-5 py-lg-3">
-			<div class="row" id="follows">
+			<div class="row myfollow" id="follows">
 				<h3 class="title">关注</h3>
-				<span><a href="#up1" data-toggle="collapse" data-target="#up1"><img class="uploader" src="../images/girl.jpg" alt="" /></a></span>
-				<span><a href="#" data-toggle="collapse" data-target="#up2"><img class="uploader" src="../images/girl.jpg" alt="" /></a></span>
-				<span><a href="#" data-toggle="collapse" data-target="#up3"><img class="uploader" src="../images/girl.jpg" alt="" /></a></span>
+				<span><a href="#up1" data-toggle="collapse" data-target="#up1"><img class="uploader" src="../images/girl.jpg" alt=""/></a></span>
+				<span><a href="#" data-toggle="collapse" data-target="#up2"><img class="uploader" src="../images/kb.jpeg" alt="" /></a></span>
+				<span><a href="#" data-toggle="collapse" data-target="#up3"><img class="uploader" src="../images/oldE.jpg" alt="" /></a></span>
 			</div>
-			<div class="card mb-3">
+			<div class="card mb-3 myfollow-collapse">
 				<div id="up1" class="collapse card-body">
 					<div class="row align-items-center flex-row">
 						<img alt="" src="../images/girl.jpg" />
@@ -142,7 +142,7 @@
 				</div>
 				<div id="up2" class="collapse card-body">
 					<div class="row align-items-center flex-row">
-						<img alt="" src="../images/girl.jpg" />
+						<img alt="" src="../images/kb.jpeg" />
 						<div class="col-lg-10">
 							<h4>title</h4>
 							<p>Sodales quis.At vero eos et accusam et justo duo dolores
@@ -154,7 +154,7 @@
 				</div>
 				<div id="up3" class="collapse card-body">
 					<div class="row align-items-center flex-row">
-						<img alt="" src="../images/girl.jpg" />
+						<img alt="" src="../images/oldE.jpg" />
 						<div class="col-lg-10">
 							<h4>title</h4>
 							<p>Sodales quis.At vero eos et accusam et justo duo dolores

@@ -92,7 +92,7 @@ a:hover {
 
 .list-item {
 	border-bottom: 1px solid #eee;
-	display: block;
+/* 	display: block; */
 	padding: 20px 0;
 	position: relative;
 	line-height: 1
@@ -106,15 +106,14 @@ a:hover {
 .list-item img {
 	border-radius: 60px;
 	width: 60px;
-	height: 60px
+	height: 60px;
+	margin-left: 30px;
 }
 
 .list-item .content {
-	padding: 0 200px 0 0;
-	position: relative;
-	top:-60px;
-	margin-left: 88px;
-	margin-top: 10px
+	margin-top: 5px; 
+	margin-left: 20px;
+	max-width: 70%;
 }
 
 .list-item .title {
@@ -138,8 +137,8 @@ a:hover {
 
 .fans-action {
 	position: absolute;
-	right: 0;
-	top: 9px
+	right: 30px;
+	top: 30px;
 }
 
 .fans-action-btn {

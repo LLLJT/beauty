@@ -4,8 +4,13 @@
 	margin: -25px 20px 0 20px;
 }
 
-.myfollow {
-	vertical-align: middle;
+.myfollow img{
+	min-width: 100px;
+	min-height: 100px;
+}
+
+.myfollow-collapse img{
+	width:180px
 }
 
 /* 轮播图 */
