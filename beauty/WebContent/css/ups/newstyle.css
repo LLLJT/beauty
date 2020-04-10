@@ -17,7 +17,7 @@
 /* 无重复 */
 #content-wrapper {
 /* 	max-width: 1270px; */
-    margin: 0 0 0 10vw;
+    margin: 0 5vw 0 10vw;
     background-color: #fff;
 }
 #content-wrapper {
@@ -170,6 +170,7 @@
 
 .blog-content {
     position: relative;
+    top:-50px;
     padding-top: 10px;
     background: #f5f5f5;
     border-bottom: 4px solid #ccc;
@@ -228,6 +229,23 @@
     height: auto;
 }
 
+.white p {
+    padding-top: 3px;
+    line-height: 28px;
+    margin-bottom: 25px;
+    font-family: 'Raleway';
+    font-weight: 300;
+    font-size: 16px;
+    color: #555;
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden !important;
+    letter-spacing: normal;
+}
+
+/* ==========================================================================
+   Image Mask
+   ========================================================================== */
 .grid figure {
     margin: 0;
     position: relative;
@@ -239,6 +257,40 @@
     position: relative;
 }
 
+.grid figcaption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px 15px;
+    color: #ffffff;
+    background: rgba(0,0,0,0.6);
+}
+
+.grid figcaption h5 {
+    margin: 0 0 10px;
+    font-size: 14px;
+    padding-top: 0px;
+    padding-left: 0;
+    padding-bottom: 0px;
+    color: #ffffff;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0px;
+    width: 100%;
+    clear: both;
+    display: inline-block;
+}
+
+.grid figcaption a {
+    text-align: center;
+    padding: 5px 10px;
+    display: inline-block;
+    background: #2f2f2f;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+/* Caption Style */
 .mask figure {
     overflow: hidden;
 }
@@ -249,6 +301,16 @@
     transition: transform 0.4s;
     -webkit-user-select: none;
     -webkit-touch-callout: none;  
+    }
+
+.no-touch .mask figure:hover img,
+.mask figure.cs-hover img,
+.mask figure:focus img,
+.mask figure:active img {
+    -webkit-transform: translateY(-0px);
+    -moz-transform: translateY(-0px);
+    -ms-transform: translateY(-0px);
+    transform: translateY(-0px);
 }
 
 .mask figcaption {
@@ -265,5 +327,124 @@
     -webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
     -moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
     transition: transform 0.4s, opacity 0.1s 0.3s;
+}
+
+.no-touch .mask figure:hover figcaption,
+.mask figure:focus figcaption,
+.mask figure:active figcaption,
+.mask figure.cs-hover figcaption {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    transform: translateY(0px);
+    -webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
+    -moz-transition: -moz-transform 0.4s, opacity 0.1s;
+    transition: transform 0.4s, opacity 0.1s;
+}
+
+.mask figure.hovereffect figcaption {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    transform: translateY(0px);
+    -webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
+    -moz-transition: -moz-transform 0.4s, opacity 0.1s;
+    transition: transform 0.4s, opacity 0.1s;
+}
+
+.grid figure:active figcaption, .grid figure:focus figcaption {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    transform: translateY(0px);
+    -webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
+    -moz-transition: -moz-transform 0.4s, opacity 0.1s;
+    transition: transform 0.4s, opacity 0.1s;
+}
+
+.mask figcaption a {
+    position: relative;
+    border: 2px solid #fff;
+    background-color: rgba(0,0,0,0);
+    border-radius: 0;
+    padding: 8px 10px 7px;
+    top: 50%;
+    margin-top: -18px;
+}
+
+.mask figcaption a:hover {
+    background-color: #fff;
+    border: 2px solid #fff;
+    color: #2980b9;
+}
+
+.img-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.img-wrapper img {
+    position: relative;
+}
+
+.img-wrapper .img-mask {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(0,0,0,0.8);
+    display: block;
+    top: 0;
+    opacity: 0;
+    text-align: center;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.img-wrapper:hover .img-mask {
+    opacity: 1;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.mask-icon {
+    font-size: 20px;
+    color: #fff;
+    border: 2px solid #fff;
+    opacity: 0.6;
+    display: block;
+    position: relative;
+    top: 50%;
+    margin: 0 auto;
+    width: 45px;
+    height: 45px;
+    line-height: 44px;
+    margin-top: -20px;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.mask-icon:hover {
+    color: #fff;
+    opacity: 1;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.ih-item.square {
+    width: 100% !important;
+    height: auto !important;
+    border: none !important;
+    box-shadow: none !important;
 }
     
