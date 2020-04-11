@@ -39,56 +39,35 @@
 		<!-- header -->
 		<header>
 			<div class="container-fluid">
-				<div class="header d-lg-flex justify-content-between align-items-center py-3 px-sm-3">
+				<div
+					class="header d-lg-flex justify-content-between align-items-center py-3 px-sm-3">
 					<!-- logo -->
 					<div id="logo">
-						<h1><a href="index.html"><span class="fa fa-linode mr-2"></span>Marketing</a></h1>
+						<h1>
+							<a href="index.jsp"><span class="fa fa-linode mr-2"></span>reachableBeauty</a>
+						</h1>
 					</div>
 					<!-- //logo -->
-					<!-- nav -->
-					<div class="nav_w3ls">
-						<nav>
-							<label for="drop" class="toggle">Menu</label>
-							<input type="checkbox" id="drop" />
-							<ul class="menu">
-								<li><a href="index.html">Home</a></li>
-								<li><a href="about.html">About Us</a></li>
-								<li><a href="pricing.html" class="active">Pricing</a></li>
-								<li>
-									<!-- First Tier Drop Down -->
-									<label for="drop-2" class="toggle toogle-2">Dropdown <span class="fa fa-angle-down" aria-hidden="true"></span>
-									</label>
-									<a href="#">Dropdown <span class="fa fa-angle-down" aria-hidden="true"></span></a>
-									<input type="checkbox" id="drop-2" />
-									<ul>
-										<li><a href="index.html" class="drop-text">Services</a></li>
-										<li><a href="faq.html" class="drop-text">Faq's</a></li>
-										<li><a href="404.html" class="drop-text">404</a></li>
-										<li><a href="index.html" class="drop-text">Statistics</a></li>
-										<li><a href="about.html" class="drop-text">Why Choose Us?</a></li>
-										<li><a href="about.html" class="drop-text">Our Team</a></li>
-										<li><a href="index.html" class="drop-text">Partners</a></li>
-									</ul>
-								</li>
-								<li><a href="contact.html">Contact Us</a></li>
-							</ul>
-						</nav>
-					</div>
-					<!-- //nav -->
 					<div class="d-flex mt-lg-1 mt-sm-2 mt-3 justify-content-center">
 						<!-- search -->
 						<div class="search-w3layouts mr-3">
-							<form action="#" method="post" class="search-bottom-wthree d-flex">
-								<input class="search" type="search" placeholder="Search Here..." required="">
-								<button class="form-control btn" type="submit"><span class="fa fa-search"></span></button>
+							<form action="#" method="post"
+								class="search-bottom-wthree d-flex">
+								<input class="search" type="search" placeholder="Search Here..." required>
+								<button class="form-control btn" type="submit">
+									<span class="fa fa-search"></span>
+								</button>
 							</form>
 						</div>
 						<!-- //search -->
-						<!-- download -->
-						<a class="dwn-w3ls btn" href="http://w3layouts.com/" target="_blank">
-							<span class="fa fa-cloud-download"></span>
+						<!-- 登出&个人中心 -->
+						<a class="dwn-w3ls btn mr-1" href="usercenter.jsp" target="_blank">
+							<span class="fa fa-user-circle-o" title="个人中心"></span>
+						</a> 
+						<a class="dwn-w3ls btn" href="login.jsp" target="_self">
+							<span class="fa fa-sign-out" title="退出登录"></span>
 						</a>
-						<!-- //download -->
+						<!-- //logout&usercenter -->
 					</div>
 				</div>
 			</div>
@@ -96,45 +75,58 @@
 		<!-- //header -->
 
 		<!-- banner -->
-		<div class="banner_w3lspvt-2">
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="index.html" class="font-weight-bold">Home</a></li>
-				<li class="breadcrumb-item" aria-current="page">Pricing</li>
-			</ol>
+		<div class="banner_w3lspvt-2 mt-3">
+			<div class="subscribe mx-auto">
+				<div class="icon-effect-w3">
+					<span class="fa fa-search"></span>
+				</div>
+				<h2 class="tittle text-center font-weight-bold mb-3">Start Searching!</h2>
+				<form action="#" method="post" class="subscribe-wthree pt-2">
+					<div class="d-flex subscribe-wthree-field">
+						<input class="form-control" type="text" placeholder="Input the keyword..." name="email" required>
+						<button class="btn form-control w-50" type="submit">搜索Search</button>
+					</div>
+				</form>
+			</div>
 		</div>
 		<!-- //banner -->
 	</div>
 	<!-- //main banner -->
 
-	<!-- price -->
-	<div class="price-sec py-5">
-		<div class="container py-xl-5 py-lg-3">
+	<div class="bg-li row mt-5">
+		<div class="container py-xl-2 py-lg-2 ">
+			<div class="float-right">
+				<span class="fa fa-th fa-2x mr-5"></span>
+				<span class="fa fa-th-list fa-2x mr-5"></span>
+			</div>
+		</div>
+	</div>
+
+	<!-- result -->
+	<div class="price-sec">
+		<div class="container pb-xl-5 py-lg-3">
 			<div class="inner_sec_info_w3_info mt-3">
 				<div class="row price-grid-main">
+				
+				<!-- result1 -->
 					<div class="col-lg-3 col-sm-6 price-info">
 						<div class="prices p-4">
-							<div class="prices-top">
-								<h3 class="text-center text-wh rounded-circle">$30</h3>
-							</div>
 							<div class="prices-bottom text-center">
-								<div class="prices-h border-bottom p-4">
-									<h4>Standard</h4>
-								</div>
-								<ul class="mt-4">
-									<li>Community Access</li>
-									<li>Annual Reports</li>
-									<li>Free Support</li>
-									<li>Expert Reviews</li>
-								</ul>
-								<a href="#" class="btn button-style mt-4">Purchase</a>
+								<img alt="一张图片" style="max-width: 200px; max-height: 160px;" src="../images/portfolio/folio-2.jpg" />
+								<p class="mt-4">
+									Community Access
+									Annual Reports
+									Free Support
+									Expert Reviews
+								</p>
+								
 							</div>
 						</div>
 					</div>
+					<!-- //result1 -->
+					
 					<div class="col-lg-3 col-sm-6  price-info price-mkres-2">
 						<div class="prices p-4 active">
-							<div class="prices-top">
-								<h3 class="text-center text-wh rounded-circle">$80</h3>
-							</div>
 							<div class="prices-bottom text-center">
 								<div class="prices-h border-bottom p-4">
 									<h4>Premium</h4>
@@ -151,9 +143,6 @@
 					</div>
 					<div class="col-lg-3 col-sm-6  price-info price-mkres">
 						<div class="prices p-4">
-							<div class="prices-top">
-								<h3 class="text-center text-wh rounded-circle">$60</h3>
-							</div>
 							<div class="prices-bottom text-center">
 								<div class="prices-h border-bottom p-4">
 									<h4>Golden</h4>
@@ -170,9 +159,6 @@
 					</div>
 					<div class="col-lg-3 col-sm-6  price-info price-mkres">
 						<div class="prices p-4 active">
-							<div class="prices-top">
-								<h3 class="text-center text-wh rounded-circle">$30</h3>
-							</div>
 							<div class="prices-bottom text-center">
 								<div class="prices-h border-bottom p-4">
 									<h4>Ultimate</h4>
@@ -191,69 +177,21 @@
 			</div>
 		</div>
 	</div>
-	<!-- //price -->
+	<!-- //result -->
 
-	<!-- footer -->
-	<footer class="bg-li py-5">
-		<div class="container py-xl-5 py-lg-3">
-			<!-- subscribe -->
-			<div class="subscribe mx-auto">
-				<div class="icon-effect-w3">
-					<span class="fa fa-envelope"></span>
-				</div>
-				<h2 class="tittle text-center font-weight-bold">Stay Updated!</h2>
-				<p class="sub-tittle text-center mt-3 mb-sm-5 mb-4">Sed do eiusmod tempor incididunt ut labore et dolore magna
-					aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
-				<form action="#" method="post" class="subscribe-wthree pt-2">
-					<div class="d-flex subscribe-wthree-field">
-						<input class="form-control" type="email" placeholder="Enter your email..." name="email" required="">
-						<button class="btn form-control w-50" type="submit">Subscribe</button>
-					</div>
-				</form>
-			</div>
-			<!-- //subscribe -->
-		</div>
-	</footer>
-	<!-- //footer -->
 	<!-- copyright bottom -->
 	<div class="copy-bottom bg-li py-4 border-top">
 		<div class="container-fluid">
 			<div class="d-md-flex px-md-3 position-relative text-center">
-				<!-- footer social icons -->
-				<div class="social-icons-footer mb-md-0 mb-3">
-					<ul class="list-unstyled">
-						<li>
-							<a href="#">
-								<span class="fa fa-facebook"></span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<span class="fa fa-twitter"></span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<span class="fa fa-google-plus"></span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<span class="fa fa-instagram"></span>
-							</a>
-						</li>
-					</ul>
-				</div>
-				<!-- //footer social icons -->
 				<!-- copyright -->
 				<div class="copy_right mx-md-auto mb-md-0 mb-3">
-					<p class="text-bl let">Copyright &copy; 2019.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
-					</p>
+					<p class="text-bl let">Copyright &copy; 2020. reachableBeauty
+						All rights reserved.</p>
 				</div>
 				<!-- //copyright -->
 				<!-- move top icon -->
-				<a href="#home" class="move-top text-center">
-					<span class="fa fa-level-up" aria-hidden="true"></span>
+				<a href="#home" class="move-top text-center"> <span
+					class="fa fa-level-up" aria-hidden="true"></span>
 				</a>
 				<!-- //move top icon -->
 			</div>
