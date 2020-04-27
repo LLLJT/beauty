@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.eleaf.dao.mapper.AdminLogMapper">
+	<!-- 缓存配置 -->
+	<cache eviction="LRU" flushInterval="30000" size="512" readOnly="true"/>
+	
+	<resultMap id="e_account_admin_log"
+		type="com.eleaf.entity.MemberLog">
+		<id property="id" column="id" />
+		<result property="hiddenFlag" column="hidden_flag" />
+		<result property="createTime" column="create_time" />
+		<result property="creator" column="creator" />
+		<result property="modifyTime" column="modify_time" />
+		<result property="modifier" column="modifier" />
+		<result property="memo" column="memo" />
+		<result property="accountId" column="account_id" />
+		<result property="operation" column="operation" />
+	</resultMap>
+	
+	<sql id="put_columns">
+		id,
+		account_id,
+		operation
+	</sql>
+	
+	<sql id="put_columns_all">
+		id,
+		hidden_flag,
+		create_time,
+		creator,
+		modify_time,
+		modifier,
+		memo,
+		account_id,
+		operation
+	</sql>
+	
+</mapper>

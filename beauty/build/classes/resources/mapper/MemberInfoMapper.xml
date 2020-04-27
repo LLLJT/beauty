@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.eleaf.dao.mapper.MemberInfoMapper">
+	<!-- 缓存配置 -->
+	<cache eviction="LRU" flushInterval="30000" size="512" readOnly="true" />
+
+	<resultMap id="e_account_member_info"
+		type="com.eleaf.entity.MemberInfo">
+		<id property="id" column="id" />
+		<result property="hiddenFlag" column="hidden_flag" />
+		<result property="createTime" column="create_time" />
+		<result property="creator" column="creator" />
+		<result property="modifyTime" column="modify_time" />
+		<result property="modifier" column="modifier" />
+		<result property="memo" column="memo" />
+		<result property="nickname" column="nickname" />
+		<result property="realName" column="real_name" />
+		<result property="gender" column="gender" />
+		<result property="birthday" column="birthday" />
+		<result property="identityCardNum" column="identity_card_num" />
+		<result property="email" column="email" />
+		<result property="phone" column="phone" />
+		<result property="qq" column="qq" />
+		<result property="wechat" column="wechat" />
+		<result property="address" column="address" />
+		<result property="profilePhoto" column="profile_photo" />
+		<result property="profile" column="profile" />
+	</resultMap>
+
+	<sql id="put_columns">
+		id,
+		nickname,
+		real_name,
+		gender,
+		birthday,
+		identity_card_no,
+		email,
+		phone,
+		qq,
+		wechat,
+		address,
+		profilePhoto,
+		profile
+	</sql>
+
+	<sql id="put_columns_all">
+		id,
+		hidden_flag,
+		create_time,
+		creator,
+		modify_time,
+		modifier,
+		memo,
+		nickname,
+		real_name,
+		gender,
+		birthday,
+		identity_card_no,
+		email,
+		phone,
+		qq,
+		wechat,
+		address,
+		profilePhoto,
+		profile
+	</sql>
+
+</mapper>

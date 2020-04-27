@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="beauty">
+    <wb-module deploy-name="beauty_v0">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="context-root" value="beauty"/>
-        <property name="java-output-path" value="/beauty/build/classes"/>
+        <property name="java-output-path" value="/beauty_v0/build/classes"/>
+        <property name="context-root" value="beauty_v0"/>
     </wb-module>
 </project-modules>
