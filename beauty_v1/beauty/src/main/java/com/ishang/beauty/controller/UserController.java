@@ -20,14 +20,15 @@ public class UserController {
 	private UserService service;
 	
 	@GetMapping("/getAll")
-	private DataResponse getAll() {
+	public  DataResponse getAll() {
 		DataResponse response = new DataResponse();
 		List<User> result = service.findall();
 		return response.success(result);
 	}
 	
-	@GetMapping("/login")
-	private DataResponse  login(@RequestParam("username") String username, @RequestParam("password") String password) {
+//	@GetMapping("/login")
+	@RequestMapping("login")
+	public  DataResponse  login(@RequestParam("username") String username, @RequestParam("password") String password) {
 		DataResponse response = new DataResponse();
 		User record = new User();
 		record.setUsername(username);

@@ -2,8 +2,11 @@ package com.ishang.beauty.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.ishang.beauty.entity.User;
 
+@Service
 public interface UserService {
 
 	/**
