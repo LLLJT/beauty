@@ -145,9 +145,9 @@
 
 	</dependencies>
 
-<!-- 	<build>
-		<finalName>forest</finalName>
-		<plugins>
+	<build>
+		<finalName>beauty</finalName>
+<!-- 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -157,6 +157,6 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
-		</plugins>
-	</build> -->
+		</plugins> -->
+	</build>
 </project>
