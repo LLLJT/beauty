@@ -21,7 +21,7 @@ import com.ishang.ssmdemo1.utils.DataResponse;
 public class UserController {
 
 	@Autowired
-	private UserService userService;
+	private UserService service;
 	
 //	@GetMapping("/getAll")
 //	public  DataResponse getAll() {
@@ -31,8 +31,8 @@ public class UserController {
 //	}
 	
 	@RequestMapping("/userList")    
-    public String userList(HttpServletRequest request,Model model){    
-        List<User> uList = userService.findall();    
+    public String findall(HttpServletRequest request,Model model){    
+        List<User> uList = service.findall();    
         model.addAttribute("uList", uList);    
         return "userList";    
     }
@@ -42,11 +42,21 @@ public class UserController {
 		User record = new User();
 		record.setUsername(username);
 		record.setPassword(password);
-		List<User> result =userService.findbyentity(record);
+		List<User> result =service.findbyentity(record);
 		if ( result.size()>0 && result.get(0).getPassword().equals(password)	)  {
 			return "index";
 		}else {
 			 return "login";
 		}
 	}
+	
+	// TODO 完整填写前端参数  处理返回值
+	@RequestMapping("/add")
+	public String adduser() {
+		User record = new User();
+		record.setDelFlag(true);
+		int r = service.addone(record);
+		return "";
+	}
+	
 }

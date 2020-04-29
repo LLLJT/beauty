@@ -87,8 +87,8 @@
 							</div>
 							<div class="line"></div>
 							<div class="form-group row">
-								<label class="col-md-3 form-control-label">地址</label>
-								<textarea class="col-md-9 form-control" placeholder="Input your address..."></textarea>
+								<label class="col-md-3 form-control-label">个性签名</label>
+								<textarea class="col-md-9 form-control" placeholder="Input your personal signature..."></textarea>
 							</div>
 							<div class="form-group row mt-5">
 								<div class="col-md-9 ml-auto">
