@@ -38,17 +38,15 @@ public class UserController {
     }
 
 	@RequestMapping("/login")
-	public  DataResponse  login(@RequestParam("username") String username, @RequestParam("password") String password) {
-		DataResponse response = new DataResponse();
+	public  String  login(@RequestParam("username") String username, @RequestParam("password") String password,Model model) {
 		User record = new User();
 		record.setUsername(username);
 		record.setPassword(password);
 		List<User> result =userService.findbyentity(record);
-		if ( result.size()>0 	)  {
-			User user = result.get(0);
-			return response.success(user);
+		if ( result.size()>0 && result.get(0).getPassword().equals(password)	)  {
+			return "index";
 		}else {
-			return response.error();
+			 return "login";
 		}
 	}
 }
