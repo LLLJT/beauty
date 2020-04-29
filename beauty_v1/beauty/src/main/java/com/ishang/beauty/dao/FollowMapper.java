@@ -1,8 +1,7 @@
 package com.ishang.beauty.dao;
 
-import java.util.List;
-
 import com.ishang.beauty.entity.Follow;
+import java.util.List;
 
 public interface FollowMapper {
     int deleteByPrimaryKey(Integer id);

@@ -19,7 +19,7 @@ public class User implements Serializable {
 
 	private String school;
 
-	private String address;
+	private String introdution;
 
 	private String profileimg;
 
@@ -83,12 +83,12 @@ public class User implements Serializable {
 		this.school = school == null ? null : school.trim();
 	}
 
-	public String getAddress() {
-		return address;
+	public String getIntrodution() {
+		return introdution;
 	}
 
-	public void setAddress(String address) {
-		this.address = address == null ? null : address.trim();
+	public void setIntrodution(String introdution) {
+		this.introdution = introdution == null ? null : introdution.trim();
 	}
 
 	public String getProfileimg() {
@@ -120,11 +120,12 @@ public class User implements Serializable {
 		sb.append(", sex=").append(sex);
 		sb.append(", birthday=").append(birthday);
 		sb.append(", school=").append(school);
-		sb.append(", address=").append(address);
+		sb.append(", introdution=").append(introdution);
 		sb.append(", profileimg=").append(profileimg);
 		sb.append(", delFlag=").append(delFlag);
 		sb.append(", serialVersionUID=").append(serialVersionUID);
 		sb.append("]");
 		return sb.toString();
 	}
+
 }

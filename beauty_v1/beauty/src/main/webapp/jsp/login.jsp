@@ -29,7 +29,7 @@
 					<h1 class="text-base text-primary text-uppercase mb-4">美，一眼望穿</h1>
 					<h2 class="mb-4">Welcome back!</h2>
 					
-					<form id="loginForm" action="/user/login" class="mt-4" method="get">
+					<form id="loginForm" action="${pageContext.request.contextPath}/user/login" class="mt-4" method="get">
 						<div class="form-group mb-4">
 							<input type="text" name="username" placeholder="输入您的登录名"
 								class="form-control border-0 shadow form-control-lg">

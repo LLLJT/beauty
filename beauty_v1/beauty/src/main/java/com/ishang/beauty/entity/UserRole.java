@@ -2,7 +2,7 @@ package com.ishang.beauty.entity;
 
 import java.io.Serializable;
 
-public class Role implements Serializable {
+public class UserRole implements Serializable {
     private Integer id;
 
     private String rolename;

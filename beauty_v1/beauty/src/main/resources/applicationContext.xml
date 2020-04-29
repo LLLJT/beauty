@@ -1,59 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-    xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans 
-                           http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
-                           http://www.springframework.org/schema/context 
-                           http://www.springframework.org/schema/context/spring-context-4.3.xsd
-                           http://www.springframework.org/schema/mvc
-                           http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
-                           http://www.springframework.org/schema/aop
-                           http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
-                           http://www.springframework.org/schema/tx
-                           http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
-    <context:component-scan base-package="com.ishang.beauty">
-        <context:exclude-filter type="annotation"
-            expression="org.springframework.stereotype.Controller" />
-    </context:component-scan>
-    <!--sping的配置文件和业务逻辑有关的 -->
-    <context:property-placeholder location="classpath:jdbc.properties" />
-    <bean id="pooledDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="jdbcUrl" value="${jdbc.url}"></property>
-        <property name="driverClass" value="${jdbc.driver}"></property>
-        <property name="user" value="${jdbc.user}"></property>
-        <property name="password" value="${jdbc.password}"></property>
-    </bean>
-    <!-- 配置和mybatis的整合 -->
+<?xml version="1.0" encoding="UTF-8"?>
 
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <!-- 指定mybatis全局配置文件的位置 -->
-        <property name="configLocation" value="classpath:mybatis-config.xml"></property>
-        <property name="dataSource" ref="pooledDataSource"></property>
-        <!-- 指定mybatis mapper文件的位置 -->
-        <property name="mapperLocations" value="classpath:mapper/*.xml"></property>
-    </bean>
-    <!-- 配置扫描器 -->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <!-- 扫描素有的dao接口的实现，加入到容器中 -->
-        <property name="basePackage" value="com.ishang.beauty.dao"></property>
-    </bean>
-    <bean id="transactionManager"
-        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="pooledDataSource"></property>
-    </bean>
-    <!-- 开启基于注解的事务 -->
-    <aop:config>
-        <!-- 切入点表达式 -->
-        <aop:pointcut expression="execution(* com.ishang.beauty.service..*(..))"
-            id="txPoint"></aop:pointcut>
-        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPoint" />
-    </aop:config>
-    <!-- 配置事务增强 -->
-    <tx:advice id="txAdvice">
-        <tx:attributes>
-            <tx:method name="*" />
-            <tx:method name="get*" read-only="true" />
-        </tx:attributes>
-    </tx:advice>
-</beans>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans      
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd      
+                        http://www.springframework.org/schema/context      
+                        http://www.springframework.org/schema/context/spring-context-3.1.xsd      
+                        http://www.springframework.org/schema/mvc      
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+	<!-- 使用注解式注入 -->
+	<context:annotation-config />
+
+	<!-- 自动扫描 -->
+	<context:component-scan base-package="com.ishang.beauty" />
+
+	<!-- 导入DAO配置 -->
+	<import resource="spring-dao.xml" />
+
+	<!-- 导入数据库配置 -->
+	<import resource="spring-db.xml" />
+
+	<!-- 导入事務配置 -->
+	<import resource="spring-tx.xml" />
+
+</beans>    

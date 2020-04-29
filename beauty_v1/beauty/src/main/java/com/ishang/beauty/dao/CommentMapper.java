@@ -1,8 +1,7 @@
 package com.ishang.beauty.dao;
 
-import java.util.List;
-
 import com.ishang.beauty.entity.Comment;
+import java.util.List;
 
 public interface CommentMapper {
     int deleteByPrimaryKey(Integer id);

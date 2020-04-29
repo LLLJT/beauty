@@ -8,6 +8,8 @@ public class Blog implements Serializable {
 
     private String title;
 
+    private Integer userid;
+
     private Integer typeid;
 
     private String content;
@@ -42,6 +44,14 @@ public class Blog implements Serializable {
 
     public void setTitle(String title) {
         this.title = title == null ? null : title.trim();
+    }
+
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
     }
 
     public Integer getTypeid() {
@@ -124,6 +134,7 @@ public class Blog implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", title=").append(title);
+        sb.append(", userid=").append(userid);
         sb.append(", typeid=").append(typeid);
         sb.append(", content=").append(content);
         sb.append(", createtime=").append(createtime);

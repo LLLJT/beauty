@@ -3,11 +3,13 @@ package com.ishang.beauty.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ishang.beauty.dao.UserMapper;
 import com.ishang.beauty.entity.User;
 import com.ishang.beauty.service.UserService;
 
+@Service
 public class UserServiceImpl implements UserService {
 	
 	@Autowired

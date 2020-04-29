@@ -1,9 +1,7 @@
 package com.ishang.beauty.dao;
 
-
-import java.util.List;
-
 import com.ishang.beauty.entity.Blog;
+import java.util.List;
 
 public interface BlogMapper {
     int deleteByPrimaryKey(Integer id);
