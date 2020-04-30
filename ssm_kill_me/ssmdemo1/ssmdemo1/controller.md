@@ -167,9 +167,29 @@ WHERE userid = 2;
     WHERE id in (SELECT blogid FROM `blog_star` WHERE userid = 2);
     ```
 
+### 11、关注&取关
 
+1. **关注**  follow(*params*)
 
+   前端表现为按钮，
 
+   点击后返回当前页面。
+
+   > - <font color='red'>(required)</font>id
+   >   - 不需要赋值
+   > - <font color='red'>(required)</font>followerid
+   > - <font color='red'>(required)</font>uploaderid
+   > - <font color='red'>(required)</font>createtime
+
+2. **取关**  undofollow(*params*)
+
+   前端表现为按钮，
+
+   点击后返回当前页面。
+
+   > <font color='red'>(required)</font>id
+
+   <font color='red'>注意：</font>物理删除。
 
 ## role
 
@@ -226,6 +246,30 @@ SELECT COUNT(*) as cmts FROM `comment`
 WHERE blogid=2;
 ```
 
+### 7、添加/取消收藏
+
+1. **添加收藏**  starblog(*params*)
+
+   前端表现为按钮，
+
+   点击后返回当前blog。
+
+   > - <font color='red'>(required)</font>id
+   >   - 不需要赋值
+   > - <font color='red'>(required)</font>userid
+   > - <font color='red'>(required)</font>blogid
+   > - <font color='red'>(required)</font>createtime
+
+2. **取消收藏**  unstar(*params*)
+
+   前端表现为按钮，
+
+   点击后返回当前页面。
+
+   > <font color='red'>(required)</font>id
+
+   <font color='red'>注意：</font>物理删除。
+
 
 
 ## blog_type
@@ -269,9 +313,14 @@ WHERE blogid=2;
 
 ### 4、查询某blog下所有评论 findlike(*params*)
 
-加载当前blog的cmtList
+加载当前blog的cmtList，排除楼中楼。
 
 > - <font color='red'>(required)</font>blogid
+
+```mysql
+SELECT * from `comment`
+WHERE blogid=2 and ISNULL(cmtid)
+```
 
 ### 5、查看某评论的回复&添加回复 
 
