@@ -1,0 +1,15 @@
+document.writeln("	<li class=\'sidebar-list-item\'>");
+document.writeln("	<a href=\'#\' class=\'sidebar-link text-muted\' data-toggle=\'collapse\' data-target=\'#orders\' aria-expanded=\'false\' aria-controls=\'orders\'>");
+document.writeln("	<i class=\'o-table-content-1 mr-3 text-gray\'></i>");
+document.writeln("		<span>订单管理</span>");
+document.writeln("		</a>");
+document.writeln("		<div id=\'orders\' class=\'collapse\'>");
+document.writeln("			<ul");
+document.writeln("				class=\'sidebar-menu list-unstyled border-left border-primary border-thick\'>");
+document.writeln("				<li class=\'sidebar-list-item\'><a href=\'../order_log.jsp\'");
+document.writeln("					class=\'sidebar-link text-muted pl-lg-5\'>订单日志</a></li>");
+document.writeln("				<li class=\'sidebar-list-item\'><a href=\'../order_info.jsp\'");
+document.writeln("					class=\'sidebar-link text-muted pl-lg-5\'>订单详情</a></li>");
+document.writeln("			</ul>");
+document.writeln("		</div>");
+document.writeln("	</li>");

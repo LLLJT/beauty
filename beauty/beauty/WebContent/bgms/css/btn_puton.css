@@ -1,0 +1,91 @@
+@charset "UTF-8";
+
+/*上架*/
+
+.btn-puton {
+	color: #fff;
+	background-color: #007bff;
+	border-color: #007bff;
+}
+
+.btn-puton:hover {
+	color: #fff;
+	background-color: #75b5f9;
+	border-color: #272ea5
+}
+
+.btn-puton.focus, .btn-puton:focus {
+	box-shadow: 0 0 0 .2rem rgba(40, 70, 165, .5)
+}
+
+.btn-puton.active, .btn-puton:active {
+	color: #fff;
+	background-color: #ccc;
+	border-color: #aaa;
+}
+
+.btn-puton.disabled, .btn-:disabled {
+	color: #fff;
+	background-color: #272ea5;
+	border-color: #272ea5
+}
+
+.btn-puton:not (:disabled ):not (.disabled ).active, .btn-puton:not
+	 (:disabled ):not (.disabled ):active, .show>.btn-puton.dropdown-toggle
+	{
+	color: #fff;
+	background-color: #272ea5;
+	border-color: #272ea5
+}
+
+.btn-puton:not (:disabled ):not (.disabled ).active:focus, .btn-puton:not 
+	 (:disabled ):not (.disabled ):active:focus, .show>.btn-puton.dropdown-toggle:focus
+	{
+	box-shadow: 0 0 0 .2rem rgba(40, 70, 165, .5)
+}
+
+/*封禁*/
+/*默认：不选中-红色*/
+
+.btn-ban {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545
+}
+
+.btn-ban:hover {
+	color: #fff;
+	background-color: #f2b5bb;
+	border-color: #dc3545
+}
+
+.btn-ban.focus, .btn-ban:focus {
+    box-shadow: 0 0 0 .2rem rgba(220,53,69,.5)
+}
+
+.btn-ban.active, .btn-ban:active {
+	color: #fff;
+	background-color: #ccc;
+	border-color: #aaa;
+}
+
+.btn-ban.disabled, .btn-ban:disabled {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545
+}
+
+.btn-ban:not (:disabled ):not (.disabled ).active, .btn-ban:not
+	 (:disabled ):not (.disabled ):active, .show>.btn-ban.dropdown-toggle
+	{
+    color: #fff;
+    background-color: #bd2130;
+    border-color: #b21f2d
+}
+
+.btn-ban:not (:disabled ):not (.disabled ).active:focus, .btn-ban:not 
+	 (:disabled ):not (.disabled ):active:focus, .show>.btn-ban.dropdown-toggle:focus
+	{
+    box-shadow: 0 0 0 .2rem rgba(220,53,69,.5)
+}
+
