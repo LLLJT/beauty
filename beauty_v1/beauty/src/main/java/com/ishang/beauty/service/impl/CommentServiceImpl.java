@@ -53,7 +53,7 @@ public class CommentServiceImpl implements CommentService {
 
 	@Override
 	public List<Comment> findreply(int blogid, int cmtid) {
-		// TODO Auto-generated method stub
+		// TODO comment的查询评论方法 service层 可能是不完善的方法
 //		1 查出当前blog下所有楼中楼
 		List<Comment> replylist=dao.selectreply(cmtid);
 		return replylist;
