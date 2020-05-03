@@ -33,10 +33,4 @@
     select id, userid, blogid, createtime
     from blog_star
   </select>
-
-	<!-- 获取某blog的收藏数 -->
-	<select id="getblogstar" parameterType="java.lang.Integer" resultSets="java.lang.Integer">
-		SELECT COUNT(0) FROM `blog_star`
-		WHERE blogid =  #{blogid,jdbcType=INTEGER}
-	</select>
 </mapper>

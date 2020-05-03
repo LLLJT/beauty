@@ -39,33 +39,4 @@
     select id, userid, blogid, cmtid, `comment`, del_flag
     from comment
   </select>
-
-	<!-- 模糊查找 -->
-	<select id="selectlike" parameterType="com.ishang.beauty.entity.Comment" resultMap="BaseResultMap">
-		select id, userid, blogid, cmtid, `comment`, del_flag
-		from comment
-		where `comment` like concat('%',#{`comment`,jdbcType=VARCHAR},'%')
-	</select>
-
-	<!-- 获取某blog的normal评论list ( 排除reply ) -->
-	<select id="selectncmt" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-		select id, userid, blogid, cmtid, `comment`, del_flag
-		from comment
-		WHERE blogid = #{blogid,jdbcType=INTEGER}
-		and ISNULL(cmtid)
-	</select>
-
-	<!-- 获取某blog的所有reply -->
-	<select id="selectreply" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-		select id, userid, blogid, cmtid, `comment`, del_flag
-		from comment
-		WHERE blogid = #{blogid,jdbcType=INTEGER}
-		and NOT(ISNULL(cmtid))
-	</select>
-
-	<!-- 获取某blog的评论数 -->
-	<select id="getblogcmt" parameterType="java.lang.Integer" resultType="java.lang.Integer">
-		SELECT COUNT(0) FROM `comment`
-		WHERE blogid = #{blogid,jdbcType=INTEGER}
-	</select>
 </mapper>

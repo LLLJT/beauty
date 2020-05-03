@@ -26,13 +26,7 @@ public interface BlogTypeService {
 	int deleteone(BlogType record);
 	
 	/**
-	 * 修改
-	 * */
-	int updateone(BlogType record);
-	
-	/**
 	 * 模糊查找
 	 * */
 	List<BlogType> findbyentity(BlogType record);
-	
 }

@@ -13,10 +13,4 @@ public interface BlogStarMapper {
     List<BlogStar> selectAll();
 
     int updateByPrimaryKey(BlogStar record);
-    
-    /**
-     * 获取某blog的被收藏数
-     * */
-    int getblogstar(int blogid);
-    
 }

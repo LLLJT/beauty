@@ -13,9 +13,4 @@ public interface BlogTypeMapper {
     List<BlogType> selectAll();
 
     int updateByPrimaryKey(BlogType record);
-    
-    /**
-     * 模糊查找
-     * */
-    List<BlogType> selectlike(BlogType record);
 }
