@@ -1,0 +1,110 @@
+.uploader {
+	border-radius: 50%;
+	width: 100px;
+	margin: -25px 20px 0 20px;
+}
+
+.myfollow img{
+	min-width: 100px;
+	min-height: 100px;
+}
+
+.myfollow-collapse img{
+	width:180px
+}
+
+/* 轮播图 */
+/* Make the image fully responsive */
+.carousel-inner img {
+	width: 100%;
+	height: 100%;
+}
+
+.carousel-item p {
+	color: #fff
+}
+
+.nav-wrapper {
+	/*
+    background: #B24592;
+    background: -webkit-linear-gradient(to left, #B24592 , #F15F79);
+    background: linear-gradient(to left, #B24592 , #F15F79);   
+    */
+	background-image: url(../images/header-bg.jpg);
+	background-size: cover;
+	position: relative;
+	width: 100%;
+	z-index: 10;
+	left: 0;
+	padding: 0 30px;
+	margin-bottom: 0;
+	border-radius: 0
+}
+
+.smoothie {
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+.navbar-center{
+	width:100%;
+	box-sizing:border-box;
+	line-height: 2;
+	flex-direction:row;
+	justify-content : center;
+}
+
+.navvar-center li{
+	margin:50px;	
+}
+
+.navbar-center li a{
+	font-family: 'Microsoft YaHei', sans-serif;
+	margin:0 50px 0 50px;
+	font-size:large
+}
+
+.navbar-center a{
+    font-family: 'Raleway';
+    color: #eee;
+    font-weight: 400;
+    padding: 20px 17px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 13px;
+}
+
+.up_center {
+	width:100%;
+	text-align:center;
+    margin-top:90px;
+}
+
+.up_center a{
+	color:white;
+}
+
+#navbar-1{
+	width:100%;
+	position: absolute;
+	bottom: 50px;
+}
+
+#userframe{
+	width:100%;
+	min-height: 1000px;
+	height: auto;
+	
+}
+
+.user_alignleft{
+	text-align: left;
+}
+
+.user_alignleft p{
+	width:80%;
+	height: 65px;
+}
