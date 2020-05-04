@@ -1,7 +1,9 @@
 package com.ishang.beauty.dao;
 
-import com.ishang.beauty.entity.Blog;
 import java.util.List;
+
+import com.ishang.beauty.entity.Blog;
+import com.ishang.beauty.entity.User;
 
 public interface BlogMapper {
     int deleteByPrimaryKey(Integer id);
@@ -36,4 +38,11 @@ public interface BlogMapper {
 	 * 收藏数 默认降序
 	 * */
     List<Blog> selectupstar(int userid);
+    
+      /**
+     * 获取关注up主一周内更新的blog
+     * */
+    List<Blog> selectlatestblog(int followerid);
+    
+    
 }

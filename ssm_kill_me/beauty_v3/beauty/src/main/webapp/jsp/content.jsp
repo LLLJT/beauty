@@ -16,20 +16,20 @@
 		}
 	</script>
 	<!-- //Meta tag Keywords -->
-
-	<link rel="stylesheet" href="../css/ups/bootstrap3.css">
-	<link href="../css/ups/c-style.css" rel="stylesheet"> 
-	<link href="../css/ups/elusive-webfont.css" rel="stylesheet">
-	<link href="../css/ups/animate.css" rel="stylesheet">
-	<link href="../css/font-awesome.min.css" rel="stylesheet">
-	<link href="../css/ups/c-content.css" rel="stylesheet">
+<% String path = request.getContextPath();%>
+	<link rel="stylesheet" href="<%=path%>/css/ups/bootstrap3.css">
+	<link href="<%=path%>/css/ups/c-style.css" rel="stylesheet"> 
+	<link href="<%=path%>/css/ups/elusive-webfont.css" rel="stylesheet">
+	<link href="<%=path%>/css/ups/animate.css" rel="stylesheet">
+	<link href="<%=path%>/css/font-awesome.min.css" rel="stylesheet">
+	<link href="<%=path%>/css/ups/c-content.css" rel="stylesheet">
 	<!-- Web-Fonts -->
 	<link href="http://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Raleway:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
 	<!-- //Web-Fonts -->
 
-	<script src="../js/ups/jquery.min.js"></script>
-	<script src="../js/ups/modernizr.custom.js"></script>
+	<script src="<%=path%>/js/ups/jquery.min.js"></script>
+	<script src="<%=path%>/js/ups/modernizr.custom.js"></script>
 
 	<style type="text/css">
 	.c-user {
@@ -165,7 +165,7 @@
 											<article class="comment-body grid_12" id="div-comment-34">
 												<footer class="comment-meta col-md-2">
 													<div class="comment-author vcard">
-														<img alt="" class="avatar" src="../images/avatar.png" width="100">
+														<img alt="" class="avatar" src="<%=path%>/images/avatar.png" width="100">
 													</div>
 													<div class="comment-metadata">
 														<cite class="fn">
@@ -196,7 +196,7 @@
 											<article class="comment-body grid_12" id="div-comment-34">
 												<footer class="comment-meta col-md-2">
 													<div class="comment-author vcard">
-														<img alt="" class="avatar" src="../images/avatar.png" width="100">
+														<img alt="" class="avatar" src="<%=path%>/images/avatar.png" width="100">
 													</div>
 													<div class="comment-metadata">
 														<cite class="fn">
@@ -255,7 +255,7 @@
 					<h3 class="sidebar-title mt0 mb-5">热门推荐</h3>
 					<div class="row sidebar-post">
 						<div class="col-md-4">
-							<img class="sb-img" src="../images/folio01.jpg" alt="Alt">
+							<img class="sb-img" src="<%=path%>/images/folio01.jpg" alt="Alt">
 						</div>
 						<div class="col-md-8 sidebar-post-content">
 							<h4>Blog Post A</h4>
@@ -291,9 +291,9 @@
 
 	<!-- JavaScript files-->
 	
-	<script src="../js/ups/bootstrap.js"></script>
-	<script src="../js/ups/plugins.js"></script>
-	<script src="../js/init.js"></script>
+	<script src="<%=path%>/js/ups/bootstrap.js"></script>
+	<script src="<%=path%>/js/ups/plugins.js"></script>
+	<script src="<%=path%>/js/init.js"></script>
 
   </body>
 </html>

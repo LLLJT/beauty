@@ -23,6 +23,6 @@ public class BlogTypeController {
     public String findall(HttpServletRequest request,Model model){    
         List<BlogType> rstlist = service.findall();    
         model.addAttribute("typelist", rstlist);    
-        return "typelist";    
+        return "typelist.jsp";    
     }
 }

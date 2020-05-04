@@ -81,22 +81,25 @@
   
   	<!-- 模糊查找 -->
 	<select id="selectlike" parameterType="com.ishang.beauty.entity.Blog" resultMap="BaseResultMap">
-		select id, title, userid, typeid, content, createtime, modifytime, rec_flag, pic1,
-		pic_url_1, pic2, pic_url_2, pic3, pic_url_3, likenum, del_flag
+		select id, title, userid, typeid, content, createtime, modifytime,
+		rec_flag, pic1, pic_url_1, pic2, pic_url_2, pic3, pic_url_3, likenum, del_flag
+		from blog
 		where title like concat('%',#{title,jdbcType=VARCHAR},'%')
 	</select>
 
 	<!-- 查找推荐列表 -->
 	<select id="selectrec" resultMap="BaseResultMap">
-		select id, title, userid, typeid, content, createtime, modifytime, rec_flag, pic1,
-		pic_url_1, pic2, pic_url_2, pic3, pic_url_3, likenum, del_flag
+		select id, title, userid, typeid, content, createtime, modifytime,
+		rec_flag, pic1, pic_url_1, pic2, pic_url_2, pic3, pic_url_3, likenum, del_flag
+		from blog
 		where rec_flag=1
 	</select>
 	
 	<!-- 模糊查找up主的blogs 按时间降序 -->
 	<select id="selectuptime"  parameterType="java.lang.Integer" resultMap="BaseResultMap">
-		select id, title, userid, typeid, content, createtime, modifytime, rec_flag, pic1,
-		pic_url_1, pic2, pic_url_2, pic3, pic_url_3, likenum, del_flag
+		select id, title, userid, typeid, content, createtime, modifytime,
+		rec_flag, pic1, pic_url_1, pic2, pic_url_2, pic3, pic_url_3, likenum, del_flag
+		from blog
 		where userid = #{userid,jdbcType=INTEGER}
 		order by createtime DESC
 	</select>
@@ -108,6 +111,16 @@
 		from blog join upblogstars on blog.id=blogid
 		where userid = #{userid,jdbcType=INTEGER}
 		ORDER BY stars DESC
+	</select>
+
+	<select id="selectlatestblog" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select id, title, userid, typeid, content, createtime, modifytime, rec_flag, pic1,
+		pic_url_1, pic2, pic_url_2, pic3, pic_url_3, likenum, del_flag
+		FROM blog
+		WHERE userid = #{userid,jdbcType=INTEGER}
+		<![CDATA[ 
+			AND DATE_SUB(CURDATE(),INTERVAL 7 day) <=DATE(createtime)
+		 ]]>
 	</select>
   
 </mapper>

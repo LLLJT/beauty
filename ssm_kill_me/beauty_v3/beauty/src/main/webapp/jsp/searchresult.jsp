@@ -1,17 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"  isELIgnored="false" %>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>搜索结果</title>
-
+<% String path = request.getContextPath();%>
 <!-- Bootstrap-Core-CSS -->
-<link rel="stylesheet" href="../css/bootstrap.css">
+<link rel="stylesheet" href="<%=path%>/css/bootstrap.css">
 <!-- Style-CSS -->
-<link rel="stylesheet" href="../css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="<%=path%>/css/style.css" type="text/css" media="all" />
 <!-- Font-Awesome-Icons-CSS -->
-<link href="../css/font-awesome.min.css" rel="stylesheet">
+<link href="<%=path%>/css/font-awesome.min.css" rel="stylesheet">
 <!-- Web-Fonts -->
 <link href="http://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext"
 	rel="stylesheet">
@@ -35,8 +38,7 @@
 		<!-- header -->
 		<header>
 			<div class="container-fluid">
-				<div
-					class="header d-lg-flex justify-content-between align-items-center py-3 px-sm-3">
+				<div class="header d-lg-flex justify-content-between align-items-center py-3 px-sm-3">
 					<!-- logo -->
 					<div id="logo">
 						<h1>
@@ -47,8 +49,7 @@
 					<div class="d-flex mt-lg-1 mt-sm-2 mt-3 justify-content-center">
 						<!-- search -->
 						<div class="search-w3layouts mr-3">
-							<form action="#" method="post"
-								class="search-bottom-wthree d-flex">
+							<form action="#" method="post" class="search-bottom-wthree d-flex">
 								<input class="search" type="search" placeholder="Search Here..." required>
 								<button class="form-control btn" type="submit">
 									<span class="fa fa-search"></span>
@@ -77,9 +78,9 @@
 					<span class="fa fa-search"></span>
 				</div>
 				<h2 class="tittle text-center font-weight-bold mb-3">Start Searching!</h2>
-				<form action="#" method="post" class="subscribe-wthree pt-2">
+				<form action="search" method="post" class="subscribe-wthree pt-2">
 					<div class="d-flex subscribe-wthree-field">
-						<input class="form-control" type="text" placeholder="Input the keyword..." name="email" required>
+						<input class="form-control" type="text" placeholder="Input the keyword..." name="searchname" required>
 						<button class="btn form-control w-50" type="submit">搜索Search</button>
 					</div>
 				</form>
@@ -103,91 +104,23 @@
 		<div class="container pb-xl-5 py-lg-3">
 			<div class="inner_sec_info_w3_info mt-3">
 				<div class="row price-grid-main">
-				
-				<!-- result1 -->
-				<div class="col-lg-3 col-sm-6 price-info mb-4">
-					<div class="prices p-4">
-						<div class="prices-bottom text-center">
-							<img alt="一张图片" style="max-width: 200px; max-height: 160px;" src="../images/portfolio/folio-2.jpeg" />
-							<div class="my-2" ><h4>headlineheadline很长很长很长的headline</h4></div>
-							<p>
-								Community Access
-								Annual Reports
-								Free Support
-								Expert Reviews
-							</p>
-							
-						</div>
-					</div>
-				</div>
-				<!-- //result1 -->
 
-				<div class="col-lg-3 col-sm-6 price-info mb-4">
-					<div class="prices p-4">
-						<div class="prices-bottom text-center">
-							<img alt="一张图片" style="max-width: 200px; max-height: 160px;"
-								src="../images/portfolio/folio-2.jpg" />
-							<div class="my-2">
-								<h4>headlineheadline很长很长很长的headline</h4>
-							</div>
-							<p>Community Access Annual Reports Free Support Expert
-								Reviews</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6 price-info mb-4">
-					<div class="prices p-4">
-						<div class="prices-bottom text-center">
-							<img alt="一张图片" style="max-width: 200px; max-height: 160px;"
-								src="../images/portfolio/folio-1.jpeg" />
-							<div class="my-2">
-								<h4>headlineheadline很长很长很长的headline</h4>
-							</div>
-							<p>Community Access Annual Reports Free Support Expert
-								Reviews</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6 price-info mb-4">
-					<div class="prices p-4">
-						<div class="prices-bottom text-center">
-							<img alt="一张图片" style="max-width: 200px; max-height: 160px;"
-								src="../images/portfolio/folio-3.jpeg" />
-							<div class="my-2">
-								<h4>headlineheadline很长很长很长的headline</h4>
-							</div>
-							<p>Community Access Annual Reports Free Support Expert
-								Reviews</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6 price-info mb-4">
-					<div class="prices p-4">
-						<div class="prices-bottom text-center">
-							<img alt="一张图片" style="max-width: 200px; max-height: 160px;"
-								src="../images/portfolio/folio-4.jpeg" />
-							<div class="my-2">
-								<h4>headlineheadline很长很长很长的headline</h4>
-							</div>
-							<p>Community Access Annual Reports Free Support Expert
-								Reviews</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-sm-6 price-info mb-4">
-					<div class="prices p-4">
-						<div class="prices-bottom text-center">
-							<img alt="一张图片" style="max-width: 200px; max-height: 160px;"
-								src="../images/portfolio/folio-5.jpeg" />
-							<div class="my-2">
-								<h4>headlineheadline很长很长很长的headline</h4>
-							</div>
-							<p>Community Access Annual Reports Free Support Expert
-								Reviews</p>
-						</div>
-					</div>
-				</div>
+					<c:forEach items="${searchresult }" var="rst">
+						<div class="col-lg-3 col-sm-6 price-info mb-4">
+							<div class="prices p-4">
+								<div class="prices-bottom text-center">
+									<img alt="一张图片" style="max-width: 200px; max-height: 160px;"
+										src="<%=path%>/images/portfolio/folio-2.jpeg" />
+									<div class="my-2">
+										<h4>${rst.title }</h4>
+									</div>
+									<p>${rst.content }</p>
 
+								</div>
+							</div>
+						</div>
+
+					</c:forEach>
 
 				</div>
 			</div>

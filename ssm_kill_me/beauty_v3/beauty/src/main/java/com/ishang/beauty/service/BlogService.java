@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.ishang.beauty.entity.Blog;
 import com.ishang.beauty.entity.BlogStar;
+import com.ishang.beauty.entity.User;
 
 @Service
 public interface BlogService {
@@ -69,4 +70,14 @@ public interface BlogService {
 	 * keyword: "star" or "cmt"
 	 * */
 	int getnum(int blogid, String keyword);
+	
+    /**
+     * 获取一周内有更新的关注up主
+     * */
+    List<User> selectlatestup(int followerid);
+	
+	/**
+     * 获取关注up主一周内更新的blog
+     * */
+    List<Blog> selectlatestblog(int followerid);
 }

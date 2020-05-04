@@ -5,14 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>我的收藏</title>
-	<link href="../../css/bootstrap.css" rel="stylesheet">
+<% String path = request.getContextPath();%>
+	<link href="<%=path%>/css/bootstrap.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900|Dancing+Script:400,700|Raleway:400,100,300,700,900|Reenie+Beanie&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <link href="../../css/users/userspace_style.css" rel="stylesheet">  
-	<link rel="stylesheet" href="../../css/custom.css">
+    <link href="<%=path%>/css/users/userspace_style.css" rel="stylesheet">  
+	<link rel="stylesheet" href="<%=path%>/css/custom.css">
 </head>
 <body>
 	<section class="white-wrapper allow-overflow">
@@ -36,7 +37,7 @@
 	                                            <div class="col-sm-4 masonry-portfolio-item mb30 apps">
 	                                                <div class="hover-effect smoothie">
 	                                                    <a href="#" class="smoothie">
-	                                                    <img src="../../images/portfolio/folio-1.jpeg" alt="Image" class="img-responsive smoothie"></a>
+	                                                    <img src="<%=path%>/images/portfolio/folio-1.jpeg" alt="Image" class="img-responsive smoothie"></a>
 	                                                    <div class="hover-overlay smoothie text-center">
 	                                                        <div class="vertical-align-bottom user_alignleft">
 	                                                            <h4>up's name</h4>
@@ -53,7 +54,7 @@
 	                                            <div class="col-sm-4 masonry-portfolio-item mb30 design">
 	                                                <div class="hover-effect smoothie">
 	                                                    <a href="#" class="smoothie">
-	                                                    <img src="../../images/portfolio/folio-2.jpeg" alt="Image" class="img-responsive smoothie"></a>
+	                                                    <img src="<%=path%>/images/portfolio/folio-2.jpeg" alt="Image" class="img-responsive smoothie"></a>
 	                                                    <div class="hover-overlay smoothie text-center">
 	                                                        <div class="vertical-align-bottom user_alignleft">
 	                                                            <h4>up's name</h4>
@@ -70,7 +71,7 @@
 	                                            <div class="col-sm-4 masonry-portfolio-item mb30 photography">
 	                                                <div class="hover-effect smoothie">
 	                                                    <a href="#" class="smoothie">
-	                                                    <img src="../../images/portfolio/folio-3.jpeg" alt="Image" class="img-responsive smoothie"></a>
+	                                                    <img src="<%=path%>/images/portfolio/folio-3.jpeg" alt="Image" class="img-responsive smoothie"></a>
 	                                                    <div class="hover-overlay smoothie text-center">
 	                                                        <div class="vertical-align-bottom user_alignleft">
 	                                                            <h4>up's name</h4>
@@ -87,7 +88,7 @@
 	                                            <div class="col-sm-4 masonry-portfolio-item mb30 apps">
 	                                                <div class="hover-effect smoothie">
 	                                                    <a href="#" class="smoothie">
-	                                                    <img src="../../images/portfolio/folio-4.jpeg" alt="Image" class="img-responsive smoothie"></a>
+	                                                    <img src="<%=path%>/images/portfolio/folio-4.jpeg" alt="Image" class="img-responsive smoothie"></a>
 	                                                    <div class="hover-overlay smoothie text-center">
 	                                                        <div class="vertical-align-bottom user_alignleft">
 	                                                            <h4>up's name</h4>
@@ -104,7 +105,7 @@
 	                                            <div class="col-sm-4 masonry-portfolio-item mb30 design">
 	                                                <div class="hover-effect smoothie">
 	                                                    <a href="#" class="smoothie">
-	                                                    <img src="../../images/portfolio/folio-5.jpeg" alt="Image" class="img-responsive smoothie"></a>
+	                                                    <img src="<%=path%>/images/portfolio/folio-5.jpeg" alt="Image" class="img-responsive smoothie"></a>
 	                                                    <div class="hover-overlay smoothie text-center">
 	                                                        <div class="vertical-align-bottom user_alignleft">
 	                                                            <h4>up's name</h4>
@@ -121,7 +122,7 @@
 	                                            <div class="col-sm-4 masonry-portfolio-item mb30 design">
 	                                                <div class="hover-effect smoothie">
 	                                                    <a href="#" class="smoothie">
-	                                                    <img src="../../images/portfolio/folio-6.jpeg" alt="Image" class="img-responsive smoothie"></a>
+	                                                    <img src="<%=path%>/images/portfolio/folio-6.jpeg" alt="Image" class="img-responsive smoothie"></a>
 	                                                    <div class="hover-overlay smoothie text-center">
 	                                                        <div class="vertical-align-bottom user_alignleft">
 	                                                            <h4>up's name</h4>
@@ -138,7 +139,7 @@
 	                                            <div class="col-sm-4 masonry-portfolio-item mb30 apps">
 	                                                <div class="hover-effect smoothie">
 	                                                    <a href="#" class="smoothie">
-	                                                    <img src="../../images/portfolio/folio-7.jpeg" alt="Image" class="img-responsive smoothie"></a>
+	                                                    <img src="<%=path%>/mages/portfolio/folio-7.jpeg" alt="Image" class="img-responsive smoothie"></a>
 	                                                    <div class="hover-overlay smoothie text-center">
 	                                                        <div class="vertical-align-bottom user_alignleft">
 	                                                            <h4>up's name</h4>
@@ -155,7 +156,7 @@
 	                                            <div class="col-sm-4 masonry-portfolio-item mb30 design">
 	                                                <div class="hover-effect smoothie">
 	                                                    <a href="#" class="smoothie">
-	                                                    <img src="../../images/portfolio/folio-8.jpeg" alt="Image" class="img-responsive smoothie"></a>
+	                                                    <img src="<%=path%>/images/portfolio/folio-8.jpeg" alt="Image" class="img-responsive smoothie"></a>
 	                                                    <div class="hover-overlay smoothie text-center">
 	                                                        <div class="vertical-align-bottom user_alignleft">
 	                                                            <h4>up's name</h4>
@@ -172,7 +173,7 @@
 	                                            <div class="col-sm-4 masonry-portfolio-item mb30 design">
 	                                                <div class="hover-effect smoothie">
 	                                                    <a href="#" class="smoothie">
-	                                                    <img src="../../images/portfolio/folio-9.jpeg" alt="Image" class="img-responsive smoothie"></a>
+	                                                    <img src="<%=path%>/images/portfolio/folio-9.jpeg" alt="Image" class="img-responsive smoothie"></a>
 	                                                    <div class="hover-overlay smoothie text-center">
 	                                                        <div class="vertical-align-bottom user_alignleft">
 	                                                            <h4>up's name</h4>

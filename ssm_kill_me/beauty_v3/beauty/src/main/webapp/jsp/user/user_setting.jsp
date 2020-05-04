@@ -5,15 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>我的设置</title>
-
-	<link href="../../css/bootstrap.css" rel="stylesheet">
+<% String path = request.getContextPath();%>
+	<link href="<%=path%>/css/bootstrap.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900|Dancing+Script:400,700|Raleway:400,100,300,700,900|Reenie+Beanie&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <link href="../../css/users/userspace_style.css" rel="stylesheet"> 
-    <link href="../../css/users/custom.css" rel="stylesheet">
+    <link href="<%=path%>/css/users/userspace_style.css" rel="stylesheet"> 
+    <link href="<%=path%>/css/users/custom.css" rel="stylesheet">
     
 </head>
 <body>
@@ -56,11 +56,11 @@
 							</div>
 							<div class="form-group">
 								<label class="form-control-label">新密码<em style="color: red;">*</em></label>
-								<input type="password" class="form-control" placeholder="Input your new password..。" required="required">
+								<input type="password" class="form-control" placeholder="Input your new password..." required="required">
 							</div>
 							<div class="form-group">
 								<label class="form-control-label">确认密码<em style="color: red;">*</em></label>
-								<input type="password" class="form-control" placeholder="Confirm your password..。" required="required">
+								<input type="password" class="form-control" placeholder="Confirm your password..." required="required">
 							</div>
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary">确认修改</button>

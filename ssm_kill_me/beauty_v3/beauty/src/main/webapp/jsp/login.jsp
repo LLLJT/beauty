@@ -5,15 +5,15 @@
 <head>
 <meta charset="UTF-8">
 <title>登录</title>
-
+<% String path = request.getContextPath();%>
  <!-- Bootstrap CSS-->
- <link rel="stylesheet" href="../css/bootstrap.css">
+ <link rel="stylesheet" href="<%=path%>/css/bootstrap.css">
  <!-- Font Awesome CSS-->
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
  <!-- Google fonts - Popppins for copy-->
  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,800">
  <!-- theme stylesheet-->
- <link rel="stylesheet" href="../css/style.default.css" id="theme-stylesheet">
+ <link rel="stylesheet" href="<%=path%>/css/style.default.css" id="theme-stylesheet">
 
 </head>
 <body>
@@ -22,7 +22,7 @@
 			<div class="row align-items-center py-5">
 				<div class="col-5 col-lg-7 mx-auto mb-5 mb-lg-0">
 					<div class="pr-lg-5">
-						<img src="../images/illustration.svg" alt="" class="img-fluid">
+						<img src="<%=path%>/images/illustration.svg" alt="" class="img-fluid">
 					</div>
 				</div>
 				<div class="col-lg-5 px-lg-4">
@@ -40,9 +40,8 @@
 						</div>
 						<div class="form-group mb-4">
 							<div class="custom-control custom-checkbox">
-								<input id="customCheck1" type="checkbox" checked
-									class="custom-control-input"> <label for="customCheck1"
-									class="custom-control-label">记住密码</label>
+								<input id="customCheck1" type="checkbox" checked class="custom-control-input"> 
+								<label for="customCheck1" class="custom-control-label">记住密码</label>
 							</div>
 						</div>
 						<button type="submit" class="btn btn-primary shadow px-5">登录</button>
@@ -55,12 +54,12 @@
 		</div>
 	</div>
 	<!-- JavaScript files-->
-	<script src="../js/jquery/jquery.min.js"></script>
-	<script src="../js/popper.js/umd/popper.min.js"> </script><!-- popper.min.js 用于弹窗、提示、下拉菜单 -->
-	<script src="../js/bootstrap/bootstrap.min.js"></script>
-	<script src="../js/jquery.cookie/jquery.cookie.js"> </script>
+	<script src="<%=path%>/js/jquery/jquery.min.js"></script>
+	<script src="<%=path%>/js/popper.js/umd/popper.min.js"> </script><!-- popper.min.js 用于弹窗、提示、下拉菜单 -->
+	<script src="<%=path%>/js/bootstrap/bootstrap.min.js"></script>
+	<script src="<%=path%>/js/jquery.cookie/jquery.cookie.js"> </script>
 	<!-- <script src="vendor/chart.js/Chart.min.js"></script> -->
-	<script src="../js/js.cookie.min.js"></script>
-	<script src="../js/front.js"></script>
+	<script src="<%=path%>/js/js.cookie.min.js"></script>
+	<script src="<%=path%>/js/front.js"></script>
 </body>
 </html>

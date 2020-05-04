@@ -16,25 +16,25 @@
 		}
 	</script>
 	<!-- //Meta tag Keywords -->
-
+<% String path = request.getContextPath();%>
 	<!-- Custom-Files -->
-	<link rel="stylesheet" href="../css/bootstrap.css">
+	<link rel="stylesheet" href="<%=path%>/css/bootstrap.css">
 	<!-- Bootstrap-Core-CSS -->
-	<link rel="stylesheet" href="../css/style.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="<%=path%>/css/style.css" type="text/css" media="all" />
 	<!-- Style-CSS -->
-	<link href="../css/font-awesome.min.css" rel="stylesheet">
+	<link href="<%=path%>/css/font-awesome.min.css" rel="stylesheet">
 	<!-- Font-Awesome-Icons-CSS -->
 	
-	<link href="../css/ups/animate.css" rel="stylesheet">
-	<link href="../css/ups/newstyle.css" rel="stylesheet"> 
+	<link href="<%=path%>/css/ups/animate.css" rel="stylesheet">
+	<link href="<%=path%>/css/ups/newstyle.css" rel="stylesheet"> 
     
 	<!-- Web-Fonts -->
 	<link href="http://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Raleway:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
 	<!-- //Web-Fonts -->
 
-	<script src="../js/ups/jquery.min.js"></script>
-	<script src="../js/ups/modernizr.custom.js"></script>
+	<script src="<%=path%>/js/ups/jquery.min.js"></script>
+	<script src="<%=path%>/js/ups/modernizr.custom.js"></script>
 
 
 </head>
@@ -87,7 +87,7 @@
 			<div class="py-xl-4 ">
 				<div class="col-lg-12 mt-5 row">
 					<div class="col-lg-2">
-						<img alt="" src="../images/kb1.jpg" style="max-width: 100px;">
+						<img alt="" src="<%=path%>/images/kb1.jpg" style="max-width: 100px;">
 					</div>
 					<div class="col-lg-8  ">
 						<h2 class="mb-4">up's name</h2>
@@ -137,7 +137,7 @@
 							</div>
 							<div class="grid mask">
 								<figure>
-									<img class="img fade-down" src="../images/bg2.jpg">
+									<img class="img fade-down" src="<%=path%>/images/bg2.jpg">
 									<figcaption>
 										<a class="btn btn-primary btn-lg" href="#"><i class="fa fa-link"></i></a>
 									</figcaption>
@@ -156,7 +156,7 @@
 
 					<div class="row sidebar-post">
 						<div class="col-md-4">
-							<img class="sb-img" src="../images/folio01.jpg" alt="Alt">
+							<img class="sb-img" src="<%=path%>/images/folio01.jpg" alt="Alt">
 						</div>
 						<div class="col-md-8 sidebar-post-content">
 							<h4>Blog Post A</h4>
@@ -196,9 +196,9 @@
 
 	<!-- JavaScript files-->
 	
-	<script src="../js/bootstrap/bootstrap.min.js"></script>
-	<script src="../js/ups/plugins.js"></script>
-	<script src="../js/ups/init.js"></script>
+	<script src="<%=path%>/js/bootstrap/bootstrap.min.js"></script>
+	<script src="<%=path%>/js/ups/plugins.js"></script>
+	<script src="<%=path%>js/ups/init.js"></script>
 
 </body>
 </html>

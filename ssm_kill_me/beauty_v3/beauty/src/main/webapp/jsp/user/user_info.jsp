@@ -5,19 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>我的信息</title>
-
-	<link href="../../css/bootstrap.css" rel="stylesheet">
+<% String path = request.getContextPath();%>
+	<link href="<%=path%>/css/bootstrap.css" rel="stylesheet">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900|Dancing+Script:400,700|Raleway:400,100,300,700,900|Reenie+Beanie&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <link href="../../css/users/userspace_style.css" rel="stylesheet">
+    <link href="<%=path%>/css/users/userspace_style.css" rel="stylesheet">
     
     <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="../../css/dtpicker/base.css"  rel="stylesheet" />
-    <link href="../../css/dtpicker/tempusdominus-bootstrap-4.css"  rel="stylesheet" />
+    <link href="<%=path%>/css/dtpicker/base.css"  rel="stylesheet" />
+    <link href="<%=path%>/css/dtpicker/tempusdominus-bootstrap-4.css"  rel="stylesheet" />
 
 </head>
 <body>
@@ -109,17 +109,17 @@
 	</div>
 
 	<!-- JavaScript files-->
-	<script src="../../js/jquery/jquery.min.js"></script>
-	<script src="../../js/popper.js/umd/popper.min.js"></script>
-	<script src="../../js/bootstrap/bootstrap.min.js"></script>
-	<script src="../../js/jquery.cookie/jquery.cookie.js"> </script>
-	<script src="../../js/js.cookie.min.js"></script>
-	<script src="../../js/front.js"></script>
+	<script src="<%=path%>/js/jquery/jquery.min.js"></script>
+	<script src="<%=path%>/js/popper.js/umd/popper.min.js"></script>
+	<script src="<%=path%>/js/bootstrap/bootstrap.min.js"></script>
+	<script src="<%=path%>/js/jquery.cookie/jquery.cookie.js"> </script>
+	<script src="<%=path%>/js/js.cookie.min.js"></script>
+	<script src="<%=path%>/js/front.js"></script>
 
-	<script src="../../js/dtpicker/moment-with-locales.min.js"></script>
-	<script src="../../js/dtpicker/tempusdominus-bootstrap-4.js"></script>
-	<script src="../../js/dtpicker/moment-timezone-with-data-2012-2022.min.js"></script>
-	<script src="../../js/dtpicker/base.js"></script>
+	<script src="<%=path%>/js/dtpicker/moment-with-locales.min.js"></script>
+	<script src="<%=path%>/js/dtpicker/tempusdominus-bootstrap-4.js"></script>
+	<script src="<%=path%>/js/dtpicker/moment-timezone-with-data-2012-2022.min.js"></script>
+	<script src="<%=path%>/js/dtpicker/base.js"></script>
 
 	<script type="text/javascript">
 		$(function() {

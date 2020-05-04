@@ -33,7 +33,7 @@ public class UserController {
         String url=request.getRequestURI();
         System.out.println(url);
         model.addAttribute("userlist", uList);    
-        return "crud/userList";     //跳转到userList.jsp
+        return "crud/userList.jsp";     //跳转到userList.jsp
     }
 
 	@RequestMapping("/login")
@@ -43,9 +43,9 @@ public class UserController {
 		record.setPassword(password);
 		List<User> result =service.findbyentity(record);
 		if ( result.size()>0 && result.get(0).getPassword().equals(password)	)  {
-			return "index";
+			return "../index";
 		}else {
-			 return "login";
+			 return "login.jsp";
 		}
 	}
 	

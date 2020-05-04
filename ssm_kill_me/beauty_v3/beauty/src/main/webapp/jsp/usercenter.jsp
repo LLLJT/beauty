@@ -5,18 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>个人中心</title>
-
+<% String path = request.getContextPath();%>
 <!-- Bootstrap-Core-CSS -->
-<link rel="stylesheet" href="../css/bootstrap.css">
+<link rel="stylesheet" href="<%=path%>/css/bootstrap.css">
 <!-- Style-CSS -->
-<link rel="stylesheet" href="../css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="<%=path%>/css/style.css" type="text/css" media="all" />
 <!-- Font-Awesome-Icons-CSS -->
-<link href="../css/font-awesome.min.css" rel="stylesheet">
+<link href="<%=path%>/css/font-awesome.min.css" rel="stylesheet">
 <!-- Web-Fonts -->
 <link href="http://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext"
 	rel="stylesheet">
 <!-- Custom stylesheet - for your changes-->
-<link rel="stylesheet" href="../css/custom.css">
+<link rel="stylesheet" href="<%=path%>/css/custom.css">
 
 </head>
 <body>

@@ -9,9 +9,11 @@ import org.springframework.stereotype.Service;
 
 import com.ishang.beauty.dao.BlogMapper;
 import com.ishang.beauty.dao.BlogStarMapper;
+import com.ishang.beauty.dao.UserMapper;
 import com.ishang.beauty.dao.BlogCommentMapper;
 import com.ishang.beauty.entity.Blog;
 import com.ishang.beauty.entity.BlogStar;
+import com.ishang.beauty.entity.User;
 import com.ishang.beauty.service.BlogService;
 
 @Service
@@ -20,6 +22,8 @@ public class BlogServiceImpl implements BlogService {
 	@Autowired
 	private BlogMapper dao;
 	
+	@Autowired
+	private UserMapper userdao;
 	@Autowired
 	private BlogCommentMapper cmtdao;
 	@Autowired
@@ -74,9 +78,7 @@ public class BlogServiceImpl implements BlogService {
 			break;
 		}
 		if(!desc) {
-			System.out.println(rstlist);
 			Collections.reverse(rstlist);
-			System.out.println(rstlist);
 		} 
 		return rstlist;
 	}
@@ -100,6 +102,17 @@ public class BlogServiceImpl implements BlogService {
 			num=cmtdao.getblogcmt(blogid);
 		}
 		return num;
+	}
+
+	@Override
+	public List<Blog> selectlatestblog(int followerid) {
+		return dao.selectlatestblog(followerid);
+	}
+
+	@Override
+	public List<User> selectlatestup(int followerid) {
+		List<User> reslist=userdao.selectlatestup(followerid);
+		return reslist;
 	}
 
 }

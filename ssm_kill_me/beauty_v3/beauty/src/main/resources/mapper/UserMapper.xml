@@ -68,4 +68,14 @@
 		where username like concat('%',#{username,jdbcType=VARCHAR},'%')
 	</select>
 
+	<select id="selectlatestup" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		SELECT * FROM `user`
+		WHERE id IN (SELECT userid from blog
+			WHERE userid in (SELECT uploaderid from user_follow WHERE followerid = #{followerid, jdbcType=INTEGER})
+					<![CDATA[ 
+						AND DATE_SUB(CURDATE(),INTERVAL 7 day) <=DATE(createtime)
+					 ]]>
+			)
+	</select>
+
 </mapper>
