@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,11 +12,13 @@
 <!-- Bootstrap-Core-CSS -->
 <link rel="stylesheet" href="../css/bootstrap.css">
 <!-- Style-CSS -->
-<link rel="stylesheet" href="../css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="../css/style.css" type="text/css"
+	media="all" />
 <!-- Font-Awesome-Icons-CSS -->
 <link href="../css/font-awesome.min.css" rel="stylesheet">
 <!-- Web-Fonts -->
-<link href="http://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext"
+<link
+	href="http://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext"
 	rel="stylesheet">
 
 <!-- Custom stylesheet - for your changes-->
@@ -49,7 +54,8 @@
 						<div class="search-w3layouts mr-3">
 							<form action="#" method="post"
 								class="search-bottom-wthree d-flex">
-								<input class="search" type="search" placeholder="Search Here..." required>
+								<input class="search" type="search" placeholder="Search Here..."
+									required>
 								<button class="form-control btn" type="submit">
 									<span class="fa fa-search"></span>
 								</button>
@@ -59,9 +65,8 @@
 						<!-- 登出&个人中心 -->
 						<a class="dwn-w3ls btn mr-1" href="usercenter.jsp" target="_blank">
 							<span class="fa fa-user-circle-o" title="个人中心"></span>
-						</a> 
-						<a class="dwn-w3ls btn" href="login.jsp" target="_self">
-							<span class="fa fa-sign-out" title="退出登录"></span>
+						</a> <a class="dwn-w3ls btn" href="login.jsp" target="_self"> <span
+							class="fa fa-sign-out" title="退出登录"></span>
 						</a>
 						<!-- //logout&usercenter -->
 					</div>
@@ -107,10 +112,10 @@
 			</div>
 
 			<!-- 左右切换按钮 -->
-			<a class="carousel-control-prev" href="#index_slide" data-slide="prev">
-				<span class="carousel-control-prev-icon"></span>
-			</a> <a class="carousel-control-next" href="#index_slide" data-slide="next">
-				<span class="carousel-control-next-icon"></span>
+			<a class="carousel-control-prev" href="#index_slide"
+				data-slide="prev"> <span class="carousel-control-prev-icon"></span>
+			</a> <a class="carousel-control-next" href="#index_slide"
+				data-slide="next"> <span class="carousel-control-next-icon"></span>
 			</a>
 
 		</div>
@@ -123,9 +128,13 @@
 		<div class="container py-xl-5 py-lg-3">
 			<div class="row myfollow" id="follows">
 				<h3 class="title">关注</h3>
-				<span><a href="#up1" data-toggle="collapse" data-target="#up1"><img class="uploader" src="../images/girl.jpg" alt=""/></a></span>
-				<span><a href="#" data-toggle="collapse" data-target="#up2"><img class="uploader" src="../images/kb.jpeg" alt="" /></a></span>
-				<span><a href="#" data-toggle="collapse" data-target="#up3"><img class="uploader" src="../images/oldE.jpg" alt="" /></a></span>
+				<span><a href="#up1" data-toggle="collapse"
+					data-target="#up1"><img class="uploader"
+						src="../images/girl.jpg" alt="" /></a></span> <span><a href="#"
+					data-toggle="collapse" data-target="#up2"><img class="uploader"
+						src="../images/kb.jpeg" alt="" /></a></span> <span><a href="#"
+					data-toggle="collapse" data-target="#up3"><img class="uploader"
+						src="../images/oldE.jpg" alt="" /></a></span>
 			</div>
 			<div class="card mb-3 myfollow-collapse">
 				<div id="up1" class="collapse card-body">
@@ -177,32 +186,32 @@
 			<div class="row about-bottom-w3l text-center mt-4">
 				<div class="col-lg-3 about-grid">
 					<div class="about-grid-main">
-						<img src="../images/qzgs_1.jpg" alt="" class="img-fluid">
-						<a href="#" class="button-w3ls btn "> Read More
+						<img src="../images/qzgs_1.jpg" alt="" class="img-fluid"> <a
+							href="#" class="button-w3ls btn "> Read More
 							<p>简单描述文字</p>
 						</a>
 					</div>
 				</div>
 				<div class="col-lg-3 about-grid">
 					<div class="about-grid-main">
-						<img src="../images/qzgs_2.jpg" alt="" class="img-fluid">
-						<a href="#" class="button-w3ls btn "> Read More
+						<img src="../images/qzgs_2.jpg" alt="" class="img-fluid"> <a
+							href="#" class="button-w3ls btn "> Read More
 							<p>简单描述文字</p>
 						</a>
 					</div>
 				</div>
 				<div class="col-lg-3 about-grid my-lg-0 my-5">
 					<div class="about-grid-main">
-						<img src="../images/qzgs_3.jpg" alt="" class="img-fluid">
-						<a href="#" class="button-w3ls btn "> Read More
+						<img src="../images/qzgs_3.jpg" alt="" class="img-fluid"> <a
+							href="#" class="button-w3ls btn "> Read More
 							<p>简单描述文字</p>
 						</a>
 					</div>
 				</div>
 				<div class="col-lg-3 about-grid">
 					<div class="about-grid-main">
-						<img src="../images/qzgs_4.jpg" alt="" class="img-fluid">
-						<a href="#" class="button-w3ls btn "> Read More
+						<img src="../images/qzgs_4.jpg" alt="" class="img-fluid"> <a
+							href="#" class="button-w3ls btn "> Read More
 							<p>简单描述文字</p>
 						</a>
 					</div>
@@ -213,32 +222,32 @@
 			<div class="row about-bottom-w3l text-center mt-4">
 				<div class="col-lg-3 about-grid">
 					<div class="about-grid-main">
-						<img src="../images/qzgs_5.jpg" alt="" class="img-fluid">
-						<a href="#" class="button-w3ls btn "> Read More
+						<img src="../images/qzgs_5.jpg" alt="" class="img-fluid"> <a
+							href="#" class="button-w3ls btn "> Read More
 							<p>简单描述文字</p>
 						</a>
 					</div>
 				</div>
 				<div class="col-lg-3 about-grid">
 					<div class="about-grid-main">
-						<img src="../images/qzgs_6.jpg" alt="" class="img-fluid"> 
-						<a href="#" class="button-w3ls btn "> Read More
+						<img src="../images/qzgs_6.jpg" alt="" class="img-fluid"> <a
+							href="#" class="button-w3ls btn "> Read More
 							<p>简单描述文字</p>
 						</a>
 					</div>
 				</div>
 				<div class="col-lg-3 about-grid my-lg-0 my-5">
 					<div class="about-grid-main">
-						<img src="../images/qzgs_1.jpg" alt="" class="img-fluid">
-						<a href="#" class="button-w3ls btn "> Read More
+						<img src="../images/qzgs_1.jpg" alt="" class="img-fluid"> <a
+							href="#" class="button-w3ls btn "> Read More
 							<p>简单描述文字</p>
 						</a>
 					</div>
 				</div>
 				<div class="col-lg-3 about-grid">
 					<div class="about-grid-main">
-						<img src="../images/qzgs_2.jpg" alt="" class="img-fluid">
-						<a href="#" class="button-w3ls btn "> Read More
+						<img src="../images/qzgs_2.jpg" alt="" class="img-fluid"> <a
+							href="#" class="button-w3ls btn "> Read More
 							<p>简单描述文字</p>
 						</a>
 					</div>
@@ -274,7 +283,9 @@
 	<script src="../js/popper.js/umd/popper.min.js"></script>
 	<!-- popper.min.js 用于弹窗、提示、下拉菜单 -->
 	<script src="../js/bootstrap/bootstrap.min.js"></script>
-	<script src="../js/jquery.cookie/jquery.cookie.js"> </script>
+	<script src="../js/jquery.cookie/jquery.cookie.js">
+		
+	</script>
 	<script src="../js/js.cookie.min.js"></script>
 	<script src="../js/front.js"></script>
 

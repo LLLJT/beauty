@@ -27,11 +27,13 @@ public class UserController {
 //		return response.success(result);
 //	}
 	
-	@RequestMapping("/userList")    
+	@RequestMapping("/getall")    
     public String findall(HttpServletRequest request,Model model){    
         List<User> uList = service.findall();    
-        model.addAttribute("uList", uList);    
-        return "userList";    
+        String url=request.getRequestURI();
+        System.out.println(url);
+        model.addAttribute("userlist", uList);    
+        return "crud/userList";     //跳转到userList.jsp
     }
 
 	@RequestMapping("/login")
