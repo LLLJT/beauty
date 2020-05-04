@@ -1,13 +1,16 @@
 package com.ishang.beauty.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.ishang.beauty.dao.BlogCommentMapper;
 import com.ishang.beauty.entity.BlogComment;
 import com.ishang.beauty.service.BlogCommentService;
 
+@Service
 public class BlogCommentServiceImpl implements BlogCommentService {
 
 	@Autowired
@@ -50,11 +53,20 @@ public class BlogCommentServiceImpl implements BlogCommentService {
 	}
 
 	@Override
+	public List<BlogComment> findallreply(int blogid) {
+		// TODO comment的查询评论方法 service层 可能是不完善的方法
+		// 查出当前blog下所有楼中楼
+		List<BlogComment> replylist=dao.selectallreply(blogid);
+		return replylist;
+	}
+	
+	@Override
 	public List<BlogComment> findreply(int blogid, int cmtid) {
 		// TODO comment的查询评论方法 service层 可能是不完善的方法
-//		1 查出当前blog下所有楼中楼
-		List<BlogComment> replylist=dao.selectreply(cmtid);
-		return replylist;
+		// 查出当前normal cmt下所有reply
+		List<BlogComment> replylist=dao.selectreply(blogid, cmtid);
+		if(replylist.size()>0) return replylist;
+		else return new ArrayList<BlogComment>();
 	}
 
 }

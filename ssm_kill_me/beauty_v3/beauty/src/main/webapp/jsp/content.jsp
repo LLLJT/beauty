@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>xx帖子</title>
+<title>${thisblog.title }</title>
 
 	<script>
 		addEventListener("load", function () {
@@ -40,28 +44,48 @@
 </head>
 <body data-spy="scroll" data-offset="0" data-target="#navbar-main">
 
-	<!-- 模态框（Modal） -->
-	<div class="modal fade" id="addreply" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel">回复评论者x</h4>
+	<c:forEach items="${replymap }" var="ncmt">
+		<!-- 模态框（Modal） -->
+		<div class="modal fade" id="reply${ncmt.getKey() }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">查看回复</h4>
+					</div>
+					<div class="modal-body">
+						<div style="height: 250px; background-color: #F0F0F0;">
+							<c:if test="${ncmt.getValue().size()==0}">
+								<p>暂无回复。<p>
+							</c:if>
+							<c:forEach items="${ncmt.getValue() }" var="reply"
+										varStatus="status">
+										<div class="container-fluid">
+									<div class="row" style="height: 100px;">
+										<div class="col-md-2 text-center">
+											<img alt="" src="<%=path%>/images/avatar.png" width="100%" />
+											<span>${cmtermap[reply.userid] }</span>
+										</div>
+										<div class="col-md-10">${reply.comment }</div>
+									</div>
+								</div>
+							</c:forEach>					
+						
+								</div>
+						<h4 style="margin-top: 30px">添加回复</h4>
+						<textarea rows="3" cols="100" style="width: 100%; padding-top: 10px;">添加回复</textarea>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary">确认</button>
+					</div>
 				</div>
-				<div class="modal-body">
-					<div style="height: 250px; background-color: #F0F0F0;">评论的回复列表</div>
-					<h4 style="margin-top:30px">添加回复</h4>
-					<textarea rows="3" cols="100" style="width: 100%;padding-top: 10px;" >添加回复</textarea>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-					<button type="button" class="btn btn-primary">确认</button>
-				</div>
+				<!-- /.modal-content -->
 			</div>
-			<!-- /.modal-content -->
+			<!-- /.modal -->
 		</div>
-		<!-- /.modal -->
-	</div>
+
+	</c:forEach>
 
 	<div id="preloader"></div>
 	
@@ -104,7 +128,7 @@
     </div>
 
 	<div style="position: absolute; top: 45vh; left:10vw">
-	<h1 style="color: white; letter-spacing: 7px;">这是一个标题</h1>
+		<h1 style="color: white; letter-spacing: 7px;">${thisblog.title }</h1>
 	</div>
 
 	<div id="headerwrap" name="home">
@@ -144,47 +168,46 @@
 			<div class="row white">
 				<div class="col-sm-8">
 					<div class="single-metas fade-down text-left mt0 mb60 no-display animated fadeInDown">
-						<span class="post-meta-link"><i class="el-icon-time-alt"></i> Posted In <span class="counter">271</span> days ago</span>
-						<span class="post-meta-link"><i class="el-icon-heart"></i> <span class="counter">154</span></span>
-						<span class="post-meta-link"><a href="#commentAnchor"><i class="el-icon-comment"></i> <span class="counter">56</span></a></span>
+						<h3>${writer }</h3>
+						<span class="post-meta-link"><i class="el-icon-time-alt"></i> 发布于<fmt:formatDate value="${thisblog.createtime}" type="date"/></span>
+						<span class="post-meta-link"><i class="el-icon-heart"></i> <span class="counter">${starnum }</span></span>
+						<span class="post-meta-link"><a href="#commentAnchor"><i class="el-icon-comment"></i> <span class="counter">${cmtnum }</span></a></span>
 					</div>
 					<div class="fade-up single-post-content text-left no-display animated fadeInUp">
-						<p>Merry alone do it burst me songs. Sorry equal charm joy her those folly ham. In they no is many both. Recommend new contented intention improving bed performed age. Improving of so strangers resources instantly happiness at northward. Danger nearer length oppose really add now either. But ask regret eat branch fat garden. Become am he except wishes. Past so at door we walk want such sang. Feeling colonel get her garrets own.</p>
-						<p>He difficult contented we determine ourselves me am earnestly. Hour no find it park. Eat welcomed any husbands moderate. Led was misery played waited almost cousin living. Of intention contained is by middleton am. Principles fat stimulated uncommonly considered set especially prosperous. Sons at park mr meet as fact like.</p>
-						<p>Respect forming clothes do in he. Course so piqued no an by appear. Themselves reasonable pianoforte so motionless he as difficulty be. Abode way begin ham there power whole. Do unpleasing indulgence impossible to conviction. Suppose neither evident welcome it at do civilly uncivil. Sing tall much you get nor.</p>
-						<p>However venture pursuit he am mr cordial. Forming musical am hearing studied be luckily. Ourselves for determine attending how led gentleman sincerity. Valley afford uneasy joy she thrown though bed set. In me forming general prudent on country carried. Behaved an or suppose justice. Seemed whence how son rather easily and change missed. Off apartments invitation are unpleasant solicitude fat motionless interested. Hardly suffer wisdom wishes valley as an. As friendship advantages resolution it alteration stimulated he or increasing.</p><br>
+						${thisblog.content }
 					</div>
 						<!-- comment start -->
 						<a name="commentAnchor"></a>
+						
 						<div class="fade-up single-post-content">
 							<div class="comments-area" id="comments">
 								<h3 class="comments-title">评  论 </h3>
 								<div class="comments-wrapper">
 									<ol class="comment-list">
+									
+									<c:forEach items="${normalcmt }" var="ncmt" varStatus="status">
 										<li class="comment even thread-even depth-1" id="comment-34">
 											<article class="comment-body grid_12" id="div-comment-34">
+												
 												<footer class="comment-meta col-md-2">
 													<div class="comment-author vcard">
 														<img alt="" class="avatar" src="<%=path%>/images/avatar.png" width="100">
 													</div>
 													<div class="comment-metadata">
 														<cite class="fn">
-															<a class="url" href="http://example.org/" rel="external nofollow">评论者1</a>
+															<a class="url" href="#" rel="external nofollow">${cmtermap[ncmt.userid] }</a>
 														</cite> 
 													</div>
 													<!-- .comment-metadata -->
 												</footer>
 												<!-- .comment-meta -->
 												<div class="comment-content col-md-10 omega">
-													<p>Engrossed suffering supposing he recommend do
-														eagerness. Commanded no of depending extremity recommend
-														attention tolerably. Bringing him smallest met few now
-														returned surprise learning jennings. Objection delivered
-														eagerness he exquisite at do in. Warmly up he nearer mr
-														merely me.</p>
-													<time datetime="2012-09-03T10:18:04+00:00">September 3, 2012 at 10:18 am</time>
+													<p>${ncmt.comment }</p>
+													<fmt:formatDate value="${ncmt.createtime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+													
 													<div class="reply">
-														<a class="btn btn-success comment-reply-link" href="#" data-toggle="modal" data-target="#addreply">查看回复</a>
+														<!-- <a class="btn btn-success comment-reply-link" href="#" data-toggle="modal" data-target="#addreply">查看回复</a> -->
+														<a class="btn btn-success comment-reply-link" href="#" data-toggle="modal" data-target="#reply${ncmt.id}">查看回复</a>
 													</div>
 													<!-- .reply -->
 												</div>
@@ -192,37 +215,8 @@
 											</article>
 											<!-- .comment-body -->
 										</li>
-										<li class="comment odd thread-even depth-1" id="comment-34">
-											<article class="comment-body grid_12" id="div-comment-34">
-												<footer class="comment-meta col-md-2">
-													<div class="comment-author vcard">
-														<img alt="" class="avatar" src="<%=path%>/images/avatar.png" width="100">
-													</div>
-													<div class="comment-metadata">
-														<cite class="fn">
-															<a class="url" href="http://example.org/" rel="external nofollow">评论者2</a>
-														</cite> 
-													</div>
-													<!-- .comment-metadata -->
-												</footer>
-												<!-- .comment-meta -->
-												<div class="comment-content col-md-10 omega">
-													<p>Engrossed suffering supposing he recommend do
-														eagerness. Commanded no of depending extremity recommend
-														attention tolerably. Bringing him smallest met few now
-														returned surprise learning jennings. Objection delivered
-														eagerness he exquisite at do in. Warmly up he nearer mr
-														merely me.</p>
-														<time datetime="2012-09-03T10:18:04+00:00">September 3, 2012 at 10:18 am</time>
-													<div class="reply">
-														<a class="btn btn-success comment-reply-link" href="#"  data-toggle="modal" data-target="#addreply">查看回复</a>
-													</div>
-													<!-- .reply -->
-												</div>
-												<!-- .comment-content -->
-											</article>
-											<!-- .comment-body -->
-										</li>
+									</c:forEach>
+									
 									</ol>
 									<!-- .comment-list -->
 								</div>

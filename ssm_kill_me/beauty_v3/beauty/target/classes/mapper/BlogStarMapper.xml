@@ -44,7 +44,7 @@
 	</select>
 
 	<!-- 获取某blog的收藏数 -->
-	<select id="getblogstar" parameterType="java.lang.Integer" resultSets="java.lang.Integer">
+	<select id="getblogstar" parameterType="java.lang.Integer" resultType="java.lang.Integer">
 		SELECT COUNT(0) FROM `blog_star`
 		WHERE blogid =
 		#{blogid,jdbcType=INTEGER}

@@ -50,5 +50,9 @@ public interface BlogCommentService {
 	 * 查找楼中楼
 	 * */
 	List<BlogComment> findreply(int blogid, int cmtid);
-		
+	
+	/**
+	 * 查找某blog的所有reply
+	 * */
+	List<BlogComment> findallreply(int blogid);
 }

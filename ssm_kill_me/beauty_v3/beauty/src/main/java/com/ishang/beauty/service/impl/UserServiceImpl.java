@@ -35,4 +35,9 @@ public class UserServiceImpl implements UserService {
 		return dao.updateByPrimaryKey(user);
 	}
 
+	@Override
+	public User findbyid(int id) {
+		return dao.selectByPrimaryKey(id);
+	}
+
 }

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"  isELIgnored="false" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <!DOCTYPE html>
 <html>
@@ -114,7 +115,7 @@
 									<div class="my-2">
 										<h4>${rst.title }</h4>
 									</div>
-									<p>${rst.content }</p>
+									<p>${ fn:substring(rst.content, 0, 50) } ...</p>
 
 								</div>
 							</div>

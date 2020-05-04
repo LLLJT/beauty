@@ -71,16 +71,26 @@
 	</select>
 
 	<!-- 获取某blog的所有reply -->
-	<select id="selectreply" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+	<select id="selectallreply" parameterType="java.lang.Integer" resultMap="BaseResultMap">
 		select id, userid, blogid, cmtid, `comment`, createtime, likenum, del_flag
     	from blog_comment
 		WHERE blogid = #{blogid,jdbcType=INTEGER}
 		and NOT(ISNULL(cmtid))
 	</select>
+	
+	<!-- 获取某normal cmt的所有reply -->
+	<select id="selectreply" resultMap="BaseResultMap">
+		select id, userid, blogid, cmtid, `comment`, createtime, likenum, del_flag
+    	from blog_comment
+    	WHERE blogid = #{blogid}
+		and cmtid = #{cmtid}
+<!-- 		WHERE blogid = #{blogid,jdbcType=INTEGER}
+		and cmtid = #{cmtid,jdbcType=INTEGER} -->
+	</select>
 
 	<!-- 获取某blog的评论数 -->
 	<select id="getblogcmt" parameterType="java.lang.Integer" resultType="java.lang.Integer">
-		SELECT COUNT(0) FROM `comment`
+		SELECT COUNT(0) FROM blog_comment
 		WHERE blogid = #{blogid,jdbcType=INTEGER}
 	</select>
 	

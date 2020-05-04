@@ -15,6 +15,12 @@ public interface UserService {
 	List<User> findall();
 	
 	/**
+	 * 精确查找
+	 * 根据id
+	 * */
+	User findbyid(int id);
+	
+	/**
 	 * 模糊查找
 	 * 根据username
 	 * */

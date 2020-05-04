@@ -1,7 +1,10 @@
 package com.ishang.beauty.dao;
 
-import com.ishang.beauty.entity.BlogComment;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.ishang.beauty.entity.BlogComment;
 
 public interface BlogCommentMapper {
     int deleteByPrimaryKey(Integer id);
@@ -28,7 +31,12 @@ public interface BlogCommentMapper {
     /**
      * 查找某blog的所有reply
      * */
-    List<BlogComment> selectreply(int blogid);
+    List<BlogComment> selectallreply(int blogid);
+    
+    /**
+     * 查找某blog的所有reply
+     * */
+    List<BlogComment> selectreply(@Param("blogid")int blogid, @Param("cmtid")int cmtid);
     
     /**
      * 获取某blog的评论数

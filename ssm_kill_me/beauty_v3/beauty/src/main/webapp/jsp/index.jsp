@@ -62,8 +62,9 @@
 						<!-- 登出&个人中心 -->
 						<a class="dwn-w3ls btn mr-1" href="usercenter.jsp" target="_blank">
 							<span class="fa fa-user-circle-o" title="个人中心"></span>
-						</a> <a class="dwn-w3ls btn" href="login.jsp" target="_self"> <span
-							class="fa fa-sign-out" title="退出登录"></span>
+						</a> 
+						<a class="dwn-w3ls btn" href="<%=path%>/login.jsp" target="_self"> 
+							<span class="fa fa-sign-out" title="退出登录"></span>
 						</a>
 						<!-- //logout&usercenter -->
 					</div>
@@ -171,10 +172,10 @@
 			<div class="row about-bottom-w3l text-center mt-4">
 				<c:forEach items="${reclist }" var="blog" varStatus="status">
 
-					<div class="col-lg-3 about-grid">
-						<div class="about-grid-main">
+					<div class="col-lg-3 about-grid ">
+						<div class="about-grid-main" >
 							<img src="<%=path%>/images/qzgs_6.jpg" alt="" class="img-fluid">
-							 <a href="#" class="button-w3ls btn "> Read More
+							 <a href="#" class="button-w3ls btn  blogcontent"   id="${blog.id }"> Read More
 								<p>${blog.title }</p> 
 							</a>
 						</div>
@@ -242,11 +243,23 @@
  		var reclist = '<%=request.getAttribute("reclist")%>'
  		console.info(reclist)
 	}
- 	
 
     window.onload=loaddata;
-	
+    
 	</script>
+	
+	<script type="text/javascript">
+        $(function(){
+            
+            $(".blogcontent").click(function(e){
+				console.info(e.target);
+                console.info(e.target.id);
+				var url='<%=path%>/content?blogid=' + e.target.id
+				console.info(url)
+				window.location.href=url
+            })
+        })
+ </script>
 
 </body>
 </html>
