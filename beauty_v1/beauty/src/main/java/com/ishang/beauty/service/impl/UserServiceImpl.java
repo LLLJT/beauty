@@ -40,4 +40,9 @@ public class UserServiceImpl implements UserService {
 		return dao.updateByPrimaryKey(user);
 	}
 
+	public int updateImg(User user) {
+		// TODO 自动生成的方法存根
+		return dao.updateImg(user);
+	}
+
 }

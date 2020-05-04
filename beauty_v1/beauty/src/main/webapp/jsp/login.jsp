@@ -45,8 +45,12 @@
 									class="custom-control-label">记住密码</label>
 							</div>
 						</div>
+						<h4 style="color:red">${errMsg}</h4>
+						
 						<button type="submit" class="btn btn-primary shadow px-5">登录</button>
+						
 					</form>
+					<button onclick="window.location.href='${pageContext.request.contextPath}/user/toregist'" class="btn btn-default" style="color:grey">注册</button>
 				</div>
 			</div>
 			<p class="mt-5 mb-0 text-gray-400 text-center">
@@ -62,5 +66,10 @@
 	<!-- <script src="vendor/chart.js/Chart.min.js"></script> -->
 	<script src="../js/js.cookie.min.js"></script>
 	<script src="../js/front.js"></script>
+	<script type="text/javascript">
+	
+	
+	</script>
+	
 </body>
 </html>

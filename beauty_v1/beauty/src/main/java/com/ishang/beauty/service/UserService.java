@@ -35,4 +35,6 @@ public interface UserService {
 	 * 更新一条记录
 	 * */
 	int updateone(User user);
+	
+	int updateImg(User user);
 }

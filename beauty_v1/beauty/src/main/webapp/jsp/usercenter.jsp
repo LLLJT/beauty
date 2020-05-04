@@ -81,7 +81,7 @@
 									</a>
 								</li>
 								<li>
-									<a href="#" role="button" onclick="change_frame('user_info.jsp')">
+									<a href="" role="button" onclick="change_frame('user_info.jsp')">
 										<span class="fa fa-cog mr-2"></span>个人信息
 									</a>
 								</li>

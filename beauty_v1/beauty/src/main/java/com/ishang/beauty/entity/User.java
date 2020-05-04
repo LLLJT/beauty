@@ -3,6 +3,9 @@ package com.ishang.beauty.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
+
 public class User implements Serializable {
 
 	private Integer id;
@@ -13,19 +16,38 @@ public class User implements Serializable {
 
 	private Integer roleid;
 
-	private Boolean sex;
-
+	private Integer sex;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date birthday;
 
 	private String school;
 
-	private String introdution;
+	private String introduction;
 
 	private String profileimg;
 
-	private Boolean delFlag;
+	private Integer del_flag;
+	
+	public Integer getDel_flag() {
+		return del_flag;
+	}
+
+	public void setDel_flag(Integer del_flag) {
+		this.del_flag = del_flag;
+	}
 
 	private static final long serialVersionUID = 1L;
+	
+	//新增字段
+	private MultipartFile file;
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
 
 	public Integer getId() {
 		return id;
@@ -59,11 +81,11 @@ public class User implements Serializable {
 		this.roleid = roleid;
 	}
 
-	public Boolean getSex() {
+	public Integer getSex() {
 		return sex;
 	}
 
-	public void setSex(Boolean sex) {
+	public void setSex(Integer sex) {
 		this.sex = sex;
 	}
 
@@ -84,11 +106,11 @@ public class User implements Serializable {
 	}
 
 	public String getIntrodution() {
-		return introdution;
+		return introduction;
 	}
 
 	public void setIntrodution(String introdution) {
-		this.introdution = introdution == null ? null : introdution.trim();
+		this.introduction = introduction == null ? null : introdution.trim();
 	}
 
 	public String getProfileimg() {
@@ -99,13 +121,8 @@ public class User implements Serializable {
 		this.profileimg = profileimg == null ? null : profileimg.trim();
 	}
 
-	public Boolean getDelFlag() {
-		return delFlag;
-	}
+	
 
-	public void setDelFlag(Boolean delFlag) {
-		this.delFlag = delFlag;
-	}
 
 	@Override
 	public String toString() {
@@ -120,9 +137,9 @@ public class User implements Serializable {
 		sb.append(", sex=").append(sex);
 		sb.append(", birthday=").append(birthday);
 		sb.append(", school=").append(school);
-		sb.append(", introdution=").append(introdution);
+		sb.append(", introduction=").append(introduction);
 		sb.append(", profileimg=").append(profileimg);
-		sb.append(", delFlag=").append(delFlag);
+		sb.append(", delFlag=").append(del_flag);
 		sb.append(", serialVersionUID=").append(serialVersionUID);
 		sb.append("]");
 		return sb.toString();

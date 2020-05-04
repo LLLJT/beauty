@@ -11,9 +11,9 @@
 		<result column="sex" jdbcType="BIT" property="sex" />
 		<result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
 		<result column="school" jdbcType="VARCHAR" property="school" />
-		<result column="introdution" jdbcType="VARCHAR" property="introdution" />
+		<result column="introduction" jdbcType="VARCHAR" property="introduction" />
 		<result column="profileimg" jdbcType="VARCHAR" property="profileimg" />
-		<result column="del_flag" jdbcType="BIT" property="delFlag" />
+		<result column="del_flag" jdbcType="BIT" property="del_flag" />
 	</resultMap>
 	
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
@@ -22,18 +22,17 @@
 	</delete>
 	
 	<insert id="insert" parameterType="com.ishang.beauty.entity.User">
-		insert into user (id, username, `password`, roleid, sex, birthday, school, introdution, profileimg, del_flag)
+		insert into user (username, password, roleid, sex, birthday, school, introduction, profileimg, del_flag)
 		values (
-		#{id,jdbcType=INTEGER}, 
 		#{username,jdbcType=VARCHAR},
 		#{password,jdbcType=VARCHAR},
 		#{roleid,jdbcType=INTEGER}, 
 		#{sex,jdbcType=BIT}, 
 		#{birthday,jdbcType=TIMESTAMP},
 		#{school,jdbcType=VARCHAR}, 
-		#{introdution,jdbcType=VARCHAR},
+		#{introduction,jdbcType=VARCHAR},
 		#{profileimg,jdbcType=VARCHAR},
-		#{delFlag,jdbcType=BIT})
+		#{del_flag,jdbcType=BIT})
 	</insert>
 	
 	<update id="updateByPrimaryKey" parameterType="com.ishang.beauty.entity.User">
@@ -44,27 +43,32 @@
 		sex = #{sex,jdbcType=BIT},
 		birthday = #{birthday,jdbcType=TIMESTAMP},
 		school = #{school,jdbcType=VARCHAR},
-		introdution = #{introdution,jdbcType=VARCHAR},
+		introduction = #{introduction,jdbcType=VARCHAR},
 		profileimg = #{profileimg,jdbcType=VARCHAR},
 		del_flag = #{delFlag,jdbcType=BIT}
 		where id = #{id,jdbcType=INTEGER}
 	</update>
 	
 	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-		select id, username, `password`, roleid, sex, birthday, school, introdution, profileimg, del_flag
+		select id, username, `password`, roleid, sex, birthday, school, introduction, profileimg, del_flag
 		from user
 		where id = #{id,jdbcType=INTEGER}
 	</select>
 	
 	<select id="selectAll" resultMap="BaseResultMap">
-		select id, username, `password`, roleid, sex, birthday, school, introdution, profileimg, del_flag
+		select id, username, `password`, roleid, sex, birthday, school, introduction, profileimg, del_flag
 		from user
 	</select>
 
 	<select id="selectlike" parameterType="com.ishang.beauty.entity.User" resultMap="BaseResultMap">
-		select id, username, `password`, roleid, sex, birthday, school, introdution, profileimg, del_flag
+		select id, username, `password`, roleid, sex, birthday, school, introduction, profileimg, del_flag
 		from user
 		where username like concat('%',#{username,jdbcType=VARCHAR},'%')
 	</select>
+	<update id="updateImg" parameterType="com.ishang.beauty.entity.User">
+	update user 
+	set profileimg=#{profileimg}
+	where id=#{id}
 	
+	</update>
 </mapper>

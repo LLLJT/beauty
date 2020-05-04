@@ -3,6 +3,8 @@ package com.ishang.beauty.dao;
 import com.ishang.beauty.entity.User;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 public interface UserMapper {
 	int deleteByPrimaryKey(Integer id);
 
@@ -18,4 +20,9 @@ public interface UserMapper {
 	 * 模糊查找
 	 * */
 	List<User> selectlike(User record);
+	/**
+	 * 修改个人头像
+	 */
+	int updateImg(User record);
+	
 }
