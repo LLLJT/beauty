@@ -15,4 +15,5 @@ com\ishang\beauty\entity\UserRole.class
 com\ishang\beauty\entity\User.class
 com\ishang\beauty\service\UserService.class
 com\ishang\beauty\dao\UserMapper.class
+com\ishang\beauty\controller\UserCenterController.class
 com\ishang\beauty\dao\BlogStarMapper.class
