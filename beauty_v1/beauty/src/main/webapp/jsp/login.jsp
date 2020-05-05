@@ -31,17 +31,17 @@
 					
 					<form id="loginForm" action="${pageContext.request.contextPath}/user/login" class="mt-4" method="get">
 						<div class="form-group mb-4">
-							<input type="text" name="username" placeholder="输入您的登录名"
+							<input type="text" name="username" id="username" placeholder="输入您的登录名"
 								class="form-control border-0 shadow form-control-lg">
 						</div>
 						<div class="form-group mb-4">
-							<input type="password" name="password" placeholder="输入您的密码"
+							<input type="password" name="password" id="password" placeholder="输入您的密码"
 								class="form-control border-0 shadow form-control-lg text-violet">
 						</div>
 						<div class="form-group mb-4">
 							<div class="custom-control custom-checkbox">
 								<input id="customCheck1" type="checkbox" checked
-									class="custom-control-input"> <label for="customCheck1"
+									class="custom-control-input" name="checkboxNum"> <label for="customCheck1"
 									class="custom-control-label">记住密码</label>
 							</div>
 						</div>
@@ -67,7 +67,36 @@
 	<script src="../js/js.cookie.min.js"></script>
 	<script src="../js/front.js"></script>
 	<script type="text/javascript">
-	
+	$(function(){
+		var cookiestr=getCookie("user");
+		if(cookiestr!=""){
+			$("#checkboxNum").prop("checked",true);
+			cookiestr=cookiestr.substring(0,cookiestr.length-1);
+			var username=cookiestr.split("#")[0];
+			var password=cookiestr.split("#")[1];
+			$("#username").val(username);
+			$("#password").val(password);
+		}
+		//alert("记录上次登录的信息");
+		
+	});
+	//获取cookiehttps://blog.csdn.net/weixin_44540229/article/details/86519297
+	function getCookie(cookiename){
+		var name=cookiename+"=";
+		var str=document.cookie.split(';');
+		var le=str.length;
+		for(var i=0;i<str.length;i++){
+			var ind=str[i];
+			while (ind.charAt(0)==' ')
+				ind=ind.substring(1);
+			
+			var saf=ind.length;
+			if(ind.indexOf(name)!=-1)return ind.substring(name.length,ind.length);
+
+		}
+		return "";
+		
+	};
 	
 	</script>
 	

@@ -15,7 +15,7 @@
 <!-- Web-Fonts -->
 <link href="http://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext"
 	rel="stylesheet">
-
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- Custom stylesheet - for your changes-->
 <link rel="stylesheet" href="../css/custom.css">
 <script>
@@ -57,10 +57,10 @@
 						</div>
 						<!-- //search -->
 						<!-- 登出&个人中心 -->
-						<a class="dwn-w3ls btn mr-1" href="usercenter.jsp" target="_blank">
+						<a class="dwn-w3ls btn mr-1" href="${pageContext.request.contextPath}/usercenter/tousercenter" target="_blank">
 							<span class="fa fa-user-circle-o" title="个人中心"></span>
 						</a> 
-						<a class="dwn-w3ls btn" href="login.jsp" target="_self">
+						<a class="dwn-w3ls btn" href="${pageContext.request.contextPath}/user/logout" target="_self">
 							<span class="fa fa-sign-out" title="退出登录"></span>
 						</a>
 						<!-- //logout&usercenter -->
@@ -101,7 +101,7 @@
 						src="https://static.runoob.com/images/mix/img_mountains_wide.jpg">
 					<div class="carousel-caption">
 						<h3>首页轮播图第三张图片</h3>
-						<p>描述文字</p>
+						<p>欢迎你</p>
 					</div>
 				</div>
 			</div>

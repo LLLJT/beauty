@@ -2,6 +2,11 @@ package com.ishang.beauty.controller;
 
 import java.util.List;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -67,12 +72,42 @@ public class UserController {
 
 	@RequestMapping("/login")
 	public String login(@RequestParam("username") String username, @RequestParam("password") String password,
-			Model model) {
+			Model model, HttpServletRequest request, HttpServletResponse response) {
 		User record = new User();
 		record.setUsername(username);
 		record.setPassword(password);
+		// 判断是否记住密码
+		Boolean re = false;
+		String checkboxNum = request.getParameter("checkboxNum");
+		if (checkboxNum != null) {
+			if (checkboxNum.equals("on"))
+				re = true;
+		}
+
 		List<User> result = service.findbyentity(record);
 		if (result.size() > 0 && result.get(0).getPassword().equals(password)) {
+			// 设置session
+			HttpSession session = request.getSession();
+			session.setAttribute("SESSION_UserName", result.get(0).getUsername());
+			session.setAttribute("SESSION_PassWord", result.get(0).getPassword());
+			// 由于CookieVersion 0不支持逗号，因此换成#号
+			String loginInfo = result.get(0).getUsername() + "#" + result.get(0).getPassword() + "#"
+					+ result.get(0).getId();
+			// 如果记住密码设置cookie
+			if (re) {
+				Cookie userCookie = new Cookie("user", loginInfo);
+				// 设置保存7天cookie
+				userCookie.setMaxAge(7 * 24 * 60 * 60);
+				userCookie.setPath("/");
+				response.addCookie(userCookie);
+			} else {// 没有选中记住密码，删除cookie
+				Cookie newCookie = new Cookie("user", null);
+				newCookie.setMaxAge(0);
+				newCookie.setPath("/");
+				// 覆盖之前的userCookie
+				response.addCookie(newCookie);
+			}
+
 			return "index";
 		} else {
 			model.addAttribute("errMsg", "用户名或密码错误，请重新输入");
@@ -96,25 +131,33 @@ public class UserController {
 
 	// ajax传json值传到后端
 
-	@RequestMapping(value = "/regist" ,method = RequestMethod.POST)
-	//@ResponseBody
-	
+	@RequestMapping(value = "/regist", method = RequestMethod.POST)
+	// @ResponseBody
+
 	public ModelAndView adduser(@RequestBody User u) {
 		// 判断username,password,roleid是否为空
 		System.out.println("进入注册");
 		ModelAndView mv = new ModelAndView();
 		if (u.getUsername().equals(null) || u.getPassword().equals(null) || u.getRoleid().equals(null)) {
-			//已经在前端验证
-			//mv.addObject("errMsg", "请填入必填字段");
+			// 已经在前端验证
+			// mv.addObject("errMsg", "请填入必填字段");
 			mv.setViewName("regist");
 			return mv;
 		} else {
 			u.setDel_flag(1);
 			int r = service.addone(u);
-			//mv.addObject("success", "注册成功");
+			// mv.addObject("success", "注册成功");
 			mv.setViewName("login");
 			return mv;
 		}
+	}
+
+	// 登出
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "login";
+
 	}
 
 }
