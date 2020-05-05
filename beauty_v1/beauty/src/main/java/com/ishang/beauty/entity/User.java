@@ -139,7 +139,7 @@ public class User implements Serializable {
 		sb.append(", school=").append(school);
 		sb.append(", introduction=").append(introduction);
 		sb.append(", profileimg=").append(profileimg);
-		sb.append(", delFlag=").append(del_flag);
+		sb.append(", del_flag=").append(del_flag);
 		sb.append(", serialVersionUID=").append(serialVersionUID);
 		sb.append("]");
 		return sb.toString();

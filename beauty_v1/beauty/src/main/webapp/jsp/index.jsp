@@ -57,7 +57,7 @@
 						</div>
 						<!-- //search -->
 						<!-- 登出&个人中心 -->
-						<a class="dwn-w3ls btn mr-1" href="${pageContext.request.contextPath}/usercenter/tousercenter" target="_blank">
+						<a class="dwn-w3ls btn mr-1" href="${pageContext.request.contextPath}/jsp/usercenter.jsp" target="_blank">
 							<span class="fa fa-user-circle-o" title="个人中心"></span>
 						</a> 
 						<a class="dwn-w3ls btn" href="${pageContext.request.contextPath}/user/logout" target="_self">

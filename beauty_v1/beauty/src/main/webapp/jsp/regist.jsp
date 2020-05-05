@@ -150,14 +150,14 @@
 							}
 							//判断用户名长度应该在6-16位
 							if(username.length<6||username.length>16){
-								alert("用户名长度过长或过短");
+								alert("用户名长度应该在6-16位");
 								return false;
 								
 							}
 							
 							//判断密码应该在6-16位
 							if(password.length<6||password.length>16){
-								alert("密码长度过长或过短");
+								alert("密码长度应该在6-16位");
 								return false;
 								
 							}
