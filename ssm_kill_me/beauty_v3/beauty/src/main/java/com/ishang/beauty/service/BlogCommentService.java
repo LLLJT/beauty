@@ -55,4 +55,10 @@ public interface BlogCommentService {
 	 * 查找某blog的所有reply
 	 * */
 	List<BlogComment> findallreply(int blogid);
+	
+	/**
+	 * 返回某normal cmt的reply集合
+	 * ncmtid: normal cmt 
+	 * */
+	public List<BlogComment> getonecmtreply(int ncmtid) ;
 }

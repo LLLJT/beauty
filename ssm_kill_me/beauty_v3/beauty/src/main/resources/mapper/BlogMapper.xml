@@ -92,7 +92,8 @@
 		select id, title, userid, typeid, content, createtime, modifytime,
 		rec_flag, pic1, pic_url_1, pic2, pic_url_2, pic3, pic_url_3, likenum, del_flag
 		from blog
-		where rec_flag=1
+		where rec_flag=1 
+			<![CDATA[ and createtime <= CURDATE()	]]>
 		ORDER BY createtime DESC, modifytime DESC
 	</select>
 	
@@ -120,7 +121,7 @@
 		FROM blog
 		WHERE userid = #{userid,jdbcType=INTEGER}
 		<![CDATA[ 
-			AND DATE_SUB(CURDATE(),INTERVAL 7 day) <=DATE(createtime)
+			AND DATE(createtime) BETWEEN DATE_SUB(CURDATE(),INTERVAL 3 DAY) AND CURDATE()
 		 ]]>
 	</select>
   
