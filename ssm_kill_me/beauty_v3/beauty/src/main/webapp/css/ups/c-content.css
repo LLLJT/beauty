@@ -202,9 +202,3 @@ select.c-form-control:focus::-ms-value {
 }
 
 /* //dwn button */
-
-.replystyle{
-	height: 100px;
-	margin-bottom: 20px;
-	padding: 5px;
-}

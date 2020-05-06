@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8" isELIgnored="false"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <!DOCTYPE html>
 <html>
@@ -18,7 +17,9 @@
 <!-- Font-Awesome-Icons-CSS -->
 <link href="<%=path%>/css/font-awesome.min.css" rel="stylesheet">
 <!-- Web-Fonts -->
-<link href="http://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext" rel="stylesheet">
+<link
+	href="http://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext"
+	rel="stylesheet">
 
 <!-- Custom stylesheet - for your changes-->
 <link rel="stylesheet" href="<%=path%>/css/custom.css">
@@ -145,13 +146,12 @@
 						<img alt="" src="<%=path%>/images/oldE.jpg" />
 						<div class="col-lg-10">
 							<h4>${blog.title }</h4>
-							<p>${ fn:substring(blog.content, 0, 100) } ...
-								<!-- <br>第一行为数据库数据，这一行开始是模拟数据。模拟登录用户为（Userid=2）
-								<br>首页轮播图：最新三个推荐blog的头图
-								<br>关注：显示最近三天有更新的关注up主
-								<br>手风琴展开：最近三天关注up主更新的blog
-								<br>下方：所有推荐blog -->
-							</p>
+							<p>${blog.content }
+							<br>第一行为数据库数据，这一行开始是模拟数据。模拟登录用户为（Userid=2）
+							<br>首页轮播图：最新三个推荐blog的头图
+							<br>关注：显示最近一周有更新的关注up主
+							<br>手风琴展开：最近一周关注up主更新的blog
+							<br>下方：所有推荐blog</p>
 						</div>
 					</div>
 				

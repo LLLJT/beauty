@@ -54,21 +54,19 @@
 						<h4 class="modal-title" id="myModalLabel">查看回复</h4>
 					</div>
 					<div class="modal-body">
-						<div style="height: 250px; overflow: scroll; background-color: #F0F0F0;">
+						<div style="height: 250px; background-color: #F0F0F0;">
 							<c:if test="${ncmt.getValue().size()==0}">
 								<p>暂无回复。<p>
 							</c:if>
-							<c:forEach items="${ncmt.getValue() }" var="reply" varStatus="status">
-										<div class="container-fluid replystyle">
-											<div class="row" >
-												<div class="col-md-2 text-center">
-													<img alt="" src="<%=path%>/images/avatar.png" width="100%" />
-													<span>${cmtermap[reply.userid] }</span>
-												</div>
-												<div class="col-md-10">${reply.comment }</div>
-											</div>
-									<div style="margin-bottom: 0; float: right;">
-										<fmt:formatDate value="${reply.createtime}" type="both"/>
+							<c:forEach items="${ncmt.getValue() }" var="reply"
+										varStatus="status">
+										<div class="container-fluid">
+									<div class="row" style="height: 100px;">
+										<div class="col-md-2 text-center">
+											<img alt="" src="<%=path%>/images/avatar.png" width="100%" />
+											<span>${cmtermap[reply.userid] }</span>
+										</div>
+										<div class="col-md-10">${reply.comment }</div>
 									</div>
 								</div>
 							</c:forEach>					
@@ -171,12 +169,12 @@
 				<div class="col-sm-8">
 					<div class="single-metas fade-down text-left mt0 mb60 no-display animated fadeInDown">
 						<h3>${writer }</h3>
-						<span class="post-meta-link"><i class="el-icon-time-alt"></i> 发布于<fmt:formatDate value="${thisblog.createtime}" type="both"/></span>
+						<span class="post-meta-link"><i class="el-icon-time-alt"></i> 发布于<fmt:formatDate value="${thisblog.createtime}" type="date"/></span>
 						<span class="post-meta-link"><i class="el-icon-heart"></i> <span class="counter">${starnum }</span></span>
 						<span class="post-meta-link"><a href="#commentAnchor"><i class="el-icon-comment"></i> <span class="counter">${cmtnum }</span></a></span>
 					</div>
 					<div class="fade-up single-post-content text-left no-display animated fadeInUp">
-						<pre>${thisblog.content }</pre>
+						${thisblog.content }
 					</div>
 						<!-- comment start -->
 						<a name="commentAnchor"></a>
@@ -191,7 +189,7 @@
 										<li class="comment even thread-even depth-1" id="comment-34">
 											<article class="comment-body grid_12" id="div-comment-34">
 												
-												<footer class="comment-meta col-md-2 text-center">
+												<footer class="comment-meta col-md-2">
 													<div class="comment-author vcard">
 														<img alt="" class="avatar" src="<%=path%>/images/avatar.png" width="100">
 													</div>

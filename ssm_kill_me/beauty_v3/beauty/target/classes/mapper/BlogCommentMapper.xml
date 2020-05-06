@@ -68,7 +68,6 @@
     	from blog_comment
 		WHERE blogid = #{blogid,jdbcType=INTEGER}
 		and ISNULL(cmtid)
-		ORDER BY likenum DESC, createtime ASC
 	</select>
 
 	<!-- 获取某blog的所有reply -->

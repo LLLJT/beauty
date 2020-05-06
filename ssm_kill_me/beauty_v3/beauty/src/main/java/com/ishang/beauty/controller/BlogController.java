@@ -116,12 +116,9 @@ public class BlogController {
 		for(BlogComment ncmt:normalcmt) {
 			//cmter map
 			cmtermap.put(ncmt.getUserid(),userservice.findbyid(ncmt.getUserid()).getUsername());
-			
 			//reply map
-//			List<BlogComment> replylist = cmtservice.findreply(blogid, ncmt.getId());
-//			/* if(replylist.size()>0) */ replymap.put(ncmt.getId(), replylist);
-			replymap.put(ncmt.getId(), cmtservice.getonecmtreply(ncmt.getId()));
-			
+			List<BlogComment> replylist = cmtservice.findreply(blogid, ncmt.getId());
+			/* if(replylist.size()>0) */ replymap.put(ncmt.getId(), replylist);
 		}		
 		model.addAttribute("replymap", replymap);	
 		
@@ -129,9 +126,22 @@ public class BlogController {
 			cmtermap.put(rcmt.getUserid(), userservice.findbyid(rcmt.getUserid()).getUsername());			
 		}
 		model.addAttribute("cmtermap", cmtermap);
+
+//		getreply(normalcmt, blogid);
+//		model.addAttribute("replymap", replycmtlist);	
 		
 		return "content.jsp?blogid="+bid;
 	}
-
+	
+	
+	public void  getreply(List<BlogComment> olist, int blogid){
+//		for(BlogComment i : olist) {
+//			List<BlogComment> replylist = cmtservice.findreply(blogid, i.getId());
+//			if(replylist.size()>0) {
+//				replycmtlist.addAll(replylist);
+//				getreply(replylist, blogid);		
+//			}	
+//		}		
+	}
 	
 }
