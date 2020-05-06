@@ -68,5 +68,31 @@ public class BlogCommentServiceImpl implements BlogCommentService {
 		if(replylist.size()>0) return replylist;
 		else return new ArrayList<BlogComment>();
 	}
+	
+	@Override
+	public List<BlogComment> getonecmtreply(int ncmtid) {
+		
+		List<BlogComment> rstlist= new ArrayList<BlogComment>();
+		List<BlogComment> templist= new ArrayList<BlogComment>();
+		
+		BlogComment originalcmt = dao.selectByPrimaryKey(ncmtid);
+		int blogid = originalcmt.getBlogid();
+		
+		templist=gettemplist(blogid, ncmtid);  //ncmt 的 一层 reply
+		rstlist.addAll(templist);
+		for(int i=0; i<rstlist.size(); i++) {
+			BlogComment tempcmt=rstlist.get(i);
+			System.out.println(tempcmt);
+			int cmtid=tempcmt.getId();
+			templist=gettemplist(blogid, cmtid);
+			rstlist.addAll(templist);
+		}
+		
+		return rstlist;
+	}
+	
+	public List<BlogComment> gettemplist(int blogid, int ncmtid){
+		return dao.selectreply(blogid, ncmtid);
+	}
 
 }
