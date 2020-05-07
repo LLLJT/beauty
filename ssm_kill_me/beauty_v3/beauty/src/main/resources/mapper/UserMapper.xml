@@ -8,74 +8,73 @@
 		<result column="password" jdbcType="VARCHAR" property="password" />
 		<result column="roleid" jdbcType="INTEGER" property="roleid" />
 		<result column="sex" jdbcType="BIT" property="sex" />
-		<result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
+		<result column="birthday" jdbcType="DATE" property="birthday" />
 		<result column="school" jdbcType="VARCHAR" property="school" />
-		<result column="introdution" jdbcType="VARCHAR" property="introdution" />
+		<result column="introduction" jdbcType="VARCHAR" property="introduction" />
 		<result column="profileimg" jdbcType="VARCHAR" property="profileimg" />
 		<result column="del_flag" jdbcType="BIT" property="delFlag" />
 	</resultMap>
-	
+
 	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
 		delete from user
 		where id = #{id,jdbcType=INTEGER}
 	</delete>
-	
+
 	<insert id="insert" parameterType="com.ishang.beauty.entity.User">
-		insert into user (id, username, `password`, roleid, sex, birthday, school, introdution, profileimg, del_flag)
+		insert into user (id, username, `password`, roleid, sex, birthday, school, introduction, profileimg, del_flag )
 		values (
-			#{id,jdbcType=INTEGER}, 
+			#{id,jdbcType=INTEGER},
 			#{username,jdbcType=VARCHAR},
 			#{password,jdbcType=VARCHAR},
-			#{roleid,jdbcType=INTEGER}, 
-			#{sex,jdbcType=BIT}, 
-			#{birthday,jdbcType=TIMESTAMP},
-			#{school,jdbcType=VARCHAR}, 
-			#{introdution,jdbcType=VARCHAR},
+			#{roleid,jdbcType=INTEGER},
+			#{sex,jdbcType=BIT},
+			#{birthday,jdbcType=DATE},
+			#{school,jdbcType=VARCHAR},
+			#{introduction,jdbcType=VARCHAR},
 			#{profileimg,jdbcType=VARCHAR},
-			#{delFlag,jdbcType=BIT})
+			#{delFlag,jdbcType=BIT}
+		)
 	</insert>
-	
+
 	<update id="updateByPrimaryKey" parameterType="com.ishang.beauty.entity.User">
 		update user
-		set 
+		set
 			username = #{username,jdbcType=VARCHAR},
 			`password` = #{password,jdbcType=VARCHAR},
 			roleid = #{roleid,jdbcType=INTEGER},
-			sex = #{sex,jdbcType=BIT},
-			birthday = #{birthday,jdbcType=TIMESTAMP},
+			sex =	#{sex,jdbcType=BIT},
+			birthday = #{birthday,jdbcType=DATE},
 			school = #{school,jdbcType=VARCHAR},
-			introdution = #{introdution,jdbcType=VARCHAR},
-			profileimg = #{profileimg,jdbcType=VARCHAR},
+			introduction =	#{introduction,jdbcType=VARCHAR},
+			profileimg =	#{profileimg,jdbcType=VARCHAR},
 			del_flag = #{delFlag,jdbcType=BIT}
 		where id = #{id,jdbcType=INTEGER}
 	</update>
-	
+
 	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-		select id, username, `password`, roleid, sex, birthday, school, introdution, profileimg, del_flag
+		select id, username, `password`, roleid, sex, birthday, school, introduction, profileimg, del_flag
 		from user
 		where id = #{id,jdbcType=INTEGER}
 	</select>
-	
+
 	<select id="selectAll" resultMap="BaseResultMap">
-		select id, username, `password`, roleid, sex, birthday, school, introdution, profileimg, del_flag
+		select id, username, `password`, roleid, sex, birthday, school, introduction, profileimg, del_flag
 		from user
 	</select>
 
 	<!-- 糢糊查找 -->
 	<select id="selectlike" parameterType="com.ishang.beauty.entity.User" resultMap="BaseResultMap">
-		select id, username, `password`, roleid, sex, birthday, school, introdution, profileimg, del_flag
+		select id, username, `password`, roleid, sex, birthday, school, introduction, profileimg, del_flag
 		from user
 		where username like concat('%',#{username,jdbcType=VARCHAR},'%')
 	</select>
 
 	<select id="selectlatestup" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-		SELECT * FROM `user`
+		select id, username, `password`, roleid, sex, birthday, school, introduction, profileimg, del_flag
+		from user
 		WHERE id IN (SELECT userid from blog
 			WHERE userid in (SELECT uploaderid from user_follow WHERE followerid = #{followerid, jdbcType=INTEGER})
-					<![CDATA[ 
-						AND DATE_SUB(CURDATE(),INTERVAL 7 day) <=DATE(createtime)
-					 ]]>
-			)
+				<![CDATA[ AND DATE_SUB(CURDATE(),INTERVAL 7 day) <=DATE(createtime)  ]]>	)
 	</select>
 
 </mapper>

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80018
 File Encoding         : 65001
 
-Date: 2020-05-07 14:04:45
+Date: 2020-05-07 14:46:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -254,9 +254,9 @@ CREATE TABLE `user` (
   `password` varchar(255) DEFAULT NULL,
   `roleid` int(11) NOT NULL DEFAULT '2' COMMENT '2,user',
   `sex` tinyint(1) DEFAULT '1' COMMENT '1,male; 0,female',
-  `birthday` datetime DEFAULT NULL,
+  `birthday` date DEFAULT NULL,
   `school` varchar(255) DEFAULT NULL,
-  `introdution` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `introduction` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `profileimg` varchar(255) DEFAULT NULL,
   `del_flag` tinyint(1) NOT NULL DEFAULT '1' COMMENT 'default: 1, not deleted',
   PRIMARY KEY (`id`),
