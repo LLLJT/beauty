@@ -30,7 +30,7 @@
     background: -webkit-linear-gradient(to left, #B24592 , #F15F79);
     background: linear-gradient(to left, #B24592 , #F15F79);   
     */
-	background-image: url(beauty/images/header-bg.jpg);
+	background-image: url(../images/header-bg.jpg);
 	background-size: cover;
 	position: relative;
 	width: 100%;

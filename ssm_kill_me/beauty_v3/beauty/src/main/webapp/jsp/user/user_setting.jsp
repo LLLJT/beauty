@@ -13,7 +13,7 @@
     <![endif]-->
     <link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900|Dancing+Script:400,700|Raleway:400,100,300,700,900|Reenie+Beanie&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
     <link href="<%=path%>/css/users/userspace_style.css" rel="stylesheet"> 
-    <link href="<%=path%>/css/users/custom.css" rel="stylesheet">
+    <link href="<%=path%>/css/custom.css" rel="stylesheet">
     
 </head>
 <body>
@@ -71,5 +71,20 @@
 			</div>
 		</div>
 	</div>
+	
+	<script src="<%=path%>/js/jquery/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		  $("#inputGroupFile01").change(function(){
+			  var text=$("#inputGroupFile01").val();
+			  console.info(text);
+			  var i=text.lastIndexOf("\\");
+			  text=text.substring(i+1);
+			  $(".custom-file-label").text(text);
+		  });
+		});
+	
+	</script>
+	
 </body>
 </html>

@@ -32,6 +32,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Raleway:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
 	<!-- //Web-Fonts -->
 
+	<%-- <script src="<%=path%>/js/jquery/jquery.min.js"></script> --%>
 	<script src="<%=path%>/js/ups/jquery.min.js"></script>
 	<script src="<%=path%>/js/ups/modernizr.custom.js"></script>
 
@@ -149,7 +150,7 @@
 			          	<h2 class="fade-down centered">pic 2</h2>
 			        </div>
 			        <div class="item">
-			          	<h2 class="fade-down centered">pic 3</h2>
+			          	<h2 class="fade-down centered">${thisblog.id }</h2>
 			        </div>
 			      </div>
 			      <a class="left carousel-control" href="#basic-carousel" data-slide="prev">
@@ -225,20 +226,26 @@
 								<div id="respond">
 									<h3 id="reply-title">添加评论 </h3>
 									<small></small>
-									<form action="#" id="commentform" method="post" name="commentform">
+									
+									<form action="" id="commentform" method="post" name="commentform">
 										<small></small>
 										<p class="comment-form-comment py-4">
-											<small>
-												<textarea cols="45" id="comment" name="comment" rows="5"></textarea>
-											</small>
+												<textarea cols="45" id="comment" name="comment" rows="5" placeholder="Input your comment here..."></textarea>
 										</p>
+										
+<!-- 										<input type="hidden" name="id" value="">  -->
+										<input type="hidden" id="userid" name="userid" value="6"> 
+										<input type="hidden"  id="blogid" name="blogid" value="${thisblog.id }"> 
+<!-- 										<input type="hidden" name="cmtid" value=""> 
+										<input type="hidden" name="createtime" value=""> 
+										<input type="hidden" name="likenum" value=""> 
+										<input type="hidden" name="delFlag" value="">  -->
+										
 										<small>
-											<input class="btn btn-success" id="submit"name="submit" type="submit" value="发表评论">
-											 <input id="comment_post_ID" name="comment_post_ID" type="hidden" value="1148">
-											 <input id="comment_parent" name="comment_parent" type="hidden" value="0">
+											<input class="btn btn-success" id="submit" name="submit" type="button" value="发表评论" onclick="ajaxsubmit()">
 										</small>
+										
 									</form>
-									<small></small>
 								</div>
 								<!-- #respond -->
 								<small></small>
@@ -291,5 +298,85 @@
 	<script src="<%=path%>/js/ups/plugins.js"></script>
 	<script src="<%=path%>/js/init.js"></script>
 
+	<script type="text/javascript">
+	function testsubmit() {
+		console.info($('#commentform').serialize())
+		console.info(JSON.stringify($('#commentform').serialize()))
+		alert(JSON.stringify($('#commentform').serialize()))
+	}
+	
+	function ajaxsubmit() {
+		$.ajax({
+			url: 'comment/normal/add',
+			type: 'post',
+			dataType:'JSON',
+			data: {"userid": $("#userid").val(), "blogid" : $("#blogid").val() , "comment" :$("#comment").val()},
+			success:function(response,status,xhr){
+				console.log(response)
+				console.log(status)
+				console.log(xhr)
+				if (response==101) {
+                        alert("评论成功");
+                        aftercmt();
+                    }else{
+                    	 alert("评论失败");
+                    }
+			},
+			error:function(){
+				alert("error");
+			}
+		});
+
+		/* var cmtForm = $("#commentform").serializeArray()
+        var objs = []
+        $.each(cmtForm,function (i,n) {
+            var obj = {}
+            obj[n.name]=n.value
+            objs.push(obj)
+        })
+        var data = JSON.stringify(objs) */
+        
+         /*var userid= $("#userid").val();
+		var blogid=$("#blogid").val();
+        var comment=$("#comment").val();
+        
+        var cmt = {
+			"userid" : userid ,
+			"blogid" : blogid ,
+			"comment" : comment
+        };
+        var data = JSON.stringify(cmt)
+        console.info(data)
+		
+		$.ajax({
+            //几个参数需要注意一下
+                type: "post",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "comment/normal/add" ,//url
+                contentType:"application/json",
+                data: data,
+                success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    if (result==101) {
+                        alert("成功");
+                    }else{
+                    	 alert("插入失败,请重新插入");
+                    }
+                    ;
+                },
+                error : function() {
+                    alert("插入失败,请重新插入");
+                }
+            }); */
+	}
+	
+	function aftercmt() {
+		$("#comment").val("");
+		location.reload();
+		/* var url = window.location.href;
+		window.location.replace( url + "#commentAnchor"); */
+	}
+	</script>
+	
   </body>
 </html>

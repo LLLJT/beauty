@@ -1781,7 +1781,7 @@ var TempusDominusBootstrap4 = function ($) {
         };
 
         TempusDominusBootstrap4.prototype._getTemplate = function _getTemplate() {
-            var template = $('<div>').addClass('bootstrap-datetimepicker-widget dropdown-menu'),
+            var template = $('<div>').addClass('bootstrap-datetimepicker-widget '),
                 dateView = $('<div>').addClass('datepicker').append(this._getDatePickerTemplate()),
                 timeView = $('<div>').addClass('timepicker').append(this._getTimePickerTemplate()),
                 content = $('<ul>').addClass('list-unstyled'),

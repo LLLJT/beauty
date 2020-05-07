@@ -37,6 +37,9 @@ public class BlogComment implements Serializable {
     public void setUserid(Integer userid) {
         this.userid = userid;
     }
+    public void setUserid(String str) {
+        this.userid = Integer.parseInt(str);
+    }
 
     public Integer getBlogid() {
         return blogid;
@@ -45,6 +48,9 @@ public class BlogComment implements Serializable {
     public void setBlogid(Integer blogid) {
         this.blogid = blogid;
     }
+    public void setBlogid(String str) {
+        this.blogid = Integer.parseInt(str);
+    }
 
     public Integer getCmtid() {
         return cmtid;
@@ -52,6 +58,9 @@ public class BlogComment implements Serializable {
 
     public void setCmtid(Integer cmtid) {
         this.cmtid = cmtid;
+    }
+    public void setCmtid(String str) {
+        this.cmtid =Integer.parseInt(str);
     }
 
     public String getComment() {
@@ -68,6 +77,9 @@ public class BlogComment implements Serializable {
 
     public void setCreatetime(Date createtime) {
         this.createtime = createtime;
+    }
+    public void setCreatetime(String str) {
+        this.createtime = new Date();
     }
 
     public Integer getLikenum() {
