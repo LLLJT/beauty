@@ -70,13 +70,16 @@
     select id, title, userid, typeid, content, createtime, modifytime, rec_flag, pic1, 
     pic_url_1, pic2, pic_url_2, pic3, pic_url_3, likenum, del_flag
     from blog
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER} and del_flag=1
+			<![CDATA[ and createtime <= NOW()	]]>
   </select>
   
   <select id="selectAll" resultMap="BaseResultMap">
     select id, title, userid, typeid, content, createtime, modifytime, rec_flag, pic1, 
     pic_url_1, pic2, pic_url_2, pic3, pic_url_3, likenum, del_flag
     from blog
+    where  del_flag=1
+			<![CDATA[ and createtime <= NOW()	]]>
   </select>
   
   	<!-- 模糊查找 -->
@@ -85,6 +88,8 @@
 		rec_flag, pic1, pic_url_1, pic2, pic_url_2, pic3, pic_url_3, likenum, del_flag
 		from blog
 		where title like concat('%',#{title,jdbcType=VARCHAR},'%')
+		and del_flag=1
+			<![CDATA[ and createtime <= NOW()	]]>
 	</select>
 
 	<!-- 查找推荐列表 -->
@@ -92,8 +97,8 @@
 		select id, title, userid, typeid, content, createtime, modifytime,
 		rec_flag, pic1, pic_url_1, pic2, pic_url_2, pic3, pic_url_3, likenum, del_flag
 		from blog
-		where rec_flag=1 
-			<![CDATA[ and createtime <= CURDATE()	]]>
+		where rec_flag=1  and del_flag=1
+			<![CDATA[ and createtime <= NOW()	]]>
 		ORDER BY createtime DESC, modifytime DESC
 	</select>
 	
@@ -102,7 +107,8 @@
 		select id, title, userid, typeid, content, createtime, modifytime,
 		rec_flag, pic1, pic_url_1, pic2, pic_url_2, pic3, pic_url_3, likenum, del_flag
 		from blog
-		where userid = #{userid,jdbcType=INTEGER}
+		where userid = #{userid,jdbcType=INTEGER} and del_flag=1
+			<![CDATA[ and createtime <= NOW()	]]>
 		order by createtime DESC
 	</select>
 	
@@ -111,7 +117,8 @@
 		select id, title, userid, typeid, content, createtime, modifytime, rec_flag, pic1,
 		pic_url_1, pic2, pic_url_2, pic3, pic_url_3, likenum, del_flag
 		from blog join upblogstars on blog.id=blogid
-		where userid = #{userid,jdbcType=INTEGER}
+		where userid = #{userid,jdbcType=INTEGER} and del_flag=1
+			<![CDATA[ and createtime <= NOW()	]]>
 		ORDER BY stars DESC
 	</select>
 
@@ -119,9 +126,9 @@
 		select id, title, userid, typeid, content, createtime, modifytime, rec_flag, pic1,
 		pic_url_1, pic2, pic_url_2, pic3, pic_url_3, likenum, del_flag
 		FROM blog
-		WHERE userid = #{userid,jdbcType=INTEGER}
+		WHERE userid = #{userid,jdbcType=INTEGER} and del_flag=1
 		<![CDATA[ 
-			AND DATE(createtime) BETWEEN DATE_SUB(CURDATE(),INTERVAL 3 DAY) AND CURDATE()
+			AND createtime BETWEEN DATE_SUB(CURDATE(),INTERVAL 3 DAY) and NOW();
 		 ]]>
 	</select>
   

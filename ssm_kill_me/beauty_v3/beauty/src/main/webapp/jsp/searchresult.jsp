@@ -17,8 +17,7 @@
 <!-- Font-Awesome-Icons-CSS -->
 <link href="<%=path%>/css/font-awesome.min.css" rel="stylesheet">
 <!-- Web-Fonts -->
-<link href="http://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext"
-	rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext" rel="stylesheet">
 
 <script>
 	//加载网页时滚屏到top
@@ -94,8 +93,8 @@
 	<div class="bg-li row mt-5">
 		<div class="container py-xl-2 py-lg-2 ">
 			<div class="float-right">
-				<span class="btn fa fa-th fa-2x mr-5"></span>
-				<span class="btn fa fa-th-list fa-2x mr-5"></span>
+				<span class="btn fa fa-th fa-2x mr-5" id="thumbnail"></span>
+				<span class="btn fa fa-th-list fa-2x mr-5" id="th-list"></span>
 			</div>
 		</div>
 	</div>
@@ -106,12 +105,11 @@
 			<div class="inner_sec_info_w3_info mt-3">
 				<div class="row price-grid-main">
 
-					<c:forEach items="${searchresult }" var="rst">
-						<div class="col-lg-3 col-sm-6 price-info mb-4">
+ 					<c:forEach items="${searchresult }" var="rst">
+ 						<div class="col-lg-3 col-sm-6 price-info mb-4">
 							<div class="prices p-4">
 								<div class="prices-bottom text-center">
-									<img alt="一张图片" style="max-width: 200px; max-height: 160px;"
-										src="<%=path%>/images/portfolio/folio-2.jpeg" />
+									<img alt="一张图片"  src="<%=path%>/images/portfolio/folio-2.jpeg"  style="max-width: 200px; max-height: 160px;" />
 									<div class="my-2">
 										<h4>${rst.title }</h4>
 									</div>
@@ -119,10 +117,25 @@
 
 								</div>
 							</div>
+						</div> 
+						</c:forEach> 
+						
+						<c:forEach items="${searchresult }" var="rst">
+						<div class="price-grid-main price-info my-4">
+							<div class="row p-4 prices prices-bottom" style="height: auto;">
+								<div class="col-md-3">
+									<img alt="一张图片" src="/beauty/images/portfolio/folio-2.jpeg" style="max-width: 200px; max-height: 160px;">
+								</div>
+								<div class="col-md-9">
+									<div class="my-2">
+										<h4>${rst.title }</h4>
+									</div>
+									<p>${ fn:substring(rst.content, 0, 170) } ...</p>
+
+								</div>
+							</div>
 						</div>
-
-					</c:forEach>
-
+					</c:forEach> 
 				</div>
 			</div>
 		</div>
@@ -135,8 +148,7 @@
 			<div class="d-md-flex px-md-3 position-relative text-center">
 				<!-- copyright -->
 				<div class="copy_right mx-md-auto mb-md-0 mb-3">
-					<p class="text-bl let">Copyright &copy; 2020. reachableBeauty
-						All rights reserved.</p>
+					<p class="text-bl let">Copyright &copy; 2020. reachableBeauty All rights reserved.</p>
 				</div>
 				<!-- //copyright -->
 				<!-- move top icon -->
@@ -150,13 +162,13 @@
 	<!-- //copyright bottom -->
 
 	<!-- JavaScript files-->
-	<script src="../js/jquery/jquery.min.js"></script>
-	<script src="../js/popper.js/umd/popper.min.js"></script>
+	<script src="<%=path%>/js/jquery/jquery.min.js"></script>
+	<script src="<%=path%>/js/popper.js/umd/popper.min.js"></script>
 	<!-- popper.min.js 用于弹窗、提示、下拉菜单 -->
-	<script src="../js/bootstrap/bootstrap.min.js"></script>
-	<script src="../js/jquery.cookie/jquery.cookie.js"> </script>
-	<script src="../js/js.cookie.min.js"></script>
-	<script src="../js/front.js"></script>
+	<script src="<%=path%>/js/bootstrap/bootstrap.min.js"></script>
+	<script src="<%=path%>/js/jquery.cookie/jquery.cookie.js"> </script>
+	<script src="<%=path%>/js/js.cookie.min.js"></script>
+	<script src="<%=path%>/js/front.js"></script>
 	
 </body>
 </html>

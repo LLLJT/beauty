@@ -59,10 +59,10 @@
 						</div>
 						<!-- //search -->
 						<!-- 登出&个人中心 -->
-						<a class="dwn-w3ls btn mr-1" href="usercenter.jsp" target="_blank">
+						<a class="dwn-w3ls btn mr-1" href="<%=path%>/jsp/usercenter.jsp" target="_blank">
 							<span class="fa fa-user-circle-o" title="个人中心"></span>
 						</a> 
-						<a class="dwn-w3ls btn" href="<%=path%>/login.jsp" target="_self"> 
+						<a class="dwn-w3ls btn" href="<%=path%>/jsp/login.jsp" target="_self"> 
 							<span class="fa fa-sign-out" title="退出登录"></span>
 						</a>
 						<!-- //logout&usercenter -->

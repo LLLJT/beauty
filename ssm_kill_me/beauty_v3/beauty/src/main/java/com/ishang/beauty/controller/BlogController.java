@@ -1,5 +1,6 @@
 package com.ishang.beauty.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +17,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.ishang.beauty.entity.Blog;
 import com.ishang.beauty.entity.BlogComment;
 import com.ishang.beauty.entity.User;
+import com.ishang.beauty.entity.WholeComment;
 import com.ishang.beauty.service.BlogCommentService;
 import com.ishang.beauty.service.BlogService;
 import com.ishang.beauty.service.UserService;
@@ -33,7 +35,9 @@ public class BlogController {
 	private BlogCommentService cmtservice;
 	
 //	List<BlogComment> replycmtlist=new ArrayList<BlogComment>();
-	
+	List<BlogComment> normalcmt=new ArrayList<BlogComment>();
+	Map<Integer, List<BlogComment>> replymap= new HashMap<Integer, List<BlogComment>>();
+	Map<Integer,String> cmtermap=new HashMap<Integer, String>();
 	
 	@RequestMapping("/blog/getall")    
     public String findall(HttpServletRequest request,Model model){    
@@ -75,7 +79,8 @@ public class BlogController {
 	}
 	
 	@RequestMapping("/search")
-	public String searchblog(HttpServletRequest request,Model model){    
+	public String searchblog(HttpServletRequest request,Model model) throws UnsupportedEncodingException{    
+		request.setCharacterEncoding("UTF-8");
 		String searchname=request.getParameter("searchname");
 //		System.out.println(searchname);
 		Blog record=new Blog();
@@ -98,40 +103,41 @@ public class BlogController {
 		model.addAttribute("thisblog", blog);
 		model.addAttribute("writer", writer);
 		
-		//normal comment & all reply
-		List<BlogComment> normalcmt=cmtservice.findcmtlist(blogid);
-		model.addAttribute("normalcmt", normalcmt);
-		List<BlogComment> allreply=cmtservice.findallreply(blogid);
-		model.addAttribute("allreply", allreply);
-		
-		//num: cmt&star
-		int n_cmt=service.getnum(blogid, "cmt");
+//		int n_cmt=service.getnum(blogid, "cmt");
 		int n_star=service.getnum(blogid, "star");
-		model.addAttribute("cmtnum", n_cmt);
 		model.addAttribute("starnum", n_star);
+
+		WholeComment wholecmt=cmtservice.getwholecomment(blogid);
+		model.addAttribute("cmtnum", wholecmt.getCmtnum());
+		model.addAttribute("normalcmt", wholecmt.getNormalcmt());
+		model.addAttribute("replymap", wholecmt.getReplymap());	
+		model.addAttribute("cmtermap", wholecmt.getCmtermap());
 		
-		// cmter & reply map
-		Map<Integer,String> cmtermap=new HashMap<Integer, String>();
-		Map<Integer, List<BlogComment>> replymap= new HashMap<Integer, List<BlogComment>>();
+		return "content.jsp?blogid="+bid;
+	}
+
+	public void getcomment(int blogid) {
+		
+		// get normal cmt
+		normalcmt=cmtservice.findcmtlist(blogid);
+		// get reply map
 		for(BlogComment ncmt:normalcmt) {
 			//cmter map
 			cmtermap.put(ncmt.getUserid(),userservice.findbyid(ncmt.getUserid()).getUsername());
 			
 			//reply map
+//			List<BlogComment> allreply=cmtservice.findallreply(blogid);
+//			model.addAttribute("allreply", allreply);
 //			List<BlogComment> replylist = cmtservice.findreply(blogid, ncmt.getId());
 //			/* if(replylist.size()>0) */ replymap.put(ncmt.getId(), replylist);
 			replymap.put(ncmt.getId(), cmtservice.getonecmtreply(ncmt.getId()));
 			
 		}		
-		model.addAttribute("replymap", replymap);	
-		
-		for(BlogComment rcmt:allreply) {
-			cmtermap.put(rcmt.getUserid(), userservice.findbyid(rcmt.getUserid()).getUsername());			
+		// get cmter
+		for(List<BlogComment> collection:replymap.values()) {
+			for(BlogComment rcmt:collection) {
+				cmtermap.put(rcmt.getUserid(), userservice.findbyid(rcmt.getUserid()).getUsername());			
+			}
 		}
-		model.addAttribute("cmtermap", cmtermap);
-		
-		return "content.jsp?blogid="+bid;
 	}
-
-	
 }

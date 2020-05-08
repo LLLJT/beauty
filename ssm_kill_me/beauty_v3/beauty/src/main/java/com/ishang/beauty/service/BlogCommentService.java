@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.ishang.beauty.entity.BlogComment;
+import com.ishang.beauty.entity.WholeComment;
 
 @Service
 public interface BlogCommentService {
@@ -61,4 +62,9 @@ public interface BlogCommentService {
 	 * ncmtid: normal cmt 
 	 * */
 	public List<BlogComment> getonecmtreply(int ncmtid) ;
+	
+	/**
+	 * 集成所有get cmt&reply的操作
+	 * */
+	public WholeComment getwholecomment(int blogid);
 }

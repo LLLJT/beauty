@@ -25,8 +25,7 @@
 		<!-- header -->
 		<header>
 			<div class="container-fluid">
-				<div
-					class="header d-lg-flex justify-content-between align-items-center py-3 px-sm-3">
+				<div class="header d-lg-flex justify-content-between align-items-center py-3 px-sm-3">
 					<!-- logo -->
 					<div id="logo">
 						<h1>
@@ -37,10 +36,8 @@
 					<div class="d-flex mt-lg-1 mt-sm-2 mt-3 justify-content-center">
 						<!-- search -->
 						<div class="search-w3layouts mr-3">
-							<form action="#" method="post"
-								class="search-bottom-wthree d-flex">
-								<input class="search" type="search" placeholder="Search Here..."
-									required="">
+							<form action="<%=path%>/search" method="post" class="search-bottom-wthree d-flex">
+								<input class="search" type="search" name="searchname"  placeholder="Search Here..." required>
 								<button class="form-control btn" type="submit">
 									<span class="fa fa-search"></span>
 								</button>
@@ -48,10 +45,11 @@
 						</div>
 						<!-- //search -->
 						<!-- 登出&个人中心 -->
-						<a class="dwn-w3ls btn mr-1" href="usercenter.jsp" target="_blank">
+						<a class="dwn-w3ls btn mr-1" href="<%=path%>/jsp/usercenter.jsp" target="_blank">
 							<span class="fa fa-user-circle-o" title="个人中心"></span>
-						</a> <a class="dwn-w3ls btn" href="login.jsp" target="_self"> <span
-							class="fa fa-sign-out" title="退出登录"></span>
+						</a> 
+						<a class="dwn-w3ls btn" href="<%=path%>/jsp/login.jsp" target="_self"> 
+							<span class="fa fa-sign-out" title="退出登录"></span>
 						</a>
 						<!-- //logout&usercenter -->
 					</div>

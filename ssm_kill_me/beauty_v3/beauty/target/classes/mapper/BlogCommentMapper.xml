@@ -48,11 +48,14 @@
     select id, userid, blogid, cmtid, `comment`, createtime, likenum, del_flag
     from blog_comment
     where id = #{id,jdbcType=INTEGER}
+    <![CDATA[ and createtime <= NOW()	]]>
   </select>
   
   <select id="selectAll" resultMap="BaseResultMap">
     select id, userid, blogid, cmtid, `comment`, createtime, likenum, del_flag
     from blog_comment
+    where del_flag=1
+    <![CDATA[ and createtime <= NOW()	]]>
   </select>
   
   	<!-- 模糊查找 -->
@@ -60,6 +63,8 @@
 		select id, userid, blogid, cmtid, `comment`, createtime, likenum, del_flag
     	from blog_comment
 		where `comment` like concat('%',#{`comment`,jdbcType=VARCHAR},'%')
+		and del_flag=1
+		<![CDATA[ and createtime <= NOW()	]]>
 	</select>
 
 	<!-- 获取某blog的normal评论list ( 排除reply ) -->
@@ -67,7 +72,8 @@
 		select id, userid, blogid, cmtid, `comment`, createtime, likenum, del_flag
     	from blog_comment
 		WHERE blogid = #{blogid,jdbcType=INTEGER}
-		and ISNULL(cmtid)
+		and ISNULL(cmtid) and del_flag=1
+		<![CDATA[ and createtime <= NOW()	]]>
 		ORDER BY likenum DESC, createtime ASC
 	</select>
 
@@ -76,7 +82,8 @@
 		select id, userid, blogid, cmtid, `comment`, createtime, likenum, del_flag
     	from blog_comment
 		WHERE blogid = #{blogid,jdbcType=INTEGER}
-		and NOT(ISNULL(cmtid))
+		and NOT(ISNULL(cmtid)) and del_flag=1
+		<![CDATA[ and createtime <= NOW()	]]>
 	</select>
 	
 	<!-- 获取某normal cmt的所有reply -->
@@ -85,6 +92,8 @@
     	from blog_comment
     	WHERE blogid = #{blogid}
 		and cmtid = #{cmtid}
+		and del_flag=1
+		<![CDATA[ and createtime <= NOW()	]]>
 <!-- 		WHERE blogid = #{blogid,jdbcType=INTEGER}
 		and cmtid = #{cmtid,jdbcType=INTEGER} -->
 	</select>
@@ -92,7 +101,8 @@
 	<!-- 获取某blog的评论数 -->
 	<select id="getblogcmt" parameterType="java.lang.Integer" resultType="java.lang.Integer">
 		SELECT COUNT(0) FROM blog_comment
-		WHERE blogid = #{blogid,jdbcType=INTEGER}
+		WHERE blogid = #{blogid,jdbcType=INTEGER} and del_flag=1
+		<![CDATA[ and createtime <= NOW()	]]>
 	</select>
 	
 </mapper>

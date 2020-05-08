@@ -1,13 +1,17 @@
 package com.ishang.beauty.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ishang.beauty.dao.BlogCommentMapper;
+import com.ishang.beauty.dao.UserMapper;
 import com.ishang.beauty.entity.BlogComment;
+import com.ishang.beauty.entity.WholeComment;
 import com.ishang.beauty.service.BlogCommentService;
 
 @Service
@@ -15,6 +19,9 @@ public class BlogCommentServiceImpl implements BlogCommentService {
 
 	@Autowired
 	private BlogCommentMapper dao;
+	
+	@Autowired
+	private UserMapper userdao;
 	
 	@Override
 	public List<BlogComment> findall() {
@@ -54,7 +61,7 @@ public class BlogCommentServiceImpl implements BlogCommentService {
 
 	@Override
 	public List<BlogComment> findallreply(int blogid) {
-		// TODO comment的查询评论方法 service层 可能是不完善的方法
+		// comment的查询评论方法 service层 可能是不完善的方法
 		// 查出当前blog下所有楼中楼
 		List<BlogComment> replylist=dao.selectallreply(blogid);
 		return replylist;
@@ -62,7 +69,7 @@ public class BlogCommentServiceImpl implements BlogCommentService {
 	
 	@Override
 	public List<BlogComment> findreply(int blogid, int cmtid) {
-		// TODO comment的查询评论方法 service层 可能是不完善的方法
+		// comment的查询评论方法 service层 可能是不完善的方法
 		// 查出当前normal cmt下所有reply
 		List<BlogComment> replylist=dao.selectreply(blogid, cmtid);
 		if(replylist.size()>0) return replylist;
@@ -93,6 +100,43 @@ public class BlogCommentServiceImpl implements BlogCommentService {
 	
 	public List<BlogComment> gettemplist(int blogid, int ncmtid){
 		return dao.selectreply(blogid, ncmtid);
+	}
+
+	@Override
+	public WholeComment getwholecomment(int blogid) {
+		
+		WholeComment wholecmt= new WholeComment();
+
+		// get cmt num
+		wholecmt.setCmtnum(dao.getblogcmt(blogid));
+		
+		// get normal cmt
+		wholecmt.setNormalcmt(findcmtlist(blogid));
+		
+		// get reply map
+		Map<Integer, List<BlogComment>> replymap= new HashMap<Integer, List<BlogComment>>();
+		Map<Integer,String> cmtermap=new HashMap<Integer, String>();
+		for(BlogComment ncmt: wholecmt.getNormalcmt()) {
+			cmtermap.put(ncmt.getUserid(), userdao.selectByPrimaryKey(ncmt.getUserid()).getUsername());
+			
+			//reply map
+//			List<BlogComment> allreply=cmtservice.findallreply(blogid);
+//			model.addAttribute("allreply", allreply);
+//			List<BlogComment> replylist = cmtservice.findreply(blogid, ncmt.getId());
+//			 if(replylist.size()>0)  replymap.put(ncmt.getId(), replylist);
+			replymap.put(ncmt.getId(),  getonecmtreply(ncmt.getId()));
+		}	
+		
+		wholecmt.setReplymap(replymap);
+		// get cmter
+		for(List<BlogComment> collection:replymap.values()) {
+			for(BlogComment rcmt:collection) {
+				cmtermap.put(rcmt.getUserid(), userdao.selectByPrimaryKey(rcmt.getUserid()).getUsername());			
+			}
+		}
+		wholecmt.setCmtermap(cmtermap);
+		
+		return wholecmt;
 	}
 
 }

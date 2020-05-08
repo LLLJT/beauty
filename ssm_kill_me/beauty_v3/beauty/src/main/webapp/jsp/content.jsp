@@ -74,10 +74,19 @@
 								</div>
 							</c:forEach>					
 						
-								</div>
-						<h4 style="margin-top: 30px">添加回复</h4>
-						<textarea rows="3" cols="100" style="width: 100%; padding-top: 10px;">添加回复</textarea>
-					</div>
+						</div>
+						<div>
+							<h4 style="margin-top: 30px">添加回复</h4>
+							<div style=" padding-bottom: 30px;">
+								<textarea name="comment" placeholder="添加回复"  rows="3" cols="100" style="width: 100%; padding-top: 10px;"></textarea>
+								<input type="hidden" name="userid" value="6">
+								<input type="hidden" name="blogid" value="${thisblog.id }">
+								<input type="hidden" name="cmtid" value="${ncmt.getKey() }">
+								<input class="btn pull-right"  type="button" value="发表评论" onclick="ajaxsubmit(this)" style="float: right">
+						</div>
+						</div>
+						
+				</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
 						<button type="button" class="btn btn-primary">确认</button>
@@ -96,7 +105,7 @@
 		<div class="navbar navbar-default navbar-fixed-top">
 			<div class="container">
 				<div class="navbar-header">				
-					<a class="navbar-brand" href="#"><h1>reachableBeauty</h1></a>
+					<a class="navbar-brand" href="<%=path%>/jsp/index.jsp"><h1>reachableBeauty</h1></a>
 					<button type="button" class="navbar-toggle dropdown-toggle" id="open-menu" data-toggle="dropdown" data-target="#main-navigation">
 						<i class="el-icon-lines"></i>
 					</button>
@@ -104,23 +113,20 @@
 				<div class="navbar-collapse collapse" id="main-navigation">
 					<ul class="nav navbar-nav">
 						<li class="search-w3layouts">
-							<form action="#" method="post"
-								class="search-bottom-wthree d-flex">
-								<input class="search" type="search" placeholder="Search Here..." required>
+							<form action="<%=path%>/search" method="post" class="search-bottom-wthree d-flex">
+								<input class="search" type="search" name="searchname" placeholder="Search Here..." required>
 								<button class="c-form-control c-btn" type="submit">
 									<i class="el-icon-search"></i>
 								</button>
 							</form>
 						</li>
 						<li>
-							<a class="dwn-w3ls btn mx-3 c-user" href="usercenter.jsp" target="_blank"
-								style="background: #705ecf; padding: 0.375rem 0.75rem;"> 
+							<a class="dwn-w3ls btn mx-3 c-user" href="<%=path%>/jsp/usercenter.jsp" target="_blank" style="background: #705ecf; padding: 0.375rem 0.75rem;"> 
 								<span class="fa fa-user-circle-o" title="个人中心"></span>
 							</a>
 						</li>
 						<li>
-							<a class="dwn-w3ls btn c-user" href="login.jsp" target="_self"
-								style="background: #705ecf; padding: 0.375rem 0.75rem;">
+							<a class="dwn-w3ls btn c-user" href="<%=path%>/jsp/login.jsp" target="_self" style="background: #705ecf; padding: 0.375rem 0.75rem;">
 								<span class="fa fa-sign-out" title="退出登录"></span>
 							</a>
 						</li>
@@ -166,10 +172,10 @@
 
 	<!--  CONTENT WRAPPER -->
 	<div id="content-wrapper">
-		
 		<section id="about" class="container page-section">
 			<div class="row white">
 				<div class="col-sm-8">
+				<!-- blog start -->
 					<div class="single-metas fade-down text-left mt0 mb60 no-display animated fadeInDown">
 						<h3>${writer }</h3>
 						<span class="post-meta-link"><i class="el-icon-time-alt"></i> 发布于<fmt:formatDate value="${thisblog.createtime}" type="both"/></span>
@@ -179,10 +185,11 @@
 					<div class="fade-up single-post-content text-left no-display animated fadeInUp">
 						<pre>${thisblog.content }</pre>
 					</div>
-						<!-- comment start -->
-						<a name="commentAnchor"></a>
+					<!-- blog end -->
+					<!-- comment start -->
+					<a name="commentAnchor"></a>
 						
-						<div class="fade-up single-post-content">
+					<div class="fade-up single-post-content" id="wholecomment">
 							<div class="comments-area" id="comments">
 								<h3 class="comments-title">评  论 </h3>
 								<div class="comments-wrapper">
@@ -236,24 +243,22 @@
 <!-- 										<input type="hidden" name="id" value="">  -->
 										<input type="hidden" id="userid" name="userid" value="6"> 
 										<input type="hidden"  id="blogid" name="blogid" value="${thisblog.id }"> 
-<!-- 										<input type="hidden" name="cmtid" value=""> 
-										<input type="hidden" name="createtime" value=""> 
+ 										<input type="hidden" name="cmtid" value=""> 
+<!--										<input type="hidden" name="createtime" value=""> 
 										<input type="hidden" name="likenum" value=""> 
 										<input type="hidden" name="delFlag" value="">  -->
 										
-										<small>
-											<input class="btn btn-success" id="submit" name="submit" type="button" value="发表评论" onclick="ajaxsubmit()">
-										</small>
-										
+										<input class="btn btn-success" id="submit" name="submit" type="button" value="发表评论" onclick="ajaxsubmit(this)">
 									</form>
 								</div>
 								<!-- #respond -->
 								<small></small>
 							</div>
 						</div>
-						<!-- col-md-6 -->
+
 					<!-- comment end -->
 				</div>	
+				
 				<div class="col-sm-3 col-sm-offset-1 single-post-sidebar">
 					<h3 class="sidebar-title mt0 mb-5">热门推荐</h3>
 					<div class="row sidebar-post">
@@ -270,8 +275,8 @@
 				</div><!-- col-md-6 -->	
 			</div>
 		</section>
-		</div>
-		<!-- CONTENT WRAPPER -->	
+	</div>
+	<!-- // CONTENT WRAPPER -->	
 		
 	<!-- copyright bottom -->
 	<div class="copy-bottom bg-li py-4 border-top">
@@ -290,7 +295,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- //copyright -->	
+	<!-- //copyright  bottom-->	
 
 	<!-- JavaScript files-->
 	
@@ -299,28 +304,56 @@
 	<script src="<%=path%>/js/init.js"></script>
 
 	<script type="text/javascript">
-	function testsubmit() {
-		console.info($('#commentform').serialize())
+	function testsubmit(obj) {
+		/* console.info($('#commentform').serialize())
 		console.info(JSON.stringify($('#commentform').serialize()))
-		alert(JSON.stringify($('#commentform').serialize()))
+		alert(JSON.stringify($('#commentform').serialize())) */
+		var div=($(obj).parent())
+		console.info($(div).children())
+		var userid = $(div).find("input[name='userid']").val()
+		var blogid = $(div).find("input[name='blogid']").val()
+		var cmtid = $(div).find("input[name='cmtid']").val()
+		var comment = $(div).find("textarea").val()
+		console.info("userid: "+userid+"; blogid: "+blogid+"; cmtid: "+cmtid+"; comment: "+comment)
+		alert("end")
+/* 		var userid=$(div).attr()
+		$("input[name='keleyicom']") */
 	}
 	
-	function ajaxsubmit() {
+	function ajaxsubmit(obj) {
+		var div = $(obj).parent()
+		var userid = $(div).find("input[name='userid']").val()
+		var blogid = $(div).find("input[name='blogid']").val()
+		var cmtid = $(div).find("input[name='cmtid']").val()
+		var comment = $(div).find("textarea").val()
+		console.info(comment)
+		
+        var cmt = {
+    			"userid" : userid ,
+    			"blogid" : blogid ,
+    			"cmtid": cmtid,
+    			"comment" : comment
+            };
+            var data = JSON.stringify(cmt)
+            console.info(data)
+		
 		$.ajax({
 			url: 'comment/normal/add',
 			type: 'post',
 			dataType:'JSON',
-			data: {"userid": $("#userid").val(), "blogid" : $("#blogid").val() , "comment" :$("#comment").val()},
+			data:{"userid": userid, "blogid" : blogid , "comment" :comment, "cmtid":cmtid }  ,
 			success:function(response,status,xhr){
 				console.log(response)
 				console.log(status)
 				console.log(xhr)
-				if (response==101) {
+/* 				alert("评论成功");
+                aftercmt(response); */
+ 				if (response==101) {
                         alert("评论成功");
                         aftercmt();
                     }else{
                     	 alert("评论失败");
-                    }
+                    } 
 			},
 			error:function(){
 				alert("error");
@@ -371,8 +404,13 @@
 	}
 	
 	function aftercmt() {
+/* 		console.info(data); */
 		$("#comment").val("");
-		location.reload();
+/* 		location.herf="#commentAnchor";
+		window.location.hash ="#commentAnchor";
+		$("#wholecomment").load(data); */
+		
+ 		location.reload(); 
 		/* var url = window.location.href;
 		window.location.replace( url + "#commentAnchor"); */
 	}
