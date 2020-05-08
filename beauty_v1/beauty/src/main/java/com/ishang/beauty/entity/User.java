@@ -97,6 +97,14 @@ public class User implements Serializable {
 		this.birthday = birthday;
 	}
 
+	public String getIntroduction() {
+		return introduction;
+	}
+
+	public void setIntroduction(String introduction) {
+		this.introduction = introduction==null?null:introduction.trim();
+	}
+
 	public String getSchool() {
 		return school;
 	}
@@ -105,14 +113,7 @@ public class User implements Serializable {
 		this.school = school == null ? null : school.trim();
 	}
 
-	public String getIntrodution() {
-		return introduction;
-	}
-
-	public void setIntrodution(String introdution) {
-		this.introduction = introduction == null ? null : introdution.trim();
-	}
-
+	
 	public String getProfileimg() {
 		return profileimg;
 	}

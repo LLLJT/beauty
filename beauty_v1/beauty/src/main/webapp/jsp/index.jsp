@@ -5,19 +5,31 @@
 <head>
 <meta charset="UTF-8">
 <title>主页</title>
-
+<%String path=request.getContextPath(); %>
 <!-- Bootstrap-Core-CSS -->
-<link rel="stylesheet" href="../css/bootstrap.css">
+<link rel="stylesheet" href="<%=path%>/css/bootstrap.css"> 
+ <!-- Bootstrap -->
+   <!--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+ -->
 <!-- Style-CSS -->
-<link rel="stylesheet" href="../css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" href="<%=path%>/css/style.css" type="text/css" media="all" />
 <!-- Font-Awesome-Icons-CSS -->
-<link href="../css/font-awesome.min.css" rel="stylesheet">
+<link href="<%=path%>/css/font-awesome.min.css" rel="stylesheet">
 <!-- Web-Fonts -->
 <link href="http://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext"
 	rel="stylesheet">
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- Custom stylesheet - for your changes-->
-<link rel="stylesheet" href="../css/custom.css">
+<link rel="stylesheet" href="<%=path%>/css/custom.css">
+<!-- JavaScript files-->
+	<script src="<%=path%>/js/jquery/jquery.min.js"></script>
+	<script src="<%=path%>/js/popper.js/umd/popper.min.js"></script>
+	<!-- popper.min.js 用于弹窗、提示、下拉菜单 -->
+	<script src="<%=path%>/js/bootstrap/bootstrap.min.js"></script>
+	<script src="<%=path%>/js/jquery.cookie/jquery.cookie.js"> </script>
+	<script src="<%=path%>/js/js.cookie.min.js"></script>
+	<script src="<%=path%>/js/front.js"></script>
+
 <script>
 	//加载网页时滚屏到top
 	addEventListener("load", function() {
@@ -45,6 +57,10 @@
 					</div>
 					<!-- //logo -->
 					<div class="d-flex mt-lg-1 mt-sm-2 mt-3 justify-content-center">
+					<!-- 头像 -->
+					<img src="<%=path%>/images/userimg/18470736f72f497ab6019a616b856456.jpeg" class="headpic">
+					<label id="welcomemsg" class="welcomemsg" style="color:#705ecf"></label>
+					
 						<!-- search -->
 						<div class="search-w3layouts mr-3">
 							<form action="#" method="post"
@@ -57,6 +73,7 @@
 						</div>
 						<!-- //search -->
 						<!-- 登出&个人中心 -->
+						
 						<a class="dwn-w3ls btn mr-1" href="${pageContext.request.contextPath}/jsp/usercenter.jsp" target="_blank">
 							<span class="fa fa-user-circle-o" title="个人中心"></span>
 						</a> 
@@ -123,14 +140,14 @@
 		<div class="container py-xl-5 py-lg-3">
 			<div class="row myfollow" id="follows">
 				<h3 class="title">关注</h3>
-				<span><a href="#up1" data-toggle="collapse" data-target="#up1"><img class="uploader" src="../images/girl.jpg" alt=""/></a></span>
-				<span><a href="#" data-toggle="collapse" data-target="#up2"><img class="uploader" src="../images/kb.jpeg" alt="" /></a></span>
-				<span><a href="#" data-toggle="collapse" data-target="#up3"><img class="uploader" src="../images/oldE.jpg" alt="" /></a></span>
+				<span><a href="#up1" data-toggle="collapse" data-target="#up1"><img class="uploader" src="<%=path%>/images/girl.jpg" alt=""/></a></span>
+				<span><a href="#" data-toggle="collapse" data-target="#up2"><img class="uploader" src="<%=path%>/images/kb.jpeg" alt="" /></a></span>
+				<span><a href="#" data-toggle="collapse" data-target="#up3"><img class="uploader" src="<%=path%>/images/oldE.jpg" alt="" /></a></span>
 			</div>
 			<div class="card mb-3 myfollow-collapse">
 				<div id="up1" class="collapse card-body">
 					<div class="row align-items-center flex-row">
-						<img alt="" src="../images/girl.jpg" />
+						
 						<div class="col-lg-10">
 							<h4>title</h4>
 							<p>Sodales quis.At vero eos et accusam et justo duo dolores
@@ -142,7 +159,7 @@
 				</div>
 				<div id="up2" class="collapse card-body">
 					<div class="row align-items-center flex-row">
-						<img alt="" src="../images/kb.jpeg" />
+						<img alt="" src="<%=path%>/images/kb.jpeg" />
 						<div class="col-lg-10">
 							<h4>title</h4>
 							<p>Sodales quis.At vero eos et accusam et justo duo dolores
@@ -154,7 +171,7 @@
 				</div>
 				<div id="up3" class="collapse card-body">
 					<div class="row align-items-center flex-row">
-						<img alt="" src="../images/oldE.jpg" />
+						<img alt="" src="<%=path%>/images/oldE.jpg" />
 						<div class="col-lg-10">
 							<h4>title</h4>
 							<p>Sodales quis.At vero eos et accusam et justo duo dolores
@@ -177,7 +194,7 @@
 			<div class="row about-bottom-w3l text-center mt-4">
 				<div class="col-lg-3 about-grid">
 					<div class="about-grid-main">
-						<img src="../images/qzgs_1.jpg" alt="" class="img-fluid">
+						<img src="<%=path%>/images/qzgs_1.jpg" alt="" class="img-fluid">
 						<a href="#" class="button-w3ls btn "> Read More
 							<p>简单描述文字</p>
 						</a>
@@ -185,7 +202,7 @@
 				</div>
 				<div class="col-lg-3 about-grid">
 					<div class="about-grid-main">
-						<img src="../images/qzgs_2.jpg" alt="" class="img-fluid">
+						<img src="<%=path%>/images/qzgs_2.jpg" alt="" class="img-fluid">
 						<a href="#" class="button-w3ls btn "> Read More
 							<p>简单描述文字</p>
 						</a>
@@ -193,7 +210,7 @@
 				</div>
 				<div class="col-lg-3 about-grid my-lg-0 my-5">
 					<div class="about-grid-main">
-						<img src="../images/qzgs_3.jpg" alt="" class="img-fluid">
+						<img src="<%=path%>/images/qzgs_3.jpg" alt="" class="img-fluid">
 						<a href="#" class="button-w3ls btn "> Read More
 							<p>简单描述文字</p>
 						</a>
@@ -201,7 +218,7 @@
 				</div>
 				<div class="col-lg-3 about-grid">
 					<div class="about-grid-main">
-						<img src="../images/qzgs_4.jpg" alt="" class="img-fluid">
+						<img src="<%=path%>/images/qzgs_4.jpg" alt="" class="img-fluid">
 						<a href="#" class="button-w3ls btn "> Read More
 							<p>简单描述文字</p>
 						</a>
@@ -213,7 +230,7 @@
 			<div class="row about-bottom-w3l text-center mt-4">
 				<div class="col-lg-3 about-grid">
 					<div class="about-grid-main">
-						<img src="../images/qzgs_5.jpg" alt="" class="img-fluid">
+						<img src="<%=path%>/images/qzgs_5.jpg" alt="" class="img-fluid">
 						<a href="#" class="button-w3ls btn "> Read More
 							<p>简单描述文字</p>
 						</a>
@@ -221,7 +238,7 @@
 				</div>
 				<div class="col-lg-3 about-grid">
 					<div class="about-grid-main">
-						<img src="../images/qzgs_6.jpg" alt="" class="img-fluid"> 
+						<img src="<%=path%>/images/qzgs_6.jpg" alt="" class="img-fluid"> 
 						<a href="#" class="button-w3ls btn "> Read More
 							<p>简单描述文字</p>
 						</a>
@@ -229,7 +246,7 @@
 				</div>
 				<div class="col-lg-3 about-grid my-lg-0 my-5">
 					<div class="about-grid-main">
-						<img src="../images/qzgs_1.jpg" alt="" class="img-fluid">
+						<img src="<%=path%>/images/qzgs_1.jpg" alt="" class="img-fluid">
 						<a href="#" class="button-w3ls btn "> Read More
 							<p>简单描述文字</p>
 						</a>
@@ -237,7 +254,7 @@
 				</div>
 				<div class="col-lg-3 about-grid">
 					<div class="about-grid-main">
-						<img src="../images/qzgs_2.jpg" alt="" class="img-fluid">
+						<img src="<%=path%>/images/qzgs_2.jpg" alt="" class="img-fluid">
 						<a href="#" class="button-w3ls btn "> Read More
 							<p>简单描述文字</p>
 						</a>
@@ -269,14 +286,42 @@
 	</div>
 	<!-- //copyright bottom -->
 
-	<!-- JavaScript files-->
-	<script src="../js/jquery/jquery.min.js"></script>
-	<script src="../js/popper.js/umd/popper.min.js"></script>
-	<!-- popper.min.js 用于弹窗、提示、下拉菜单 -->
-	<script src="../js/bootstrap/bootstrap.min.js"></script>
-	<script src="../js/jquery.cookie/jquery.cookie.js"> </script>
-	<script src="../js/js.cookie.min.js"></script>
-	<script src="../js/front.js"></script>
+	
+<script type="text/javascript">
+$(function(){
+	
+	var cookiestr = getCookie("user");
+	if(cookiestr!="")
+		var cookiename=cookiestr.split("#")[0];
+	$("#welcomemsg").text("欢迎您,"+cookiename);
+	
+	
+});
+
+function getCookie(cookiename) {
+	var name = cookiename + "=";
+	var str = document.cookie.split(';');
+	var le = str.length;
+	for (var i = 0; i < str.length; i++) {
+		var ind = str[i];
+		while (ind.charAt(0) == ' ')
+			ind = ind.substring(1);
+
+		var saf = ind.length;
+		if (ind.indexOf(name) != -1)
+			return ind.substring(name.length, ind.length);
+
+	}
+	return "";
+
+};
+
+//获取select到的
+
+
+</script>
+
+
 
 </body>
 </html>

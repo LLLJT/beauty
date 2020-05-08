@@ -36,5 +36,13 @@ public interface UserService {
 	 * */
 	int updateone(User user);
 	
+	int updateoneplus(User user);
+	
 	int updateImg(User user);
+	
+	List<User> selectbyid(Integer id);
+
+	int saveUser(User user);
+
+	List<User> findbyid(Integer id);
 }

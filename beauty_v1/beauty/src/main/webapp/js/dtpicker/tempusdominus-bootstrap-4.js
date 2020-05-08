@@ -1779,9 +1779,9 @@ var TempusDominusBootstrap4 = function ($) {
             }
             return row.length === 0 ? '' : $('<table>').addClass('table-condensed').append($('<tbody>').append($('<tr>').append(row)));
         };
-
+//去掉1784行的dropmenu
         TempusDominusBootstrap4.prototype._getTemplate = function _getTemplate() {
-            var template = $('<div>').addClass('bootstrap-datetimepicker-widget dropdown-menu'),
+            var template = $('<div>').addClass('bootstrap-datetimepicker-widget'),
                 dateView = $('<div>').addClass('datepicker').append(this._getDatePickerTemplate()),
                 timeView = $('<div>').addClass('timepicker').append(this._getTimePickerTemplate()),
                 content = $('<ul>').addClass('list-unstyled'),

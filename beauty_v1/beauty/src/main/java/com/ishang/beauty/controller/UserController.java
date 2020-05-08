@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,8 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.ishang.beauty.entity.User;
 import com.ishang.beauty.service.UserService;
+import com.ishang.beauty.utils.DataResponse;
+import com.ishang.beauty.utils.Msg;
 
 @Controller
 @RequestMapping("/user")
@@ -31,16 +34,45 @@ public class UserController {
 	@Autowired
 	private UserService service;
 
-//	@GetMapping("/getAll")
-//	public  DataResponse getAll() {
-//		DataResponse response = new DataResponse();
-//		List<User> result = service.findall();
-//		return response.success(result);
-//	}
-
+	/*
+	 * @RequestMapping("/userList")
+	 * 
+	 * @ResponseBody public Msg getUserWithJson(@RequestParam(value = "pn",
+	 * defaultValue = "1") Integer pn, Model model) { // 第pn页显示五行数据
+	 * PageHelper.startPage(pn, 5); List<User> uList = service.findall();
+	 * PageInfo<User> page = new PageInfo<User>(uList, 5);
+	 * 
+	 * 测试page中的参数 System.out.println("页码数:"+page.getPageNum());
+	 * System.out.println("总页码:"+page.getPages());
+	 * System.out.println("总条数:"+page.getTotal());
+	 * System.out.println(page.getNavigatePages());
+	 *
+	 *
+	 * for(User u : list) {
+	 * System.out.println("id:"+u.getId()+"name:"+u.getUsername());
+	 * 
+	 * }
+	 * 
+	 * 
+	 * int []num=page.getNavigatepageNums(); for(int i:num) {
+	 * 
+	 * System.out.println(" "+i); } for(User u : list) {
+	 * System.out.println("id:"+u.getId()+"name:"+u.getUsername());
+	 * 
+	 * }
+	 * 
+	 * 
+	 * 
+	 * ModelAndView mv = new ModelAndView("backuserList"); mv.addObject("pageInfo",
+	 * page);
+	 * 
+	 * return Msg.success().add("pageInfo", page);
+	 * 
+	 * }
+	 */
 	@RequestMapping("/userList")
 	public ModelAndView findall(@RequestParam(value = "pn", defaultValue = "1") Integer pn, Model model) {
-		// 第pn页显示五行数据
+
 		PageHelper.startPage(pn, 5);
 		List<User> uList = service.findall();
 		PageInfo<User> page = new PageInfo<User>(uList, 5);
@@ -68,6 +100,7 @@ public class UserController {
 		ModelAndView mv = new ModelAndView("backuserList");
 		mv.addObject("pageInfo", page);
 		return mv;
+
 	}
 
 	@RequestMapping("/login")
@@ -159,5 +192,42 @@ public class UserController {
 		return "login";
 
 	}
+
+	// userlist界面的新增模态框新建用户
+	@RequestMapping(value = "/saveUser", method = RequestMethod.POST)
+	public String saveUser(@RequestBody User user) {
+		user.setDel_flag(1);
+		service.saveUser(user);
+		return "backuserList";
+	}
+
+	// userList界面的update模态框获取用户信息
+	@RequestMapping(value = "/updateUser", method = RequestMethod.POST)
+	public String UpdateUser(@RequestBody User user, Model model) {
+
+		
+		user.setDel_flag(1);
+		service.updateone(user);
+		model.addAttribute("user", user);
+		return "backuserList";
+
+	}
+	//userList界面的delete模态框
+	@RequestMapping(value = "/deleteUser",method = RequestMethod.POST)
+	public String DeleteUser(@RequestBody User user) {
+		
+		System.out.println(user.getId());
+		service.deleteone(user.getId());
+		return "backuserList";
+		
+	}
+
+	
+	
+	
+	
+	
+	
+	
 
 }

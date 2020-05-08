@@ -5,17 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>我的关注</title>
-<link href="../../css/bootstrap.css" rel="stylesheet">
+<% String path=request.getContextPath();%>
+<link href="<%=path%>/css/bootstrap.css" rel="stylesheet">
 <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+ 
 <link
-	href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900|Dancing+Script:400,700|Raleway:400,100,300,700,900|Reenie+Beanie&subset=latin,latin-ext'
-	rel='stylesheet' type='text/css'>
-<link href="../../css/users/userspace_style.css" rel="stylesheet">
-<link rel="stylesheet" href="../../css/custom.css">
-<link rel="stylesheet" href="../../css/users/follow.css">
+	href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900|Dancing+Script:400,700|Raleway:400,100,300,700,900|Reenie+Beanie&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<link href="<%=path%>/css/users/userspace_style.css" rel="stylesheet">
+<link rel="stylesheet" href="<%=path%>/css/custom.css">
+<link rel="stylesheet" href="<%=path%>/css/users/follow.css">
 </head>
 <body>
 	<section class="white-wrapper allow-overflow">
@@ -31,7 +32,7 @@
 				<div class="team-item col-md-3 match-height nopaddingleftright">
 					<div class="hover-effect smoothie match-height">
 						<a href="#" class="smoothie"> <img
-							src="../../images/Aluren.jpeg" alt="Image"
+							src="<%=path%>/images/Aluren.jpeg" alt="Image"
 							class="img-responsive smoothie">
 						</a>
 						<div class="hover-overlay smoothie text-center">
@@ -54,7 +55,7 @@
 				</div>
 				<div class="team-item col-md-3 match-height nopaddingleftright">
 					<div class="hover-effect smoothie match-height">
-						<a href="#" class="smoothie"> <img src="../../images/kb.jpeg"
+						<a href="#" class="smoothie"> <img src="<%=path%>/images/kb.jpeg"
 							alt="Image" class="img-responsive smoothie"></a>
 						<div class="hover-overlay smoothie text-center">
 							<div class="vertical-align-bottom">
@@ -74,7 +75,7 @@
 				</div>
 				<div class="team-item col-md-3 match-height nopaddingleftright">
 					<div class="hover-effect smoothie match-height">
-						<a href="#" class="smoothie"> <img src="../../images/kb1.jpg"
+						<a href="#" class="smoothie"> <img src="<%=path%>/images/kb1.jpg"
 							alt="Image" class="img-responsive smoothie"></a>
 						<div class="hover-overlay smoothie text-center">
 							<div class="vertical-align-bottom">
@@ -94,7 +95,7 @@
 				</div>
 				<div class="team-item col-md-3 match-height nopaddingleftright">
 					<div class="hover-effect smoothie match-height">
-						<a href="#" class="smoothie"> <img src="../../images/oldE.jpg"
+						<a href="#" class="smoothie"> <img src="<%=path%>/images/oldE.jpg"
 							alt="Image" class="img-responsive smoothie"></a>
 						<div class="hover-overlay smoothie text-center">
 							<div class="vertical-align-bottom">
@@ -120,7 +121,7 @@
 			<ul class="relation-list">
 				<li class="list-item row">
 					<a href="https://space.bilibili.com/12065306/" target="_blank" class="cover"> 
-						<img src="../../images/followup/15ae7e31da079e65f0872c2c94f13b337d055d1e.jpg@96w_96h_100Q_1c.webp" alt="星s巨寒">
+						<img src="<%=path%>/images/followup/15ae7e31da079e65f0872c2c94f13b337d055d1e.jpg@96w_96h_100Q_1c.webp" alt="星s巨寒">
 					</a>
 					<div class="content">
 						<a href="https://space.bilibili.com/12065306/" target="_blank"
@@ -138,7 +139,7 @@
 				<li class="list-item row"><a
 					href="https://space.bilibili.com/3908684/" target="_blank"
 					class="cover"> <img
-						src="../../images/followup/d978726ac821bd159973857f5e0a7777b07392ee.jpg@96w_96h_100Q_1c.webp"
+						src="<%=path%>/images/followup/d978726ac821bd159973857f5e0a7777b07392ee.jpg@96w_96h_100Q_1c.webp"
 						alt="SonyCorporation">
 				</a>
 					<div class="content">
@@ -156,7 +157,7 @@
 				<li class="list-item row"><a
 					href="https://space.bilibili.com/159340834/" target="_blank"
 					class="cover"> <img
-						src="../../images/followup/26d5c10e52e2c946a5ac1672953847c09e8cdd02.jpg@96w_96h_100Q_1c.webp"
+						src="<%=path%>/images/followup/26d5c10e52e2c946a5ac1672953847c09e8cdd02.jpg@96w_96h_100Q_1c.webp"
 						alt="哔哩冂XX舟皿">
 				</a>
 					<div class="content">
@@ -176,7 +177,7 @@
 				<li class="list-item row"><a
 					href="https://space.bilibili.com/12132131/" target="_blank"
 					class="cover"> <img
-						src="../../images/followup/f7a76c3123ad3e8b8f9e586b5aa4a914bd8bc1af.jpg@96w_96h_100Q_1c.webp"
+						src="<%=path%>/images/followup/f7a76c3123ad3e8b8f9e586b5aa4a914bd8bc1af.jpg@96w_96h_100Q_1c.webp"
 						alt="白河愁录播组Helloworld">
 				</a>
 					<div class="content">
@@ -195,7 +196,7 @@
 				<li class="list-item row"><a
 					href="https://space.bilibili.com/20990353/" target="_blank"
 					class="cover"> <img
-						src="../../images/followup/4cb3effef583371e3ab6d4850bb725df6a59ebb2.jpg@96w_96h_100Q_1c.webp"
+						src="<%=path%>/images/followup/4cb3effef583371e3ab6d4850bb725df6a59ebb2.jpg@96w_96h_100Q_1c.webp"
 						alt="暴雪游戏动力">
 				</a>
 					<div class="content">
@@ -213,7 +214,7 @@
 				<li class="list-item row"><a
 					href="https://space.bilibili.com/331257408/" target="_blank"
 					class="cover"> <img
-						src="../../images/followup/3015caddd1a99dc64df59c69b74b8e92335279fa.jpg@96w_96h_100Q_1c.webp"
+						src="<%=path%>/images/followup/3015caddd1a99dc64df59c69b74b8e92335279fa.jpg@96w_96h_100Q_1c.webp"
 						alt="超电">
 				</a>
 					<div class="content">
@@ -230,7 +231,7 @@
 				<li class="list-item row"><a
 					href="https://space.bilibili.com/34646754/" target="_blank"
 					class="cover"> <img
-						src="../../images/followup/cc7987505fabc300473327ed96ffa5100d83f562.jpg@96w_96h_100Q_1c.webp"
+						src="<%=path%>/images/followup/cc7987505fabc300473327ed96ffa5100d83f562.jpg@96w_96h_100Q_1c.webp"
 						alt="沉默寡言白河愁">
 				</a>
 					<div class="content">
@@ -248,7 +249,7 @@
 				<li class="list-item row"><a
 					href="https://space.bilibili.com/501964398/" target="_blank"
 					class="cover"> <img
-						src="../../images/followup/ba2128f49a905420351850aa2028a3dc9f4ae61f.jpg@96w_96h_100Q_1c.webp"
+						src="<%=path%>/images/followup/ba2128f49a905420351850aa2028a3dc9f4ae61f.jpg@96w_96h_100Q_1c.webp"
 						alt="MKBHD搬运站">
 				</a>
 					<div class="content">
@@ -266,7 +267,7 @@
 				<li class="list-item row"><a
 					href="https://space.bilibili.com/155616/" target="_blank"
 					class="cover"> <img
-						src="../../images/followup/ddda1efc23176f1148e50bf55c69b13a350e4a7e.jpg@96w_96h_100Q_1c.webp"
+						src="<%=path%>/images/followup/ddda1efc23176f1148e50bf55c69b13a350e4a7e.jpg@96w_96h_100Q_1c.webp"
 						alt="司夏-西国之海妖">
 				</a>
 					<div class="content">
@@ -284,7 +285,7 @@
 				<li class="list-item row"><a
 					href="https://space.bilibili.com/35393135/" target="_blank"
 					class="cover"> <img
-						src="../../images/followup/17fc9cd233a26da8691abf7ed688200024785c22.jpg@96w_96h_100Q_1c.webp"
+						src="<%=path%>/images/followup/17fc9cd233a26da8691abf7ed688200024785c22.jpg@96w_96h_100Q_1c.webp"
 						alt="青春上海">
 				</a>
 					<div class="content">
@@ -301,7 +302,7 @@
 				<li class="list-item row"><a
 					href="https://space.bilibili.com/408433491/" target="_blank"
 					class="cover"> <img
-						src="../../images/followup/48c03c67a813a53d4e09324fd1f9b28f7016b636.jpg@96w_96h_100Q_1c.webp"
+						src="<%=path%>/images/followup/48c03c67a813a53d4e09324fd1f9b28f7016b636.jpg@96w_96h_100Q_1c.webp"
 						alt="高数叔的百宝箱">
 				</a>
 					<div class="content">
@@ -318,7 +319,7 @@
 				<li class="list-item row"><a
 					href="https://space.bilibili.com/14804670/" target="_blank"
 					class="cover"> <img
-						src="../../images/followup/6de12181ed59518fc7beff2046fb3218d50206cc.jpg@96w_96h_100Q_1c.webp"
+						src="<%=path%>/images/followup/6de12181ed59518fc7beff2046fb3218d50206cc.jpg@96w_96h_100Q_1c.webp"
 						alt="无穷小亮的科普日常">
 				</a>
 					<div class="content">

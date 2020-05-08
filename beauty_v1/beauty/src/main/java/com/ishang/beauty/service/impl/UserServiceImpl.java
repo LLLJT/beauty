@@ -45,4 +45,24 @@ public class UserServiceImpl implements UserService {
 		return dao.updateImg(user);
 	}
 
+	public int updateoneplus(User user) {
+		// TODO 自动生成的方法存根
+		return dao.updateByPrimaryKeyPlus(user);
+	}
+
+	public List<User> selectbyid(Integer id) {
+		// TODO 自动生成的方法存根
+		return dao.selectByPrimaryKey(id);
+	}
+
+	public int saveUser(User user) {
+		// TODO 自动生成的方法存根
+		return dao.insert(user);
+	}
+
+	public List<User> findbyid(Integer id) {
+		// TODO 自动生成的方法存根
+		return dao.selectByPrimaryKey(id);
+	}
+
 }

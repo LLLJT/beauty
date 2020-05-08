@@ -47,6 +47,20 @@
 		del_flag = #{del_flag,jdbcType=BIT}
 		where id = #{id,jdbcType=INTEGER}
 	</update>
+	<!-- 自己新增。。突然又要用到update -->
+	<update id="updateByPrimaryKeyPlus" parameterType="com.ishang.beauty.entity.User">
+		update user
+		set username=#{username,jdbcType=VARCHAR} 
+		password = #{password,jdbcType=VARCHAR},
+		roleid = #{roleid,jdbcType=INTEGER},
+		sex = #{sex,jdbcType=BIT},
+		birthday = #{birthday,jdbcType=TIMESTAMP},
+		school = #{school,jdbcType=VARCHAR},
+		introduction = #{introduction,jdbcType=VARCHAR},
+		profileimg = #{profileimg,jdbcType=VARCHAR},
+		del_flag = #{del_flag,jdbcType=BIT}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
 	
 	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
 		select id, username, `password`, roleid, sex, birthday, school, introduction, profileimg, del_flag

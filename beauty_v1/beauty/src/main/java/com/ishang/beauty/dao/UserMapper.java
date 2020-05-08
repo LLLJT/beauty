@@ -10,11 +10,13 @@ public interface UserMapper {
 
 	int insert(User record);
 
-	User selectByPrimaryKey(Integer id);
+	List<User> selectByPrimaryKey(Integer id);
 
 	List<User> selectAll();
 
 	int updateByPrimaryKey(User record);
+	
+	int updateByPrimaryKeyPlus(User record);
 
 	/**
 	 * 模糊查找
