@@ -113,7 +113,7 @@
 				<div class="navbar-collapse collapse" id="main-navigation">
 					<ul class="nav navbar-nav">
 						<li class="search-w3layouts">
-							<form action="<%=path%>/search" method="post" class="search-bottom-wthree d-flex">
+							<form action="<%=path%>/jsp/searchresult.jsp" method="post" class="search-bottom-wthree d-flex">
 								<input class="search" type="search" name="searchname" placeholder="Search Here..." required>
 								<button class="c-form-control c-btn" type="submit">
 									<i class="el-icon-search"></i>

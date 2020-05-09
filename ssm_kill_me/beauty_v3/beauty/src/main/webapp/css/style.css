@@ -1170,6 +1170,7 @@ h3.sec-hedadc {
 	overflow: hidden;
 	width: 100%;
 	height: 2.5em;
+	white-space: normal;
 }
 
 /* //pricing page */

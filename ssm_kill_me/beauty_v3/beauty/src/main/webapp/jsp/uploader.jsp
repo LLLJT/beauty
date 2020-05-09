@@ -55,7 +55,7 @@
 					<div class="d-flex mt-lg-1 mt-sm-2 mt-3 justify-content-center">
 						<!-- search -->
 						<div class="search-w3layouts mr-3">
-							<form action="<%=path%>/search" method="post" class="search-bottom-wthree d-flex">
+							<form action="<%=path%>/jsp/searchresult.jsp" method="post" class="search-bottom-wthree d-flex">
 								<input class="search" type="search" name="searchname"  placeholder="Search Here..." required>
 								<button class="form-control btn" type="submit">
 									<span class="fa fa-search"></span>

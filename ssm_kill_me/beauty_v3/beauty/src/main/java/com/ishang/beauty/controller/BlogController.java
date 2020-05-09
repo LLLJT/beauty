@@ -12,6 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
 import com.ishang.beauty.entity.Blog;
@@ -33,12 +36,7 @@ public class BlogController {
 	private UserService userservice;
 	@Autowired
 	private BlogCommentService cmtservice;
-	
-//	List<BlogComment> replycmtlist=new ArrayList<BlogComment>();
-	List<BlogComment> normalcmt=new ArrayList<BlogComment>();
-	Map<Integer, List<BlogComment>> replymap= new HashMap<Integer, List<BlogComment>>();
-	Map<Integer,String> cmtermap=new HashMap<Integer, String>();
-	
+		
 	@RequestMapping("/blog/getall")    
     public String findall(HttpServletRequest request,Model model){    
 		List<Blog> rstlist=service.findall();
@@ -116,28 +114,23 @@ public class BlogController {
 		return "content.jsp?blogid="+bid;
 	}
 
-	public void getcomment(int blogid) {
-		
-		// get normal cmt
-		normalcmt=cmtservice.findcmtlist(blogid);
-		// get reply map
-		for(BlogComment ncmt:normalcmt) {
-			//cmter map
-			cmtermap.put(ncmt.getUserid(),userservice.findbyid(ncmt.getUserid()).getUsername());
-			
-			//reply map
-//			List<BlogComment> allreply=cmtservice.findallreply(blogid);
-//			model.addAttribute("allreply", allreply);
-//			List<BlogComment> replylist = cmtservice.findreply(blogid, ncmt.getId());
-//			/* if(replylist.size()>0) */ replymap.put(ncmt.getId(), replylist);
-			replymap.put(ncmt.getId(), cmtservice.getonecmtreply(ncmt.getId()));
-			
-		}		
-		// get cmter
-		for(List<BlogComment> collection:replymap.values()) {
-			for(BlogComment rcmt:collection) {
-				cmtermap.put(rcmt.getUserid(), userservice.findbyid(rcmt.getUserid()).getUsername());			
-			}
+	@ResponseBody
+	@RequestMapping(value = "/newsearch",method = RequestMethod.POST)
+	public Map newsearchblog(@RequestParam("keyword") String keyword) {
+		System.out.println(keyword);
+		Blog record=new Blog();
+		record.setTitle(keyword);
+		List<Blog> rstlist= service.findbyentity(record);
+		Map<String, List<Blog>> map = new HashMap<String, List<Blog>>();
+		if(rstlist.size()>0) {
+			System.out.println("succeed");
+			map.put("rstlist", rstlist);
+		}else {
+			System.out.println("failed");
 		}
+		return map;
 	}
+	
+	// TODO content.jsp add star
+	// TODO add entry for content
 }
