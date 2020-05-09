@@ -1,6 +1,7 @@
 package com.ishang.beauty.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -62,7 +63,17 @@ public interface BlogService {
 	 * 取消收藏
 	 * 调用BlogStarDao.deleteByPrimaryKey
 	 * */
-	int undostar(int id);
+	int undostar(int userid, int blogid);
+	
+	/**
+	 * 模糊查找star
+	*/
+	List<BlogStar> findstarbyentity(BlogStar record);
+	
+	/**
+	 * 获取某user的star blog map
+	 * */
+	List<Map<String,Object>> selectstarmap(int userid);
 	
 	/**
 	 * 查找数字

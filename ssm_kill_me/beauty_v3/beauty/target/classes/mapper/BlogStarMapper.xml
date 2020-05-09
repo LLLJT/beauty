@@ -46,8 +46,22 @@
 	<!-- 获取某blog的收藏数 -->
 	<select id="getblogstar" parameterType="java.lang.Integer" resultType="java.lang.Integer">
 		SELECT COUNT(0) FROM `blog_star`
-		WHERE blogid =
-		#{blogid,jdbcType=INTEGER}
+		WHERE blogid = #{blogid,jdbcType=INTEGER}
+	</select>
+	
+	<!-- 获取某user的收藏list -->
+	<select id="getuserstar"  parameterType="java.lang.Integer"  resultMap="BaseResultMap">
+		select id, userid, blogid, createtime
+		from blog_star
+		where userid = #{userid,jdbcType=INTEGER}
+		ORDER BY createtime DESC
+	</select>
+
+	<!-- 按userid和blogid模糊查找 -->
+	<select id="selectbyentity" parameterType="com.ishang.beauty.entity.BlogStar" resultMap="BaseResultMap">
+		select id, userid, blogid, createtime
+		from blog_star
+		where userid = #{userid,jdbcType=INTEGER} and blogid = #{blogid,jdbcType=INTEGER}
 	</select>
 
 </mapper>

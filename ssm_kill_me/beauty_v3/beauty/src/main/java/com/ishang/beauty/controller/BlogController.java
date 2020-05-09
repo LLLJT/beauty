@@ -1,7 +1,7 @@
 package com.ishang.beauty.controller;
 
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONObject;
 import com.ishang.beauty.entity.Blog;
-import com.ishang.beauty.entity.BlogComment;
+import com.ishang.beauty.entity.BlogStar;
 import com.ishang.beauty.entity.User;
 import com.ishang.beauty.entity.WholeComment;
 import com.ishang.beauty.service.BlogCommentService;
@@ -97,14 +97,15 @@ public class BlogController {
 		
 		// blog ＆ writer
 		Blog blog =service.findbyid(blogid);
-		String writer = userservice.findbyid(blogid).getUsername();
+		User writer = userservice.findbyid(blog.getUserid());
 		model.addAttribute("thisblog", blog);
 		model.addAttribute("writer", writer);
-		
-//		int n_cmt=service.getnum(blogid, "cmt");
+
 		int n_star=service.getnum(blogid, "star");
 		model.addAttribute("starnum", n_star);
-
+		BlogStar test = new BlogStar();
+		test.setBlogid(blogid);
+		
 		WholeComment wholecmt=cmtservice.getwholecomment(blogid);
 		model.addAttribute("cmtnum", wholecmt.getCmtnum());
 		model.addAttribute("normalcmt", wholecmt.getNormalcmt());
@@ -131,8 +132,6 @@ public class BlogController {
 		return map;
 	}
 	
-	// TODO content.jsp add star
-	
 	@ResponseBody
 	@RequestMapping(value = "/side/getrec",method = RequestMethod.GET)
     public Map<String, List<Blog>> recside(){    
@@ -151,5 +150,64 @@ public class BlogController {
 		List<Blog> updatelist=service.selectlatestblog(userid);
 		map.put("rstlist", updatelist);
 		return map;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/blog/getuserstar",method = RequestMethod.POST)
+	public Map<String, Object> getuserstar(@RequestParam("userid") String str_userid){
+		Map<String,Object> map = new HashMap<String, Object>();
+		int userid=21 ;
+		if( !(str_userid ==null || str_userid.isEmpty())) userid=Integer.parseInt(str_userid);
+		map.put("rstmap", service.selectstarmap(userid));
+		return map;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/blog/addstar",method = RequestMethod.POST)
+	public String addstar(@RequestParam("userid") String str_userid,@RequestParam("blogid") String str_blogid) {
+		
+		int userid=21 ;
+		if( !(str_userid ==null || str_userid.isEmpty())) userid=Integer.parseInt(str_userid);
+		int blogid=1;
+		if( !(str_blogid ==null || str_blogid.isEmpty())) blogid=Integer.parseInt(str_blogid);
+		
+		BlogStar record = new BlogStar();
+		record.setUserid(userid);
+		record.setBlogid(blogid);
+		record.setCreatetime(new Date());
+		service.starblog(record);
+		
+		int num = service.getnum(blogid, "star");
+		return String.valueOf(num);
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/blog/undostar",method = RequestMethod.POST)
+	public String undostar(@RequestParam("userid") String str_userid,@RequestParam("blogid") String str_blogid) {
+		int userid=0, blogid=0,rst=0 ;
+		if( !(str_userid ==null || str_userid.isEmpty())) userid=Integer.parseInt(str_userid);
+		if( !(str_blogid ==null || str_blogid.isEmpty())) blogid=Integer.parseInt(str_blogid);
+		if(userid*blogid > 0) {
+			rst=service.undostar(userid, blogid);
+		}
+		
+		return String.valueOf(rst);
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/blog/findstar",method = RequestMethod.POST, produces = "text/html; charset=UTF-8")
+	public String findstar(@RequestParam("userid") String str_userid,@RequestParam("blogid") String str_blogid) {
+		int userid=0, blogid=0,rst=0 ;
+		if( !(str_userid ==null || str_userid.isEmpty())) userid=Integer.parseInt(str_userid);
+		if( !(str_blogid ==null || str_blogid.isEmpty())) blogid=Integer.parseInt(str_blogid);
+		if(userid*blogid > 0) {
+			BlogStar test = new BlogStar();
+			test.setUserid(userid);
+			test.setBlogid(blogid);
+			rst=service.findstarbyentity(test).size();
+			if(rst>0) return "取消收藏";
+			else return  "添加收藏";
+		}
+		return "";
 	}
 }

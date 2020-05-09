@@ -33,7 +33,8 @@
 	                            <div class="masonry-portfolio row">
 	                                <div>
 	                                    <div class="masonry-portfolio-items">
-	                                        <div class="row">
+	                                        <div class="row" id="rstdiv">
+	                                        
 	                                            <div class="col-sm-4 masonry-portfolio-item mb30 apps">
 	                                                <div class="hover-effect smoothie">
 	                                                    <a href="#" class="smoothie">
@@ -51,142 +52,7 @@
 	                                                    </div>
 	                                                </div>
 	                                            </div>
-	                                            <div class="col-sm-4 masonry-portfolio-item mb30 design">
-	                                                <div class="hover-effect smoothie">
-	                                                    <a href="#" class="smoothie">
-	                                                    <img src="<%=path%>/images/portfolio/folio-2.jpeg" alt="Image" class="img-responsive smoothie"></a>
-	                                                    <div class="hover-overlay smoothie text-center">
-	                                                        <div class="vertical-align-bottom user_alignleft">
-	                                                            <h4>up's name</h4>
-	                                                            <p>描述文字描述文字描述文字描述文字描述文字描述文字描述文字</p>
-	                                                        </div>
-	                                                    </div>
-	                                                    <div class="hover-caption dark-overlay smoothie text-center">
-	                                                        <div class="vertical-align-bottom">
-	                                                            <a href="#" class="btn btn-primary mb20">Details</a>
-	                                                        </div>
-	                                                    </div>
-	                                                </div>
-	                                            </div>
-	                                            <div class="col-sm-4 masonry-portfolio-item mb30 photography">
-	                                                <div class="hover-effect smoothie">
-	                                                    <a href="#" class="smoothie">
-	                                                    <img src="<%=path%>/images/portfolio/folio-3.jpeg" alt="Image" class="img-responsive smoothie"></a>
-	                                                    <div class="hover-overlay smoothie text-center">
-	                                                        <div class="vertical-align-bottom user_alignleft">
-	                                                            <h4>up's name</h4>
-	                                                            <p>描述文字描述文字描述文字描述文字描述文字描述文字描述文字</p>
-	                                                        </div>
-	                                                    </div>
-	                                                    <div class="hover-caption dark-overlay smoothie text-center">
-	                                                        <div class="vertical-align-bottom">
-	                                                            <a href="#" class="btn btn-primary mb20">Details</a>
-	                                                        </div>
-	                                                    </div>
-	                                                </div>
-	                                            </div>
-	                                            <div class="col-sm-4 masonry-portfolio-item mb30 apps">
-	                                                <div class="hover-effect smoothie">
-	                                                    <a href="#" class="smoothie">
-	                                                    <img src="<%=path%>/images/portfolio/folio-4.jpeg" alt="Image" class="img-responsive smoothie"></a>
-	                                                    <div class="hover-overlay smoothie text-center">
-	                                                        <div class="vertical-align-bottom user_alignleft">
-	                                                            <h4>up's name</h4>
-	                                                            <p>描述文字描述文字描述文字描述文字描述文字描述文字描述文字</p>
-	                                                        </div>
-	                                                    </div>
-	                                                    <div class="hover-caption dark-overlay smoothie text-center">
-	                                                        <div class="vertical-align-bottom">
-	                                                            <a href="#" class="btn btn-primary mb20">Details</a>
-	                                                        </div>
-	                                                    </div>
-	                                                </div>
-	                                            </div>
-	                                            <div class="col-sm-4 masonry-portfolio-item mb30 design">
-	                                                <div class="hover-effect smoothie">
-	                                                    <a href="#" class="smoothie">
-	                                                    <img src="<%=path%>/images/portfolio/folio-5.jpeg" alt="Image" class="img-responsive smoothie"></a>
-	                                                    <div class="hover-overlay smoothie text-center">
-	                                                        <div class="vertical-align-bottom user_alignleft">
-	                                                            <h4>up's name</h4>
-	                                                            <p>描述文字描述文字描述文字描述文字描述文字描述文字描述文字</p>
-	                                                        </div>
-	                                                    </div>
-	                                                    <div class="hover-caption dark-overlay smoothie text-center">
-	                                                        <div class="vertical-align-bottom">
-	                                                            <a href="#" class="btn btn-primary mb20">Details</a>
-	                                                        </div>
-	                                                    </div>
-	                                                </div>
-	                                            </div>
-	                                            <div class="col-sm-4 masonry-portfolio-item mb30 design">
-	                                                <div class="hover-effect smoothie">
-	                                                    <a href="#" class="smoothie">
-	                                                    <img src="<%=path%>/images/portfolio/folio-6.jpeg" alt="Image" class="img-responsive smoothie"></a>
-	                                                    <div class="hover-overlay smoothie text-center">
-	                                                        <div class="vertical-align-bottom user_alignleft">
-	                                                            <h4>up's name</h4>
-	                                                            <p>描述文字描述文字描述文字描述文字描述文字描述文字描述文字</p>
-	                                                        </div>
-	                                                    </div>
-	                                                    <div class="hover-caption dark-overlay smoothie text-center">
-	                                                        <div class="vertical-align-bottom">
-	                                                            <a href="#" class="btn btn-primary mb20">Details</a>
-	                                                        </div>
-	                                                    </div>
-	                                                </div>
-	                                            </div>
-	                                            <div class="col-sm-4 masonry-portfolio-item mb30 apps">
-	                                                <div class="hover-effect smoothie">
-	                                                    <a href="#" class="smoothie">
-	                                                    <img src="<%=path%>/mages/portfolio/folio-7.jpeg" alt="Image" class="img-responsive smoothie"></a>
-	                                                    <div class="hover-overlay smoothie text-center">
-	                                                        <div class="vertical-align-bottom user_alignleft">
-	                                                            <h4>up's name</h4>
-	                                                            <p>描述文字描述文字描述文字描述文字描述文字描述文字描述文字</p>
-	                                                        </div>
-	                                                    </div>
-	                                                    <div class="hover-caption dark-overlay smoothie text-center">
-	                                                        <div class="vertical-align-bottom">
-	                                                            <a href="#" class="btn btn-primary mb20">Details</a>
-	                                                        </div>
-	                                                    </div>
-	                                                </div>
-	                                            </div>
-	                                            <div class="col-sm-4 masonry-portfolio-item mb30 design">
-	                                                <div class="hover-effect smoothie">
-	                                                    <a href="#" class="smoothie">
-	                                                    <img src="<%=path%>/images/portfolio/folio-8.jpeg" alt="Image" class="img-responsive smoothie"></a>
-	                                                    <div class="hover-overlay smoothie text-center">
-	                                                        <div class="vertical-align-bottom user_alignleft">
-	                                                            <h4>up's name</h4>
-	                                                            <p>描述文字描述文字描述文字描述文字描述文字描述文字描述文字</p>
-	                                                        </div>
-	                                                    </div>
-	                                                    <div class="hover-caption dark-overlay smoothie text-center">
-	                                                        <div class="vertical-align-bottom">
-	                                                            <a href="#" class="btn btn-primary mb20">Details</a>
-	                                                        </div>
-	                                                    </div>
-	                                                </div>
-	                                            </div>
-	                                            <div class="col-sm-4 masonry-portfolio-item mb30 design">
-	                                                <div class="hover-effect smoothie">
-	                                                    <a href="#" class="smoothie">
-	                                                    <img src="<%=path%>/images/portfolio/folio-9.jpeg" alt="Image" class="img-responsive smoothie"></a>
-	                                                    <div class="hover-overlay smoothie text-center">
-	                                                        <div class="vertical-align-bottom user_alignleft">
-	                                                            <h4>up's name</h4>
-	                                                            <p>描述文字描述文字描述文字描述文字描述文字描述文字描述文字</p>
-	                                                        </div>
-	                                                    </div>
-	                                                    <div class="hover-caption dark-overlay smoothie text-center">
-	                                                        <div class="vertical-align-bottom">
-	                                                            <a href="#" class="btn btn-primary mb20">Details</a>
-	                                                        </div>
-	                                                    </div>
-	                                                </div>
-	                                            </div>
+	                                            
 	                                        </div>
 	                                    </div>
 	                                </div>
@@ -199,5 +65,68 @@
 	    </div>
 	</section>
 
+<script src="<%=path%>/js/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+
+	var target = "<%=path %>/blog/getuserstar"
+	var testpicurl = "<%=path%>/images/portfolio/folio-1.jpeg"
+	
+	window.onload = getstarmap(target,"2")
+
+	function getstarmap(target,userid) {
+		
+		$.ajax({
+			url: target,
+			type: 'POST',
+			dataType:'JSON',
+			data:  {"userid": userid},
+			success:function(response,status,xhr){
+				console.log(response)
+				console.log(status)
+				console.log(xhr)
+				afterajax(response)
+			},
+			error:function(){
+				alert("error");
+			}
+		});
+	}
+
+	function afterajax(data) {
+		var n = data.rstmap.length
+		var myhtml=""
+		for (i=0; i<n; i++){
+			var blogid = data.rstmap[i].blogid
+			var title = data.rstmap[i].blogtitle
+			var username = data.rstmap[i].username
+			var picurl =  data.rstmap[i].picurl
+			picurl = testpicurl
+			
+	        myhtml +=( '<div class="col-sm-4 masonry-portfolio-item mb30" >'
+	        		+ '<div class="hover-effect smoothie">'
+	        		+ '<a href="#" class="smoothie">'
+	        		+ '<img src="' + picurl + '" alt="Image" class="img-responsive smoothie"></a>'
+	        		+ '<div class="hover-overlay smoothie text-center">'
+	        		+ '<div class="vertical-align-bottom user_alignleft">'
+	        		+ '<h4>' + username + '</h4>'
+	        		+ '<p>' + title + '</p>'
+	        		+ '</div> </div>'
+	        		+ '<div class="hover-caption dark-overlay smoothie text-center">'
+	        		+ '<div class="vertical-align-bottom">'
+	        		+ '<a href="#" class="btn btn-primary mb20" id="' + blogid + '" onclick="opencontent(this)">Details</a>'
+	        		+ '</div> </div> </div> </div>'
+	        		)
+		}
+		rstdiv.innerHTML=myhtml	
+	}
+	
+	function opencontent(obj) {
+		console.info(obj.id);
+		var url='/beauty/content?blogid=' +obj.id
+		console.info(url)
+		window.location.href=url
+	}
+
+</script>
 </body>
 </html>

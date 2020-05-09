@@ -2,15 +2,17 @@ package com.ishang.beauty.service.impl;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ishang.beauty.dao.BlogCommentMapper;
 import com.ishang.beauty.dao.BlogMapper;
 import com.ishang.beauty.dao.BlogStarMapper;
 import com.ishang.beauty.dao.UserMapper;
-import com.ishang.beauty.dao.BlogCommentMapper;
 import com.ishang.beauty.entity.Blog;
 import com.ishang.beauty.entity.BlogStar;
 import com.ishang.beauty.entity.User;
@@ -89,8 +91,12 @@ public class BlogServiceImpl implements BlogService {
 	}
 
 	@Override
-	public int undostar(int id) {
-		return stardao.deleteByPrimaryKey(id);
+	public int undostar(int userid, int blogid) {
+		BlogStar record = new BlogStar();
+		record.setUserid(userid);
+		record.setBlogid(blogid);
+		record=findstarbyentity(record).get(0);
+		return  stardao.deleteByPrimaryKey(record.getId());
 	}
 
 	@Override
@@ -113,6 +119,33 @@ public class BlogServiceImpl implements BlogService {
 	public List<User> selectlatestup(int followerid) {
 		List<User> reslist=userdao.selectlatestup(followerid);
 		return reslist;
+	}
+
+	@Override
+	public List<Map<String,Object>> selectstarmap(int userid) {
+		
+		List<Map<String,Object>> rstlist = new ArrayList<Map<String,Object>>();
+		// get star list { starid, userid, blogid, createtime }
+		List<BlogStar> starlist =stardao.getuserstar(userid);
+		// for each
+		for(BlogStar star : starlist) {
+			Map<String,Object> map = new HashMap<String, Object>();
+			// blogid -> bloginfo { userid blogid picurl blogtitle }
+			// userid -> username
+			map.put("blogid", star.getBlogid());
+			Blog blog = dao.selectByPrimaryKey(star.getBlogid());
+			map.put("username", userdao.selectByPrimaryKey(blog.getUserid()).getUsername());
+			map.put("picurl", blog.getPicUrl1());
+			map.put("blogtitle", blog.getTitle());
+			rstlist.add(map);
+		}
+
+		return rstlist;
+	}
+
+	@Override
+	public List<BlogStar> findstarbyentity(BlogStar record) {
+		return stardao.selectbyentity(record);
 	}
 
 }

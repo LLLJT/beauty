@@ -177,9 +177,10 @@
 				<div class="col-sm-8">
 				<!-- blog start -->
 					<div class="single-metas fade-down text-left mt0 mb60 no-display animated fadeInDown">
-						<h3>${writer }</h3>
+						<a href="<%=path%>/jsp/uploader.jsp?userid=${writer.id}" target="_blank"><h3>${writer.username }</h3></a>
 						<span class="post-meta-link"><i class="el-icon-time-alt"></i> 发布于<fmt:formatDate value="${thisblog.createtime}" type="both"/></span>
-						<span class="post-meta-link"><i class="el-icon-heart"></i> <span class="counter">${starnum }</span></span>
+						<span class="post-meta-link" id="starnum"><i class="el-icon-heart"></i> <span class="counter" id="newstarnum">${starnum }</span></span>
+						<span id="addstar" class="post-meta-link" hidden="hidden">添加收藏</span>
 						<span class="post-meta-link"><a href="#commentAnchor"><i class="el-icon-comment"></i> <span class="counter">${cmtnum }</span></a></span>
 					</div>
 					<div class="fade-up single-post-content text-left no-display animated fadeInUp">
@@ -290,11 +291,78 @@
 	<!-- //copyright  bottom-->	
 
 	<!-- JavaScript files-->
-	
+	<script type="text/javascript">
+		$("#starnum").hover(function(){
+			var userid=6
+			var blogid=${thisblog.id}
+
+			$.ajax({
+				url: "blog/findstar",
+				type: 'post',
+				data:{"userid": userid, "blogid" : blogid }  ,
+				success:function(response,status,xhr){
+					console.log(response)
+					console.log(status)
+					console.log(xhr);
+					addstar.innerHTML=response
+				},
+				error:function(){
+					alert("error");
+				}
+			});
+
+			$("#addstar").show();
+		},function(){
+			/* $("#addstar").hide(); */
+		});
+		$("#addstar").click(function(){
+			
+			var userid=6
+			var blogid=${thisblog.id}
+
+			var text=$("#addstar").text()
+			if(text == "添加收藏"){
+				$.ajax({
+					url: "blog/addstar",
+					type: 'post',
+					dataType:'JSON',
+					data:{"userid": userid, "blogid" : blogid }  ,
+					success:function(response,status,xhr){
+						console.log(response)
+						console.log(status)
+						console.log(xhr);
+						newstarnum.innerHTML=response
+					},
+					error:function(){
+						alert("error");
+					}
+				});
+				addstar.innerHTML="取消收藏"
+			}else{
+				$.ajax({
+					url: "blog/undostar",
+					type: 'post',
+					dataType:'JSON',
+					data:{"userid": userid, "blogid" : blogid }  ,
+					success:function(response,status,xhr){
+						console.log(response)
+						console.log(status)
+						console.log(xhr);
+						newstarnum.innerHTML=response
+					},
+					error:function(){
+						alert("error");
+					}
+				});
+				addstar.innerHTML="添加收藏"
+			}
+		});
+
+	</script>
 	<script src="<%=path%>/js/ups/bootstrap.js"></script>
 	<script src="<%=path%>/js/ups/plugins.js"></script>
 	<script src="<%=path%>/js/init.js"></script>
-
+	
 	<script type="text/javascript">
 	function testsubmit(obj) {
 		/* console.info($('#commentform').serialize())
@@ -338,8 +406,6 @@
 				console.log(response)
 				console.log(status)
 				console.log(xhr)
-/* 				alert("评论成功");
-                aftercmt(response); */
  				if (response==101) {
                         alert("评论成功");
                         aftercmt();
@@ -355,15 +421,8 @@
 	}
 	
 	function aftercmt() {
-/* 		console.info(data); */
 		$("#comment").val("");
-/* 		location.herf="#commentAnchor";
-		window.location.hash ="#commentAnchor";
-		$("#wholecomment").load(data); */
-		
  		location.reload(); 
-		/* var url = window.location.href;
-		window.location.replace( url + "#commentAnchor"); */
 	}
 	</script>
 	<script type="text/javascript" src="<%=path%>/js/custom/getsidebar.js"></script>
@@ -371,8 +430,8 @@
 	
 		var target = "<%=path %>/side/getrec"
 		var testpicurl = "<%=path%>/images/folio01.jpg"		
-		window.onload = getsidebar(target,"")
-	
+		window.onload=getsidebar(target,"")
+		
 	</script>
   </body>
 </html>
