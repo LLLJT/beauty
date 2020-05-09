@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ishang.beauty.dao.UserMapper">
+
+	<resultMap id="BaseResultMap" type="com.ishang.beauty.entity.User">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="username" jdbcType="VARCHAR" property="username" />
+		<result column="password" jdbcType="VARCHAR" property="password" />
+		<result column="roleid" jdbcType="INTEGER" property="roleid" />
+		<result column="sex" jdbcType="BIT" property="sex" />
+		<result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
+		<result column="school" jdbcType="VARCHAR" property="school" />
+		<result column="introdution" jdbcType="VARCHAR" property="introdution" />
+		<result column="profileimg" jdbcType="VARCHAR" property="profileimg" />
+		<result column="del_flag" jdbcType="BIT" property="delFlag" />
+	</resultMap>
+	<delete id="deleteByPrimaryKey"
+		parameterType="java.lang.Integer">
+		delete from user
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.ishang.beauty.entity.User">
+		insert into user (id, username, `password`, roleid, sex, birthday, school, introdution, profileimg, del_flag)
+		values (
+		#{id,jdbcType=INTEGER}, 
+		#{username,jdbcType=VARCHAR},
+		#{password,jdbcType=VARCHAR},
+		#{roleid,jdbcType=INTEGER}, 
+		#{sex,jdbcType=BIT}, 
+		#{birthday,jdbcType=TIMESTAMP},
+		#{school,jdbcType=VARCHAR}, 
+		#{introdution,jdbcType=VARCHAR},
+		#{profileimg,jdbcType=VARCHAR},
+		#{delFlag,jdbcType=BIT})
+	</insert>
+	<update id="updateByPrimaryKey" parameterType="com.ishang.beauty.entity.User">
+		update user
+		set 
+		username = #{username,jdbcType=VARCHAR},
+		`password` = #{password,jdbcType=VARCHAR},
+		roleid = #{roleid,jdbcType=INTEGER},
+		sex = #{sex,jdbcType=BIT},
+		birthday = #{birthday,jdbcType=TIMESTAMP},
+		school = #{school,jdbcType=VARCHAR},
+		introdution = #{introdution,jdbcType=VARCHAR},
+		profileimg = #{profileimg,jdbcType=VARCHAR},
+		del_flag = #{delFlag,jdbcType=BIT}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<select id="selectByPrimaryKey"
+		parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select id, username, `password`, roleid, sex, birthday, school, introdution, profileimg, del_flag
+		from user
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<select id="selectAll" resultMap="BaseResultMap">
+		select id, username, `password`, roleid, sex, birthday, school, introdution, profileimg, del_flag
+		from user
+	</select>
+
+</mapper>
