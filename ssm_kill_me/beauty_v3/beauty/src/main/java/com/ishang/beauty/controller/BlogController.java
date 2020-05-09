@@ -53,8 +53,8 @@ public class BlogController {
 	
 	@RequestMapping("/index")
 	public String loadindex(HttpServletRequest request,Model model){    
-		// TODO 1、获取关注up主的最近更新（一周内）的up主列表 dtype: List<User>
-		int userid=2; //测试数据：2
+		// 1、获取关注up主的最近更新（一周内）的up主列表 dtype: List<User>
+		int userid=2; //TODO 测试数据：2
 		// 从cookie获取当前登录的userid
 		List<User> updateuplist=service.selectlatestup(userid);
 		model.addAttribute("updateuplist", updateuplist);
@@ -116,7 +116,7 @@ public class BlogController {
 
 	@ResponseBody
 	@RequestMapping(value = "/newsearch",method = RequestMethod.POST)
-	public Map newsearchblog(@RequestParam("keyword") String keyword) {
+	public Map<String, List<Blog>> newsearchblog(@RequestParam("keyword") String keyword) {
 		System.out.println(keyword);
 		Blog record=new Blog();
 		record.setTitle(keyword);
@@ -132,5 +132,24 @@ public class BlogController {
 	}
 	
 	// TODO content.jsp add star
-	// TODO add entry for content
+	
+	@ResponseBody
+	@RequestMapping(value = "/side/getrec",method = RequestMethod.GET)
+    public Map<String, List<Blog>> recside(){    
+		Map<String, List<Blog>> map = new HashMap<String, List<Blog>>();
+		List<Blog> reclist=service.findbyentity(0, "rec", true); //不需要userid
+		map.put("rstlist", reclist);
+		return map;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/side/getupdate",method = RequestMethod.GET)
+    public Map<String, List<Blog>> updateside(@RequestParam("userid") String str_userid){    
+		Map<String, List<Blog>> map = new HashMap<String, List<Blog>>();
+		int userid=21 ;
+		if( !(str_userid ==null || str_userid.isEmpty())) userid=Integer.parseInt(str_userid);
+		List<Blog> updatelist=service.selectlatestblog(userid);
+		map.put("rstlist", updatelist);
+		return map;
+	}
 }

@@ -250,7 +250,6 @@
 	
 	<script type="text/javascript">
         $(function(){
-            
             $(".blogcontent").click(function(e){
 				console.info(e.target);
                 console.info(e.target.id);
@@ -259,7 +258,7 @@
 				window.location.href=url
             })
         })
- </script>
+ 	</script>
 
 </body>
 </html>

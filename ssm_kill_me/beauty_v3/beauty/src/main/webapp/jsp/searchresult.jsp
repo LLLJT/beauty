@@ -187,7 +187,7 @@ String searchname = request.getParameter("searchname");
 							+ '<div class="prices p-4">'
 							+ '<div class="prices-bottom text-center">'
 							+ '<img alt="一张图片"  src="' + picurl + '"  style="max-width: 200px; max-height: 160px;" />'
-							+ '<div class="my-2 btn"  id="' + id + '">'
+							+ '<div class="my-2 btn blogcontent"  id="' + id + '" title="Read More" onclick="opencontent(this)">'
 							+ '<h4>' + title + '</h4>'
 							+ '</div>'
 							+ '<p>' + content.substring(0,170) + ' ...</p>'
@@ -208,7 +208,7 @@ String searchname = request.getParameter("searchname");
 						+ '<img alt="一张图片"  src="' + picurl + '"  style="max-width: 200px; max-height: 160px;" />'
 						+ '</div>'
 						+ '<div class="col-md-9">'
-						+ '<div class="my-2 btn"  id="' + id + '">'
+						+ '<div class="my-2 btn blogcontent"  id="' + id + '" title="Read More"  onclick="opencontent(this)">'
 						+ '<h4>' + title + '</h4>'
 						+ '</div>'
 						+ '<p>' + content.substring(0,170) + ' ...</p>'
@@ -218,8 +218,16 @@ String searchname = request.getParameter("searchname");
 		}
 		rstdiv.innerHTML=myhtml	
 		}
-
+	
+		function opencontent(obj) {
+			/* console.info(obj); */
+			console.info(obj.id);
+			var url='<%=path%>/content?blogid=' +obj.id
+			console.info(url)
+			window.location.href=url
+		}
 	</script>
+
 	
 </body>
 </html>

@@ -151,19 +151,8 @@
 
 				<div class="col-sm-3 col-sm-offset-1 single-post-sidebar">
 					<h3 class="sidebar-title mt0 mb-5">最近更新</h3>
-
-					<div class="row sidebar-post">
-						<div class="col-md-4">
-							<img class="sb-img" src="<%=path%>/images/folio01.jpg" alt="Alt">
-						</div>
-						<div class="col-md-8 sidebar-post-content">
-							<h4>Blog Post A</h4>
-							<div class="blog-meta-main">
-								<span class="post-meta-link"><i class="fa fa-clock-o"></i> 更新于 2分钟前</span>
-							</div>
-						</div>
-					</div>
-
+					
+					<div id="rstdiv"></div>
 
 				</div><!-- col-md-6 -->	
 			</div>
@@ -178,8 +167,7 @@
 			<div class="d-md-flex px-md-3 position-relative text-center">
 				<!-- copyright -->
 				<div class="copy_right mx-md-auto mb-md-0 mb-3">
-					<p class="text-bl let">Copyright &copy; 2020. reachableBeauty
-						All rights reserved.</p>
+					<p class="text-bl let">Copyright &copy; 2020. reachableBeauty All rights reserved.</p>
 				</div>
 				<!-- //copyright -->
 				<!-- move top icon -->
@@ -196,7 +184,18 @@
 	
 	<script src="<%=path%>/js/bootstrap/bootstrap.min.js"></script>
 	<script src="<%=path%>/js/ups/plugins.js"></script>
-	<script src="<%=path%>js/ups/init.js"></script>
+	<script src="<%=path%>/js/ups/init.js"></script>
+
+
+	<script type="text/javascript" src="<%=path%>/js/custom/getsidebar.js"></script>
+	<script type="text/javascript">
+	
+		var target = "<%=path %>/side/getupdate"
+		var testpicurl = "<%=path%>/images/folio01.jpg"
+		
+		window.onload = getsidebar(target,"21")
+
+	</script>
 
 </body>
 </html>

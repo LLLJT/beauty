@@ -261,18 +261,10 @@
 				
 				<div class="col-sm-3 col-sm-offset-1 single-post-sidebar">
 					<h3 class="sidebar-title mt0 mb-5">热门推荐</h3>
-					<div class="row sidebar-post">
-						<div class="col-md-4">
-							<img class="sb-img" src="<%=path%>/images/folio01.jpg" alt="Alt">
-						</div>
-						<div class="col-md-8 sidebar-post-content">
-							<h4>Blog Post A</h4>
-							<div class="blog-meta-main">
-								<span class="post-meta-link"><i class="el-icon-time-alt"></i> 更新于 2分钟前</span>
-							</div>
-						</div>
-					</div>
-				</div><!-- col-md-6 -->	
+					
+					<div id="rstdiv"></div>
+				
+				</div>
 			</div>
 		</section>
 	</div>
@@ -288,8 +280,8 @@
 				</div>
 				<!-- //copyright -->
 				<!-- move top icon -->
-				<a href="#home" class="move-top text-center"> <span
-					class="fa fa-level-up" aria-hidden="true"></span>
+				<a href="#home" class="move-top text-center"> 
+					<span class="fa fa-level-up" aria-hidden="true"></span>
 				</a>
 				<!-- //move top icon -->
 			</div>
@@ -360,47 +352,6 @@
 			}
 		});
 
-		/* var cmtForm = $("#commentform").serializeArray()
-        var objs = []
-        $.each(cmtForm,function (i,n) {
-            var obj = {}
-            obj[n.name]=n.value
-            objs.push(obj)
-        })
-        var data = JSON.stringify(objs) */
-        
-         /*var userid= $("#userid").val();
-		var blogid=$("#blogid").val();
-        var comment=$("#comment").val();
-        
-        var cmt = {
-			"userid" : userid ,
-			"blogid" : blogid ,
-			"comment" : comment
-        };
-        var data = JSON.stringify(cmt)
-        console.info(data)
-		
-		$.ajax({
-            //几个参数需要注意一下
-                type: "post",//方法类型
-                dataType: "json",//预期服务器返回的数据类型
-                url: "comment/normal/add" ,//url
-                contentType:"application/json",
-                data: data,
-                success: function (result) {
-                    console.log(result);//打印服务端返回的数据(调试用)
-                    if (result==101) {
-                        alert("成功");
-                    }else{
-                    	 alert("插入失败,请重新插入");
-                    }
-                    ;
-                },
-                error : function() {
-                    alert("插入失败,请重新插入");
-                }
-            }); */
 	}
 	
 	function aftercmt() {
@@ -415,6 +366,13 @@
 		window.location.replace( url + "#commentAnchor"); */
 	}
 	</script>
+	<script type="text/javascript" src="<%=path%>/js/custom/getsidebar.js"></script>
+	<script type="text/javascript">
 	
+		var target = "<%=path %>/side/getrec"
+		var testpicurl = "<%=path%>/images/folio01.jpg"		
+		window.onload = getsidebar(target,"")
+	
+	</script>
   </body>
 </html>
