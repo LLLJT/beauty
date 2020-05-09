@@ -4,11 +4,11 @@ import com.ishang.beauty.entity.Comment;
 import java.util.List;
 
 public interface CommentMapper {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Integer cid);
 
     int insert(Comment record);
 
-    Comment selectByPrimaryKey(Integer id);
+    Comment selectByPrimaryKey(Integer cid);
 
     List<Comment> selectAll();
 

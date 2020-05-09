@@ -1,68 +1,59 @@
 package com.ishang.beauty.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Comment implements Serializable {
-    private Integer id;
+    private Integer cid;
 
-    private Integer userid;
+    private Integer aid;
 
-    private Integer blogid;
+    private Integer uid;
 
-    private Integer cmtid;
+    private Date date;
 
-    private String comment;
-
-    private Boolean delFlag;
+    private String content;
 
     private static final long serialVersionUID = 1L;
 
-    public Integer getId() {
-        return id;
+    public Integer getCid() {
+        return cid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setCid(Integer cid) {
+        this.cid = cid;
     }
 
-    public Integer getUserid() {
-        return userid;
+    public Integer getAid() {
+        return aid;
     }
 
-    public void setUserid(Integer userid) {
-        this.userid = userid;
+    public void setAid(Integer aid) {
+        this.aid = aid;
     }
 
-    public Integer getBlogid() {
-        return blogid;
+    public Integer getUid() {
+        return uid;
     }
 
-    public void setBlogid(Integer blogid) {
-        this.blogid = blogid;
+    public void setUid(Integer uid) {
+        this.uid = uid;
     }
 
-    public Integer getCmtid() {
-        return cmtid;
+    public Date getDate() {
+        return date;
     }
 
-    public void setCmtid(Integer cmtid) {
-        this.cmtid = cmtid;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
-    public String getComment() {
-        return comment;
+    public String getContent() {
+        return content;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment == null ? null : comment.trim();
-    }
-
-    public Boolean getDelFlag() {
-        return delFlag;
-    }
-
-    public void setDelFlag(Boolean delFlag) {
-        this.delFlag = delFlag;
+    public void setContent(String content) {
+        this.content = content == null ? null : content.trim();
     }
 
     @Override
@@ -71,12 +62,11 @@ public class Comment implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", userid=").append(userid);
-        sb.append(", blogid=").append(blogid);
-        sb.append(", cmtid=").append(cmtid);
-        sb.append(", comment=").append(comment);
-        sb.append(", delFlag=").append(delFlag);
+        sb.append(", cid=").append(cid);
+        sb.append(", aid=").append(aid);
+        sb.append(", uid=").append(uid);
+        sb.append(", date=").append(date);
+        sb.append(", content=").append(content);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

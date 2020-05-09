@@ -221,7 +221,17 @@ public class UserController {
 		return "backuserList";
 		
 	}
+	@RequestMapping(value = "/toindex")
+	public String index() {
+		return "index";
+		
+	}
+	
+	
+	
+	
 
+	
 	
 	
 	

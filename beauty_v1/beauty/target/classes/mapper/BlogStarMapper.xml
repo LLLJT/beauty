@@ -7,6 +7,28 @@
     <result column="blogid" jdbcType="INTEGER" property="blogid" />
     <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
   </resultMap>
+  
+   <resultMap id="QueryMap" type="com.ishang.beauty.entity.Blog">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="typeid" jdbcType="INTEGER" property="typeid" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="modifytime" jdbcType="TIMESTAMP" property="modifytime" />
+    <result column="rec_flag" jdbcType="BIT" property="recFlag" />
+    <result column="pic1" jdbcType="VARCHAR" property="pic1" />
+    <result column="pic_url_1" jdbcType="VARCHAR" property="picUrl1" />
+    <result column="pic2" jdbcType="VARCHAR" property="pic2" />
+    <result column="pic_url_2" jdbcType="VARCHAR" property="picUrl2" />
+    <result column="pic3" jdbcType="VARCHAR" property="pic3" />
+    <result column="pic_url_3" jdbcType="VARCHAR" property="picUrl3" />
+    <result column="likenum" jdbcType="INTEGER" property="likenum" />
+    <result column="del_flag" jdbcType="BIT" property="delFlag" />
+  </resultMap>
+  
+  
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from blog_star
     where id = #{id,jdbcType=INTEGER}
@@ -33,4 +55,24 @@
     select id, userid, blogid, createtime
     from blog_star
   </select>
+   <!-- 获取收藏数 -->
+  <select id="selectBlogCount" resultMap="BaseResultMap">
+  select count(*) from blog_star where userid=2
+  </select>
+  
+  <!-- 获取收藏列表 -->
+  <select id="selectBlogList" resultMap="QueryMap">
+  select *
+  from blog
+  where id in (
+  select blogid from blog_star where userid=2
+  )
+  
+  
+  </select>
+  
+  
+  
+  
+  
 </mapper>

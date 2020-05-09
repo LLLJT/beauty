@@ -2,41 +2,37 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ishang.beauty.dao.CommentMapper">
   <resultMap id="BaseResultMap" type="com.ishang.beauty.entity.Comment">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="userid" jdbcType="INTEGER" property="userid" />
-    <result column="blogid" jdbcType="INTEGER" property="blogid" />
-    <result column="cmtid" jdbcType="INTEGER" property="cmtid" />
-    <result column="comment" jdbcType="VARCHAR" property="comment" />
-    <result column="del_flag" jdbcType="BIT" property="delFlag" />
+    <id column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="aid" jdbcType="INTEGER" property="aid" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="date" jdbcType="TIMESTAMP" property="date" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from comment
-    where id = #{id,jdbcType=INTEGER}
+    where cid = #{cid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.ishang.beauty.entity.Comment">
-    insert into comment (id, userid, blogid, 
-      cmtid, `comment`, del_flag
-      )
-    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{blogid,jdbcType=INTEGER}, 
-      #{cmtid,jdbcType=INTEGER}, #{comment,jdbcType=VARCHAR}, #{delFlag,jdbcType=BIT}
-      )
+    insert into comment (cid, aid, `uid`, 
+      `date`, content)
+    values (#{cid,jdbcType=INTEGER}, #{aid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, 
+      #{date,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.ishang.beauty.entity.Comment">
     update comment
-    set userid = #{userid,jdbcType=INTEGER},
-      blogid = #{blogid,jdbcType=INTEGER},
-      cmtid = #{cmtid,jdbcType=INTEGER},
-      `comment` = #{comment,jdbcType=VARCHAR},
-      del_flag = #{delFlag,jdbcType=BIT}
-    where id = #{id,jdbcType=INTEGER}
+    set aid = #{aid,jdbcType=INTEGER},
+      `uid` = #{uid,jdbcType=INTEGER},
+      `date` = #{date,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where cid = #{cid,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, userid, blogid, cmtid, `comment`, del_flag
+    select cid, aid, `uid`, `date`, content
     from comment
-    where id = #{id,jdbcType=INTEGER}
+    where cid = #{cid,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, userid, blogid, cmtid, `comment`, del_flag
+    select cid, aid, `uid`, `date`, content
     from comment
   </select>
 </mapper>

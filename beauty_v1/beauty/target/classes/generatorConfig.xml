@@ -21,7 +21,7 @@
         <!--数据库链接地址账号密码-->      
         <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/beauty?useUnicode=true&amp;zeroDateTimeBehavior=convertToNull&amp;autoReconnect=true&amp;characterEncoding=utf-8&amp;serverTimezone=UTC" 
     				driverClass="com.mysql.cj.jdbc.Driver" 
-    				password="323232" 
+    				password="123456" 
     				userId="root" />
         
         <!-- 类型转换 -->
@@ -46,13 +46,13 @@
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
 
- 		<table tableName="blog"></table>
+ 	<!-- 	<table tableName="blog"></table>
 	    <table tableName="blog_star"></table>
 	    <table tableName="blog_type"></table>
-	    <table tableName="comment"></table>
+	    <table tableName="comment"></table> -->
 	    <table tableName="follow"></table>
-	    <table tableName="user"></table>
-	    <table tableName="user_role"></table>
+	  <!--   <table tableName="user"></table> -->
+	    <!-- <table tableName="user_role"></table> -->
 	       
 
     </context>

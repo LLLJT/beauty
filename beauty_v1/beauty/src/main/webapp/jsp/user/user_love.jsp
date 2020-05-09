@@ -23,6 +23,7 @@
 	            <div class="row mb60 text-center">
 	                <div class="col-sm-6 text-left match-height">
 	                    <h3 class="section-title">我的收藏</h3>
+	                    <h5>收藏数：${bcount}</h5>
 	                </div>
 	            </div>
 	        </div>   

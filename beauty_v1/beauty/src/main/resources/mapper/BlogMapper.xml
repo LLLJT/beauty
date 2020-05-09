@@ -10,9 +10,13 @@
     <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
     <result column="modifytime" jdbcType="TIMESTAMP" property="modifytime" />
     <result column="rec_flag" jdbcType="BIT" property="recFlag" />
+    <result column="pic1" jdbcType="VARCHAR" property="pic1" />
     <result column="pic_url_1" jdbcType="VARCHAR" property="picUrl1" />
+    <result column="pic2" jdbcType="VARCHAR" property="pic2" />
     <result column="pic_url_2" jdbcType="VARCHAR" property="picUrl2" />
+    <result column="pic3" jdbcType="VARCHAR" property="pic3" />
     <result column="pic_url_3" jdbcType="VARCHAR" property="picUrl3" />
+    <result column="likenum" jdbcType="INTEGER" property="likenum" />
     <result column="del_flag" jdbcType="BIT" property="delFlag" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
@@ -22,14 +26,16 @@
   <insert id="insert" parameterType="com.ishang.beauty.entity.Blog">
     insert into blog (id, title, userid, 
       typeid, content, createtime, 
-      modifytime, rec_flag, pic_url_1, 
-      pic_url_2, pic_url_3, del_flag
-      )
+      modifytime, rec_flag, pic1, 
+      pic_url_1, pic2, pic_url_2, 
+      pic3, pic_url_3, likenum, 
+      del_flag)
     values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, 
       #{typeid,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
-      #{modifytime,jdbcType=TIMESTAMP}, #{recFlag,jdbcType=BIT}, #{picUrl1,jdbcType=VARCHAR}, 
-      #{picUrl2,jdbcType=VARCHAR}, #{picUrl3,jdbcType=VARCHAR}, #{delFlag,jdbcType=BIT}
-      )
+      #{modifytime,jdbcType=TIMESTAMP}, #{recFlag,jdbcType=BIT}, #{pic1,jdbcType=VARCHAR}, 
+      #{picUrl1,jdbcType=VARCHAR}, #{pic2,jdbcType=VARCHAR}, #{picUrl2,jdbcType=VARCHAR}, 
+      #{pic3,jdbcType=VARCHAR}, #{picUrl3,jdbcType=VARCHAR}, #{likenum,jdbcType=INTEGER}, 
+      #{delFlag,jdbcType=BIT})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.ishang.beauty.entity.Blog">
     update blog
@@ -40,21 +46,25 @@
       createtime = #{createtime,jdbcType=TIMESTAMP},
       modifytime = #{modifytime,jdbcType=TIMESTAMP},
       rec_flag = #{recFlag,jdbcType=BIT},
+      pic1 = #{pic1,jdbcType=VARCHAR},
       pic_url_1 = #{picUrl1,jdbcType=VARCHAR},
+      pic2 = #{pic2,jdbcType=VARCHAR},
       pic_url_2 = #{picUrl2,jdbcType=VARCHAR},
+      pic3 = #{pic3,jdbcType=VARCHAR},
       pic_url_3 = #{picUrl3,jdbcType=VARCHAR},
+      likenum = #{likenum,jdbcType=INTEGER},
       del_flag = #{delFlag,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, title, userid, typeid, content, createtime, modifytime, rec_flag, pic_url_1, 
-    pic_url_2, pic_url_3, del_flag
+    select id, title, userid, typeid, content, createtime, modifytime, rec_flag, pic1, 
+    pic_url_1, pic2, pic_url_2, pic3, pic_url_3, likenum, del_flag
     from blog
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, title, userid, typeid, content, createtime, modifytime, rec_flag, pic_url_1, 
-    pic_url_2, pic_url_3, del_flag
+    select id, title, userid, typeid, content, createtime, modifytime, rec_flag, pic1, 
+    pic_url_1, pic2, pic_url_2, pic3, pic_url_3, likenum, del_flag
     from blog
   </select>
 </mapper>

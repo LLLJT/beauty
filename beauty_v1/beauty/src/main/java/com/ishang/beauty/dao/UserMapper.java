@@ -27,4 +27,9 @@ public interface UserMapper {
 	 */
 	int updateImg(User record);
 	
+	
+	
+	
+	
+	
 }

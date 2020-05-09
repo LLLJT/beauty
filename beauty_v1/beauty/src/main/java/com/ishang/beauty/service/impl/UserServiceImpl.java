@@ -5,8 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ishang.beauty.dao.BlogStarMapper;
+import com.ishang.beauty.dao.UserFollowMapper;
 import com.ishang.beauty.dao.UserMapper;
+import com.ishang.beauty.entity.Blog;
 import com.ishang.beauty.entity.User;
+import com.ishang.beauty.entity.UserFollow;
 import com.ishang.beauty.service.UserService;
 
 @Service
@@ -14,6 +18,11 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserMapper dao;
+	
+	@Autowired
+	private UserFollowMapper followdao;
+	
+	@Autowired BlogStarMapper blogdao;
 
 	public List<User> findall() {
 		// TODO Auto-generated method stub
@@ -63,6 +72,36 @@ public class UserServiceImpl implements UserService {
 	public List<User> findbyid(Integer id) {
 		// TODO 自动生成的方法存根
 		return dao.selectByPrimaryKey(id);
+	}
+
+	public int followcount() {
+		// TODO 自动生成的方法存根
+		return followdao.selectFanCount();
+	}
+
+	public List<UserFollow> followList() {
+		// TODO 自动生成的方法存根
+		return followdao.selectFollowList();
+	}
+
+	public int fancount() {
+		// TODO 自动生成的方法存根
+		return followdao.selectFanCount();
+	}
+
+	public List<UserFollow> fanList() {
+		// TODO 自动生成的方法存根
+		return followdao.selectFanList();
+	}
+
+	public int blogcount() {
+		// TODO 自动生成的方法存根
+		return blogdao.selectBlogCount();
+	}
+
+	public List<Blog> blogList() {
+		// TODO 自动生成的方法存根
+		return blogdao.selectBlogList();
 	}
 
 }

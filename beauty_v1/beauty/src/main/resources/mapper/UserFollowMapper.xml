@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ishang.beauty.dao.UserFollowMapper">
+  <resultMap id="BaseResultMap" type="com.ishang.beauty.entity.UserFollow">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="followerid" jdbcType="INTEGER" property="followerid" />
+    <result column="uploaderid" jdbcType="INTEGER" property="uploaderid" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+  </resultMap>
+  
+  <resultMap id="QueryMap"
+		type="com.ishang.beauty.entity.User">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="username" jdbcType="VARCHAR" property="username" />
+		<result column="password" jdbcType="VARCHAR" property="password" />
+		<result column="roleid" jdbcType="INTEGER" property="roleid" />
+		<result column="sex" jdbcType="BIT" property="sex" />
+		<result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
+		<result column="school" jdbcType="VARCHAR" property="school" />
+		<result column="introduction" jdbcType="VARCHAR" property="introduction" />
+		<result column="profileimg" jdbcType="VARCHAR" property="profileimg" />
+		<result column="del_flag" jdbcType="BIT" property="del_flag" />
+	</resultMap>
+  
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user_follow
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ishang.beauty.entity.UserFollow">
+    insert into user_follow (id, followerid, uploaderid, 
+      createtime)
+    values (#{id,jdbcType=INTEGER}, #{followerid,jdbcType=INTEGER}, #{uploaderid,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.ishang.beauty.entity.UserFollow">
+    update user_follow
+    set followerid = #{followerid,jdbcType=INTEGER},
+      uploaderid = #{uploaderid,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, followerid, uploaderid, createtime
+    from user_follow
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, followerid, uploaderid, createtime
+    from user_follow
+  </select>
+ <!-- 获取关注数 -->
+  <select id="selectFollowCount" resultMap="BaseResultMap">
+  select count(*) 
+  from user_follow
+  where followerid=2
+  </select>
+  
+  <!-- 获取关注列表 -->
+  <select id="selectFollowList" resultMap="QueryMap">
+  select *
+  from user
+  where id in(select id from user_follow where followerid=2)
+  </select>
+ <!-- 获取粉丝数 -->
+ <select id="selectFanCount" resultType="java.lang.Integer">
+ select count(*)
+ from user_follow
+ where uploaderid=3
+ </select>
+ <!-- 获取粉丝列表 -->
+ <select id="selectFanList" resultMap="QueryMap">
+ select *
+ from user
+ where id in(select id from user_follow where uploaderid=3)
+ </select>
+ 
+  
+  
+  
+</mapper>

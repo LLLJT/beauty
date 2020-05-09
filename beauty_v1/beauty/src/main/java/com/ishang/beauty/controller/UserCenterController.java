@@ -2,28 +2,26 @@ package com.ishang.beauty.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.Format;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.apache.catalina.Session;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
+import com.ishang.beauty.entity.Blog;
 import com.ishang.beauty.entity.User;
+import com.ishang.beauty.entity.UserFollow;
 import com.ishang.beauty.service.impl.UserServiceImpl;
+
 
 /**
  * 
@@ -36,11 +34,12 @@ public class UserCenterController {
 	@Autowired
 	private UserServiceImpl service;
 
-	@RequestMapping("/user_follow")
-	public String user_follow() {
-		return "user/user_follow";
+	/*
+	 * @RequestMapping("/user_follow") public String user_follow() { return
+	 * "user/user_follow";
+	 */
 
-	}
+	
 
 	// 修改头像
 	@RequestMapping("/toupdateimg")
@@ -146,17 +145,58 @@ public class UserCenterController {
 		return "user/user_setting";
 		
 	}
-	//转到user_follow.jsp
-	@RequestMapping("/tofollow")
-	public String Tofollow() {
-		return "user/user_follow";
-		
-	}
+	
+	
 	@RequestMapping("/tolove")
 	public String Tolove() {
 		return "user/user_love";
 		
 	}
+	
+	//获取关注数
+	
+	//获取关注列表
+	@RequestMapping("/user_follow")
+	public String followList(Model model) {
+		int fcount=service.followcount();
+		System.out.println(fcount);
+		
+		List<UserFollow>flist= service.followList();
+		
+		model.addAttribute("fcount",fcount);
+		model.addAttribute("flist", flist);
+		
+		System.out.println(flist);
+		
+		model.addAttribute("flist", flist);
+		return "user/user_follow";
+	}
+	//收藏数
+	@RequestMapping("/blogCount")
+	public String blogCount(Model model) {
+		int bcount=service.blogcount();
+		
+		System.out.println(bcount);
+		model.addAttribute("bcount", bcount);
+		return "user/user_love";	
+		
+	}
+	//收藏列表
+	@RequestMapping("/blogList")
+	public String blogList(Model model) {
+		List<Blog> blist=service.blogList();
+		System.out.println(blist);
+		model.addAttribute("blist", blist);
+		return "user/user_love";
+		
+		
+		
+		
+	}
+	
+	
+	
+	
 	
 	
 	//从数据库读入头像路径

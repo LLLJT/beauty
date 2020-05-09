@@ -34,7 +34,7 @@
 					<!-- logo -->
 					<div id="logo">
 						<h1>
-							<a href="index.jsp"><span class="fa fa-linode mr-2"></span>reachableBeauty</a>
+							<a href="${pageContext.request.contextPath}/user/toindex"><span class="fa fa-linode mr-2"></span>reachableBeauty</a>
 						</h1>
 					</div>
 					<!-- //logo -->
@@ -60,9 +60,9 @@
 
 						<!-- //search -->
 						<!-- 登出&个人中心 -->
-						<a class="dwn-w3ls btn mr-1" href="usercenter.jsp" target="_blank">
+						<a class="dwn-w3ls btn mr-1" href="${pageContext.request.contextPath}/center/tocenter" target="_blank">
 							<span class="fa fa-user-circle-o" title="个人中心"></span>
-						</a> <a class="dwn-w3ls btn" href="login.jsp" target="_self"> <span
+						</a> <a class="dwn-w3ls btn" href="${pageContext.request.contextPath}/user/logout" target="_self"> <span
 							class="fa fa-sign-out" title="退出登录"></span>
 						</a>
 						<!-- //logout&usercenter -->
@@ -77,14 +77,14 @@
 			<div class="container">
 				<div class="row" style="width: 100%; height: 300px">
 					<div class="up_center">
-						<a href="index.jsp"><h2>xx的个人中心</h2></a>
+						<h4><label id="centername" class="centername" style="color:white"></label></h4>
 					</div>
 					<div class="col-sm-12">
 						<div id="navbar-1">
 							<ul class="nav navbar-nav navbar-center text-center">
 								<!-- 将user_info.jsp更改为toinfo,其他几个同。通过下面Js实现接口跳转 -->
 								<li><a href="#" role="button"
-									onclick="change_frame('tofollow')"> <span
+									onclick="change_frame('user_follow')"> <span
 										class="fa fa-heart-o mr-2"></span>关注
 								</a></li>
 								<li><a href="#" role="button"
@@ -113,7 +113,7 @@
 	<!-- //main banner -->
 
 	<!-- 子页面 -->
-	<iframe id="userframe" src="user/user_follow.jsp"> </iframe>
+	<iframe id="userframe" src="${pageContext.request.contextPath}/center/user_follow"> </iframe>
 
 	<!-- //子页面 -->
 
@@ -125,8 +125,26 @@
 	<script src="../js/js.cookie.min.js"></script>
 	<script src="../js/front.js"></script> -->
 
-	<script type="text/javascript">
+<!-- JavaScript files-->
+	<script src="<%=path%>/js/jquery/jquery.min.js"></script>
+	<script src="<%=path%>/js/popper.js/umd/popper.min.js"></script>
+	<!-- popper.min.js 用于弹窗、提示、下拉菜单 -->
+	<script src="<%=path%>/js/bootstrap/bootstrap.min.js"></script>
+	<script src="<%=path%>/js/jquery.cookie/jquery.cookie.js"> </script>
+	<script src="<%=path%>/js/js.cookie.min.js"></script>
+	<script src="<%=path%>/js/front.js"></script>
 
+	<script type="text/javascript">
+	$(function(){
+		var cookiestr=getCookie("user");
+		if (cookiestr != "")
+			var cookiename = cookiestr.split("#")[0];
+		$("#centername").text(cookiename+"的个人空间");
+			
+		
+	});	
+	
+	
 		function change_frame(value) {
 			//beauty/center/selectInfo?id=xxx
 			//从cookie中取出cookieid

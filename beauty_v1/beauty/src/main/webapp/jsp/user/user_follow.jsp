@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +25,9 @@
 			<div class="container">
 				<div class="row mb60 text-center">
 					<div class="col-sm-6 text-left match-height">
+						
 						<h3 class="section-title">我的关注</h3>
+						<h5>关注数:<c:out value="${fcount}" escapeXml="true" default="0"></c:out></h5>
 					</div>
 				</div>
 			</div>
