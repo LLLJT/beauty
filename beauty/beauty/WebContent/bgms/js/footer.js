@@ -1,0 +1,14 @@
+document.writeln("			<footer class=\'footer bg-white shadow align-self-end py-3 px-xl-5 w-100\'>");
+document.writeln("				<div class=\'container-fluid\'>");
+document.writeln("					<div class=\'row\'>");
+document.writeln("						<div class=\'col-md-6 text-center text-md-left text-primary\'>");
+document.writeln("							<p class=\'mb-2 mb-md-0\'></p>");
+document.writeln("						</div>");
+document.writeln("						<div class=\'col-md-6 text-center text-md-right text-gray-400\'>");
+document.writeln("							<p class=\'mb-0\'>");
+document.writeln("								Copyright &copy; 2019. eLeaf Group8301 All rights reserved.");
+document.writeln("							</p>");
+document.writeln("						</div>");
+document.writeln("					</div>");
+document.writeln("				</div>");
+document.writeln("			</footer>");

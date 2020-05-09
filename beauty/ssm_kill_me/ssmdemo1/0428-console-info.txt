@@ -1,0 +1,118 @@
+Error creating bean with name 'sqlSessionFactory' defined in class path resource [spring-db.xml]: 
+	Initialization of bean failed; 
+	
+nested exception is org.springframework.beans.TypeMismatchException: 
+	Failed to convert property value of type 'java.lang.String' to required type 'org.springframework.core.io.Resource[]' for property 'mapperLocations'; 
+	
+nested exception is java.lang.IllegalArgumentException: 
+	Could not resolve resource location pattern [classpath:com/ishang/ssmdemo1/mapper/*.xml]: 
+	class path resource [com/ishang/ssmdemo1/mapper/] cannot be resolved to URL because it does not exist
+
+	---
+	
+IOException parsing XML document from ServletContext resource [/WEB-INF/spring-mvc.xml]; 
+
+nested exception is java.io.FileNotFoundException: 
+	Could not open ServletContext resource [/WEB-INF/spring-mvc.xml]
+	
+	---
+
+Cannot find class [org.springframework.http.converter.json.MappingJacksonHttpMessageConverter] for bean with name 'mappingJacksonHttpMessageConverter' defined in class path resource [spring-mvc.xml]; 
+
+nested exception is java.lang.ClassNotFoundException: 
+	org.springframework.http.converter.json.MappingJacksonHttpMessageConverter
+	
+	---
+	
+Error creating bean with name 'mappingJacksonHttpMessageConverter': 
+	Lookup method resolution failed; 
+	
+nested exception is java.lang.IllegalStateException: 
+	Failed to introspect Class [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter] from ClassLoader [ParallelWebappClassLoader
+												context: ssmdemo1
+												delegate: false
+												----------> Parent Classloader: java.net.URLClassLoader@1476842 ]
+	
+	---
+Error creating bean with name 'mappingJacksonHttpMessageConverter': 
+	Lookup method resolution failed; 
+	
+nested exception is java.lang.IllegalStateException: 
+	Failed to introspect Class [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter] from ClassLoader [ParallelWebappClassLoader
+  context: ssmdemo1
+  delegate: false
+----------> Parent Classloader:
+java.net.URLClassLoader@1476842
+]	
+
+	---
+	
+Error creating bean with name 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping': 
+	Invocation of init method failed; 
+	
+nested exception is org.springframework.beans.factory.CannotLoadBeanClassException: 
+	Cannot find class [org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter] for bean with name 'org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter#0' defined in class path resource [spring-mvc.xml]; 
+	
+nested exception is java.lang.ClassNotFoundException: 
+	org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter
+	
+Related cause: 
+	org.springframework.beans.factory.CannotLoadBeanClassException: 
+		Cannot find class [org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter] for bean with name 'org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter#0' defined in class path resource [spring-mvc.xml]; 
+		
+	nested exception is java.lang.ClassNotFoundException: 
+		org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter
+		
+	---
+	
+org.springframework.beans.factory.UnsatisfiedDependencyException: 
+	Error creating bean with name 'userController': 
+		Unsatisfied dependency expressed through field 'service'; 
+		
+nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: 
+	No qualifying bean of type 'com.ishang.ssmdemo1.service.UserService' available: 
+		expected at least 1 bean which qualifies as autowire candidate. 
+		Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+		
+	---
+	
+org.springframework.beans.factory.BeanCreationException: 
+	Error creating bean with name 'userController': 
+		Injection of resource dependencies failed; 
+		
+nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: 
+	No qualifying bean of type 'com.ishang.ssmdemo1.service.UserService' available: 
+		expected at least 1 bean which qualifies as autowire candidate. 
+		Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
+		
+	---
+	
+org.springframework.beans.factory.UnsatisfiedDependencyException: 
+	Error creating bean with name 'userController': 
+		Unsatisfied dependency expressed through field 'userService'; 
+		
+nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: 
+	No qualifying bean of type 'com.ishang.ssmdemo1.service.UserService' available: 
+		expected at least 1 bean which qualifies as autowire candidate. 
+		Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+		
+	---
+	
+Logging initialized using 'class org.apache.ibatis.logging.stdout.StdOutImpl' adapter.
+
+java.lang.NoClassDefFoundError: ch/qos/logback/core/joran/spi/JoranException
+	at ch.qos.logback.ext.spring.web.LogbackConfigListener.contextInitialized(Unknown Source)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:4699)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5165)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1412)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1402)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.lang.ClassNotFoundException: ch.qos.logback.core.joran.spi.JoranException
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1358)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1180)
+	... 10 more
+		
