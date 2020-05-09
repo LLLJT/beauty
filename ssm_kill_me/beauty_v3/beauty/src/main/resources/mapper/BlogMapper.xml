@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ishang.beauty.dao.BlogMapper">
+
+  <resultMap id="BaseResultMap" type="com.ishang.beauty.entity.Blog">
+	  <id column="id" jdbcType="INTEGER" property="id" />
+	  <result column="title" jdbcType="VARCHAR" property="title" />
+	  <result column="userid" jdbcType="INTEGER" property="userid" />
+	  <result column="typeid" jdbcType="INTEGER" property="typeid" />
+	  <result column="content" jdbcType="VARCHAR" property="content" />
+	  <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+	  <result column="modifytime" jdbcType="TIMESTAMP" property="modifytime" />
+	  <result column="rec_flag" jdbcType="BIT" property="recFlag" />
+	  <result column="pic1" jdbcType="VARCHAR" property="pic1" />
+	  <result column="pic_url_1" jdbcType="VARCHAR" property="picUrl1" />
+	  <result column="pic2" jdbcType="VARCHAR" property="pic2" />
+	  <result column="pic_url_2" jdbcType="VARCHAR" property="picUrl2" />
+	  <result column="pic3" jdbcType="VARCHAR" property="pic3" />
+	  <result column="pic_url_3" jdbcType="VARCHAR" property="picUrl3" />
+	  <result column="likenum" jdbcType="INTEGER" property="likenum" />
+	  <result column="del_flag" jdbcType="BIT" property="delFlag" />
+  </resultMap>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from blog
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insert" parameterType="com.ishang.beauty.entity.Blog">
+	insert into blog (id, title, userid, typeid, content, createtime, modifytime, rec_flag, pic1,
+	pic_url_1, pic2, pic_url_2, pic3, pic_url_3, likenum, del_flag)
+	values (
+		#{id,jdbcType=INTEGER},
+		#{title,jdbcType=VARCHAR},
+		#{userid,jdbcType=INTEGER},
+		#{typeid,jdbcType=INTEGER}, 
+		#{content,jdbcType=VARCHAR}, 
+		#{createtime,jdbcType=TIMESTAMP},
+		#{modifytime,jdbcType=TIMESTAMP}, 
+		#{recFlag,jdbcType=BIT},
+		#{pic1,jdbcType=VARCHAR}, #{picUrl1,jdbcType=VARCHAR}, 
+		#{pic2,jdbcType=VARCHAR},  #{picUrl2,jdbcType=VARCHAR},
+		#{pic3,jdbcType=VARCHAR}, #{picUrl3,jdbcType=VARCHAR},
+		#{likenum,jdbcType=INTEGER},
+		#{delFlag,jdbcType=BIT})
+  </insert>
+  
+  <update id="updateByPrimaryKey" parameterType="com.ishang.beauty.entity.Blog">
+	update blog
+	set
+		title = #{title,jdbcType=VARCHAR},
+		userid = #{userid,jdbcType=INTEGER},
+		typeid = #{typeid,jdbcType=INTEGER},
+		content = #{content,jdbcType=VARCHAR},
+		createtime = #{createtime,jdbcType=TIMESTAMP},
+		modifytime = #{modifytime,jdbcType=TIMESTAMP},
+		rec_flag = #{recFlag,jdbcType=BIT},
+		pic1 = #{pic1,jdbcType=VARCHAR},
+		pic_url_1 = #{picUrl1,jdbcType=VARCHAR},
+		pic2 = #{pic2,jdbcType=VARCHAR},
+		pic_url_2 = #{picUrl2,jdbcType=VARCHAR},
+		pic3 = #{pic3,jdbcType=VARCHAR},
+		pic_url_3 = #{picUrl3,jdbcType=VARCHAR},
+		likenum = #{likenum,jdbcType=INTEGER},
+		del_flag = #{delFlag,jdbcType=BIT}
+	where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, title, userid, typeid, content, createtime, modifytime, rec_flag, pic1, 
+    pic_url_1, pic2, pic_url_2, pic3, pic_url_3, likenum, del_flag
+    from blog
+    where id = #{id,jdbcType=INTEGER} and del_flag=1
+			<![CDATA[ and createtime <= NOW()	]]>
+  </select>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, title, userid, typeid, content, createtime, modifytime, rec_flag, pic1, 
+    pic_url_1, pic2, pic_url_2, pic3, pic_url_3, likenum, del_flag
+    from blog
+    where  del_flag=1
+			<![CDATA[ and createtime <= NOW()	]]>
+  </select>
+  
+  	<!-- 模糊查找 -->
+	<select id="selectlike" parameterType="com.ishang.beauty.entity.Blog" resultMap="BaseResultMap">
+		select id, title, userid, typeid, content, createtime, modifytime,
+		rec_flag, pic1, pic_url_1, pic2, pic_url_2, pic3, pic_url_3, likenum, del_flag
+		from blog
+		where title like concat('%',#{title,jdbcType=VARCHAR},'%')
+		and del_flag=1
+			<![CDATA[ and createtime <= NOW()	]]>
+	</select>
+
+	<!-- 查找推荐列表 -->
+	<select id="selectrec" resultMap="BaseResultMap">
+		select id, title, userid, typeid, content, createtime, modifytime,
+		rec_flag, pic1, pic_url_1, pic2, pic_url_2, pic3, pic_url_3, likenum, del_flag
+		from blog
+		where rec_flag=1  and del_flag=1
+			<![CDATA[ and createtime <= NOW()	]]>
+		ORDER BY createtime DESC, modifytime DESC
+	</select>
+	
+	<!-- 模糊查找up主的blogs 按时间降序 -->
+	<select id="selectuptime"  parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select id, title, userid, typeid, content, createtime, modifytime,
+		rec_flag, pic1, pic_url_1, pic2, pic_url_2, pic3, pic_url_3, likenum, del_flag
+		from blog
+		where userid = #{userid,jdbcType=INTEGER} and del_flag=1
+			<![CDATA[ and createtime <= NOW()	]]>
+		order by createtime DESC
+	</select>
+	
+		<!-- 模糊查找up主的blogs 按收藏降序 -->
+	<select id="selectupstar"  parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select id, title, userid, typeid, content, createtime, modifytime, rec_flag, pic1,
+		pic_url_1, pic2, pic_url_2, pic3, pic_url_3, likenum, del_flag
+		from blog join upblogstars on blog.id=blogid
+		where userid = #{userid,jdbcType=INTEGER} and del_flag=1
+			<![CDATA[ and createtime <= NOW()	]]>
+		ORDER BY stars DESC
+	</select>
+
+	<select id="selectlatestblog" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select id, title, userid, typeid, content, createtime, modifytime, rec_flag, pic1,
+		pic_url_1, pic2, pic_url_2, pic3, pic_url_3, likenum, del_flag
+		FROM blog
+		WHERE userid = #{userid,jdbcType=INTEGER} and del_flag=1
+		<![CDATA[ 
+			AND createtime BETWEEN DATE_SUB(CURDATE(),INTERVAL 3 DAY) and NOW();
+		 ]]>
+	</select>
+  
+</mapper>
