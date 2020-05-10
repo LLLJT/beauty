@@ -1,8 +1,9 @@
 package com.ishang.beauty.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
-public class Comment implements Serializable {
+public class BlogComment implements Serializable {
     private Integer id;
 
     private Integer userid;
@@ -12,6 +13,10 @@ public class Comment implements Serializable {
     private Integer cmtid;
 
     private String comment;
+
+    private Date createtime;
+
+    private Integer likenum;
 
     private Boolean delFlag;
 
@@ -32,6 +37,9 @@ public class Comment implements Serializable {
     public void setUserid(Integer userid) {
         this.userid = userid;
     }
+    public void setUserid(String str) {
+        this.userid = Integer.parseInt(str);
+    }
 
     public Integer getBlogid() {
         return blogid;
@@ -39,6 +47,9 @@ public class Comment implements Serializable {
 
     public void setBlogid(Integer blogid) {
         this.blogid = blogid;
+    }
+    public void setBlogid(String str) {
+        this.blogid = Integer.parseInt(str);
     }
 
     public Integer getCmtid() {
@@ -48,6 +59,9 @@ public class Comment implements Serializable {
     public void setCmtid(Integer cmtid) {
         this.cmtid = cmtid;
     }
+    public void setCmtid(String str) {
+        this.cmtid =Integer.parseInt(str);
+    }
 
     public String getComment() {
         return comment;
@@ -55,6 +69,25 @@ public class Comment implements Serializable {
 
     public void setComment(String comment) {
         this.comment = comment == null ? null : comment.trim();
+    }
+
+    public Date getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
+    }
+    public void setCreatetime(String str) {
+        this.createtime = new Date();
+    }
+
+    public Integer getLikenum() {
+        return likenum;
+    }
+
+    public void setLikenum(Integer likenum) {
+        this.likenum = likenum;
     }
 
     public Boolean getDelFlag() {
@@ -76,6 +109,8 @@ public class Comment implements Serializable {
         sb.append(", blogid=").append(blogid);
         sb.append(", cmtid=").append(cmtid);
         sb.append(", comment=").append(comment);
+        sb.append(", createtime=").append(createtime);
+        sb.append(", likenum=").append(likenum);
         sb.append(", delFlag=").append(delFlag);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

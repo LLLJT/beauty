@@ -3,7 +3,7 @@ package com.ishang.beauty.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Follow implements Serializable {
+public class UserFollow implements Serializable {
     private Integer id;
 
     private Integer followerid;

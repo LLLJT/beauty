@@ -11,15 +11,10 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-<link
-	href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900|Dancing+Script:400,700|Raleway:400,100,300,700,900|Reenie+Beanie&subset=latin,latin-ext'
-	rel='stylesheet' type='text/css'>
+<link	href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900|Dancing+Script:400,700|Raleway:400,100,300,700,900|Reenie+Beanie&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 <link href="<%=path%>/css/users/userspace_style.css" rel="stylesheet">
+<link href="<%=path%>/css/custom.css" rel="stylesheet">
 
-<!-- 404not found,因此注释掉 -->
-<!-- 
-<link href="<%=path%>/css/users/custom.css" rel="stylesheet">
- -->
 </head>
 <body>
 	<div class="section-inner">
@@ -71,22 +66,16 @@
 					<div class="card-body">
 						<form>
 							<div class="form-group">
-								<label class="form-control-label">旧密码<em
-									style="color: red;">*</em></label> <input type="password"
-									id=oldpassword class="form-control"
-									placeholder="Input your old password..." required="required">
+								<label class="form-control-label">旧密码<em style="color: red;">*</em></label> 
+									<input type="password" id=oldpassword class="form-control" placeholder="Input your old password..." required="required">
 							</div>
 							<div class="form-group">
-								<label class="form-control-label">新密码<em
-									style="color: red;">*</em></label> <input type="password" id=password
-									class="form-control" placeholder="Input your new password..。"
-									required="required">
+								<label class="form-control-label">新密码<em style="color: red;">*</em></label> 
+									<input type="password" id=password class="form-control" placeholder="Input your new password..." required="required">
 							</div>
 							<div class="form-group">
-								<label class="form-control-label">确认密码<em
-									style="color: red;">*</em></label> <input type="password" id=password1
-									class="form-control" placeholder="Confirm your password..。"
-									required="required">
+								<label class="form-control-label">确认密码<em style="color: red;">*</em></label> 
+									<input type="password" id=password1 class="form-control" placeholder="Confirm your password..." required="required">
 							</div>
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary" id="update_btn">确认修改</button>

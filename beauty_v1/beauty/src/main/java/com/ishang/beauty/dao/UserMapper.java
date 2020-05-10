@@ -22,9 +22,15 @@ public interface UserMapper {
 	 * 模糊查找
 	 * */
 	List<User> selectlike(User record);
+	
 	/**
 	 * 修改个人头像
 	 */
 	int updateImg(User record);
+	
+    /**
+     * 获取一周内有更新的关注up主
+     * */
+    List<User> selectlatestup(int followerid);
 	
 }

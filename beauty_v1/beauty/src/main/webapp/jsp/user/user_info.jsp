@@ -15,20 +15,16 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-<link
-	href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900|Dancing+Script:400,700|Raleway:400,100,300,700,900|Reenie+Beanie&subset=latin,latin-ext'
-	rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900|Dancing+Script:400,700|Raleway:400,100,300,700,900|Reenie+Beanie&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 <link href="<%=path%>/css/users/userspace_style.css" rel="stylesheet">
 
-<link
-	href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css"
-	rel="stylesheet">
+<link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
 <link href="<%=path%>/css/dtpicker/base.css" rel="stylesheet" />
-<link href="<%=path%>/css/dtpicker/tempusdominus-bootstrap-4.css"
-	rel="stylesheet" />
+<link href="<%=path%>/css/dtpicker/tempusdominus-bootstrap-4.css" rel="stylesheet" />
 
 </head>
+
 <body>
 
 	<div class="section-inner">
@@ -41,9 +37,11 @@
 
 			<div class="col-lg-12 mb-5 mr-5">
 				<div class="card">
+				
 					<div class="card-header">
 						<h3 class="h4 text-uppercase mt-3">修改个人信息</h3>
 					</div>
+					
 					<div class="card-body">
 
 						<form class="form-horizontal">
@@ -51,30 +49,23 @@
 							<div class="form-group row">
 								<label class="col-md-3 form-control-label">用户ID</label>
 								<div class="col-md-9">
-									<input type="text" disabled="disabled"
-										placeholder="Disabled input here..." class="form-control"
-										id="id" name="id">
+									<input type="text"  id="id" name="id" disabled="disabled" placeholder="Disabled input here..." class="form-control" >
 								</div>
 							</div>
 
 							<div class="form-group row">
-								<label class="col-md-3 form-control-label">用户名<em
-									style="color: red;">*</em></label>
+								<label class="col-md-3 form-control-label">用户名<em style="color: red;">*</em></label>
 								<div class="col-md-9">
-									<input type="text" id="username"
-										placeholder="Input your username here..." class="form-control"
-										required>
+									<input type="text" id="username" placeholder="Input your username here..." class="form-control" required>
 								</div>
 							</div>
 
 							<div class="form-group row">
 								<label class="col-md-3 form-control-label">性别</label>
 								<div class="col-md-9 select">
-									<select name="account" id="sex" class="form-control"
-										style="height: auto;">
+									<select name="account" id="sex" class="form-control" style="height: auto;">
 										<option>Male</option>
 										<option>Female</option>
-
 									</select>
 								</div>
 							</div>
@@ -82,16 +73,10 @@
 							<div class="form-group row">
 								<label class="col-md-3 form-control-label">生日</label>
 								<div class="col-md-9">
-									<div class="input-group date" id="datetimepicker1"
-										data-target-input="nearest">
-										<input type="text" class="form-control datetimepicker-input"
-											data-target="#datetimepicker1"
-											placeholder="Choose your birthday..." id="birthday"/>
-										<div class="input-group-append" data-target="#datetimepicker1"
-											data-toggle="datetimepicker">
-											<div class="input-group-text">
-												<i class="fa fa-calendar"></i>
-											</div>
+									<div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+										<input type="text" id="birthday" class="form-control datetimepicker-input" data-target="#datetimepicker1" placeholder="Choose your birthday..."  />
+										<div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+											<div class="input-group-text"><i class="fa fa-calendar"></i></div>
 										</div>
 									</div>
 								</div>
@@ -100,31 +85,23 @@
 							<div class="form-group row">
 								<label class="col-md-3 form-control-label">学校</label>
 								<div class="col-md-9">
-									<input type="text" class="form-control"
-										placeholder="Input your school..." id="school"
-										value="${user[0]['school']}">
+									<input type="text" class="form-control" placeholder="Input your school..." id="school" value="${user[0]['school']}">
 								</div>
 							</div>
 							<div class="line"></div>
 							<div class="form-group row">
 								<label class="col-md-3 form-control-label">个性签名</label>
-								<textarea class="col-md-9 form-control"
-									placeholder="Input your personal signature..."
-									id="introduction"></textarea>
+								<textarea id="introduction" class="col-md-9 form-control" placeholder="Input your personal signature..."></textarea>
 							</div>
 
 							<div class="form-group row mt-5">
 								<div class="col-md-9 ml-auto">
-									<button type="submit" class="btn btn-secondary"
-										style="margin-right: 100px;">取消</button>
+									<button type="submit" class="btn btn-secondary" style="margin-right: 100px;">取消</button>
 									<button type="submit" class="btn btn-primary" id="upinfo_btn">提交</button>
-
 								</div>
 							</div>
 
 						</form>
-
-
 
 					</div>
 				</div>
@@ -137,16 +114,13 @@
 	<script src="<%=path%>/js/jquery/jquery.min.js"></script>
 	<script src="<%=path%>/js/popper.js/umd/popper.min.js"></script>
 	<script src="<%=path%>/js/bootstrap/bootstrap.min.js"></script>
-	<script src="<%=path%>/js/jquery.cookie/jquery.cookie.js">
-		
-	</script>
+	<script src="<%=path%>/js/jquery.cookie/jquery.cookie.js"></script>
 	<script src="<%=path%>/js/js.cookie.min.js"></script>
 	<script src="<%=path%>/js/front.js"></script>
 
 	<script src="<%=path%>/js/dtpicker/moment-with-locales.min.js"></script>
 	<script src="<%=path%>/js/dtpicker/tempusdominus-bootstrap-4.js"></script>
-	<script
-		src="<%=path%>/js/dtpicker/moment-timezone-with-data-2012-2022.min.js"></script>
+	<script src="<%=path%>/js/dtpicker/moment-timezone-with-data-2012-2022.min.js"></script>
 	<script src="<%=path%>/js/dtpicker/base.js"></script>
 
 	<script type="text/javascript">
@@ -157,6 +131,7 @@
 			$('#datetimepicker1').datetimepicker({
 				format : "YYYY-MM-DD",
 			});
+			
 			var cookiestr = getCookie("user");
 			var cookieid = cookiestr.split("#")[2];
 			var id = parseInt(cookieid);
@@ -164,8 +139,6 @@
 
 			$("#id").val(id);
 			$("#username").val(cookiename);
-
-			
 
 		});
 
@@ -242,7 +215,6 @@
 				success : function(result) {
 					alert("修改数据成功");
 					//window.location.href = "${pageContext.request.contextPath}/user/tologin";
-
 				}
 			});
 			alert("修改数据成功");

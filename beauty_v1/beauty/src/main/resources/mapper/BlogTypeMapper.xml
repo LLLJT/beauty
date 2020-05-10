@@ -1,34 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ishang.beauty.dao.BlogTypeMapper">
-  <resultMap id="BaseResultMap" type="com.ishang.beauty.entity.BlogType">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="typename" jdbcType="VARCHAR" property="typename" />
-    <result column="del_flag" jdbcType="BIT" property="delFlag" />
-  </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from blog_type
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.ishang.beauty.entity.BlogType">
-    insert into blog_type (id, typename, del_flag
-      )
-    values (#{id,jdbcType=INTEGER}, #{typename,jdbcType=VARCHAR}, #{delFlag,jdbcType=BIT}
-      )
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.ishang.beauty.entity.BlogType">
-    update blog_type
-    set typename = #{typename,jdbcType=VARCHAR},
-      del_flag = #{delFlag,jdbcType=BIT}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, typename, del_flag
-    from blog_type
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, typename, del_flag
-    from blog_type
-  </select>
+
+	<resultMap id="BaseResultMap" type="com.ishang.beauty.entity.BlogType">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="typename" jdbcType="VARCHAR" property="typename" />
+		<result column="del_flag" jdbcType="BIT" property="delFlag" />
+	</resultMap>
+	
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from blog_type
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	
+	<insert id="insert" parameterType="com.ishang.beauty.entity.BlogType">
+		insert into blog_type (id, typename, del_flag)
+		values (
+			#{id,jdbcType=INTEGER}, 
+			#{typename,jdbcType=VARCHAR},
+			#{delFlag,jdbcType=BIT})
+	</insert>
+	
+	<update id="updateByPrimaryKey" parameterType="com.ishang.beauty.entity.BlogType">
+		update blog_type
+		set 
+			typename = #{typename,jdbcType=VARCHAR},
+			del_flag = #{delFlag,jdbcType=BIT}
+			where id = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select id, typename, del_flag
+		from blog_type
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectAll" resultMap="BaseResultMap">
+		select id, typename, del_flag
+		from blog_type
+	</select>
+
+	<!-- 糢糊查找 -->
+	<select id="selectlike" parameterType="com.ishang.beauty.entity.BlogType" resultMap="BaseResultMap">
+		select id, typename, del_flag
+		from blog_type
+		where typename like concat('%',#{typename,jdbcType=VARCHAR},'%')
+	</select>
+
 </mapper>

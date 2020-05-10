@@ -20,11 +20,19 @@ public class Blog implements Serializable {
 
     private Boolean recFlag;
 
+    private String pic1;
+
     private String picUrl1;
+
+    private String pic2;
 
     private String picUrl2;
 
+    private String pic3;
+
     private String picUrl3;
+
+    private Integer likenum;
 
     private Boolean delFlag;
 
@@ -94,12 +102,28 @@ public class Blog implements Serializable {
         this.recFlag = recFlag;
     }
 
+    public String getPic1() {
+        return pic1;
+    }
+
+    public void setPic1(String pic1) {
+        this.pic1 = pic1 == null ? null : pic1.trim();
+    }
+
     public String getPicUrl1() {
         return picUrl1;
     }
 
     public void setPicUrl1(String picUrl1) {
         this.picUrl1 = picUrl1 == null ? null : picUrl1.trim();
+    }
+
+    public String getPic2() {
+        return pic2;
+    }
+
+    public void setPic2(String pic2) {
+        this.pic2 = pic2 == null ? null : pic2.trim();
     }
 
     public String getPicUrl2() {
@@ -110,12 +134,28 @@ public class Blog implements Serializable {
         this.picUrl2 = picUrl2 == null ? null : picUrl2.trim();
     }
 
+    public String getPic3() {
+        return pic3;
+    }
+
+    public void setPic3(String pic3) {
+        this.pic3 = pic3 == null ? null : pic3.trim();
+    }
+
     public String getPicUrl3() {
         return picUrl3;
     }
 
     public void setPicUrl3(String picUrl3) {
         this.picUrl3 = picUrl3 == null ? null : picUrl3.trim();
+    }
+
+    public Integer getLikenum() {
+        return likenum;
+    }
+
+    public void setLikenum(Integer likenum) {
+        this.likenum = likenum;
     }
 
     public Boolean getDelFlag() {
@@ -140,9 +180,13 @@ public class Blog implements Serializable {
         sb.append(", createtime=").append(createtime);
         sb.append(", modifytime=").append(modifytime);
         sb.append(", recFlag=").append(recFlag);
+        sb.append(", pic1=").append(pic1);
         sb.append(", picUrl1=").append(picUrl1);
+        sb.append(", pic2=").append(pic2);
         sb.append(", picUrl2=").append(picUrl2);
+        sb.append(", pic3=").append(pic3);
         sb.append(", picUrl3=").append(picUrl3);
+        sb.append(", likenum=").append(likenum);
         sb.append(", delFlag=").append(delFlag);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

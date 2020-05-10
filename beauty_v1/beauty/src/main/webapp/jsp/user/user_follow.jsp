@@ -12,12 +12,13 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
  
-<link
-	href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900|Dancing+Script:400,700|Raleway:400,100,300,700,900|Reenie+Beanie&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900|Dancing+Script:400,700|Raleway:400,100,300,700,900|Reenie+Beanie&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 <link href="<%=path%>/css/users/userspace_style.css" rel="stylesheet">
 <link rel="stylesheet" href="<%=path%>/css/custom.css">
 <link rel="stylesheet" href="<%=path%>/css/users/follow.css">
+
 </head>
+
 <body>
 	<section class="white-wrapper allow-overflow">
 		<div class="section-inner">
@@ -31,9 +32,8 @@
 			<div class="row nopaddingleftright">
 				<div class="team-item col-md-3 match-height nopaddingleftright">
 					<div class="hover-effect smoothie match-height">
-						<a href="#" class="smoothie"> <img
-							src="<%=path%>/images/Aluren.jpeg" alt="Image"
-							class="img-responsive smoothie">
+						<a href="#" class="smoothie"> 
+							<img src="<%=path%>/images/Aluren.jpeg" alt="Image" class="img-responsive smoothie">
 						</a>
 						<div class="hover-overlay smoothie text-center">
 							<div class="vertical-align-bottom">
@@ -47,16 +47,16 @@
 								</p>
 							</div>
 							<div class="vertical-align-bottom">
-								<a href="#" class="btn btn-primary mb20">进入空间 <i
-									class="fa fa-angle-right smoothie"></i></a>
+								<a href="#" class="btn btn-primary mb20">进入空间 <i class="fa fa-angle-right smoothie"></i></a>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="team-item col-md-3 match-height nopaddingleftright">
 					<div class="hover-effect smoothie match-height">
-						<a href="#" class="smoothie"> <img src="<%=path%>/images/kb.jpeg"
-							alt="Image" class="img-responsive smoothie"></a>
+						<a href="#" class="smoothie"> 
+							<img src="<%=path%>/images/kb.jpeg" alt="Image" class="img-responsive smoothie">
+						</a>
 						<div class="hover-overlay smoothie text-center">
 							<div class="vertical-align-bottom">
 								<h4>KBShinya</h4>
@@ -67,16 +67,16 @@
 								<p class="mb20">音乐区的百灵鸟~</p>
 							</div>
 							<div class="vertical-align-bottom">
-								<a href="#" class="btn btn-primary mb20">进入空间 <i
-									class="fa fa-angle-right smoothie"></i></a>
+								<a href="#" class="btn btn-primary mb20">进入空间 <i class="fa fa-angle-right smoothie"></i></a>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="team-item col-md-3 match-height nopaddingleftright">
 					<div class="hover-effect smoothie match-height">
-						<a href="#" class="smoothie"> <img src="<%=path%>/images/kb1.jpg"
-							alt="Image" class="img-responsive smoothie"></a>
+						<a href="#" class="smoothie"> 
+							<img src="<%=path%>/images/kb1.jpg" alt="Image" class="img-responsive smoothie">
+						</a>
 						<div class="hover-overlay smoothie text-center">
 							<div class="vertical-align-bottom">
 								<h4>kbshinya</h4>
@@ -87,16 +87,16 @@
 								<p class="mb20">微博：KBShinya 个人首张专辑《千字节》正在预售中！谢谢支持我的人，评论都会看的！</p>
 							</div>
 							<div class="vertical-align-bottom">
-								<a href="#" class="btn btn-primary mb20">进入空间 <i
-									class="fa fa-angle-right smoothie"></i></a>
+								<a href="#" class="btn btn-primary mb20">进入空间 <i class="fa fa-angle-right smoothie"></i></a>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="team-item col-md-3 match-height nopaddingleftright">
 					<div class="hover-effect smoothie match-height">
-						<a href="#" class="smoothie"> <img src="<%=path%>/images/oldE.jpg"
-							alt="Image" class="img-responsive smoothie"></a>
+						<a href="#" class="smoothie"> 
+							<img src="<%=path%>/images/oldE.jpg" alt="Image" class="img-responsive smoothie">
+						</a>
 						<div class="hover-overlay smoothie text-center">
 							<div class="vertical-align-bottom">
 								<h4>EdmundDZhang</h4>
@@ -104,14 +104,15 @@
 						</div>
 						<div class="hover-caption dark-overlay smoothie text-center">
 							<div class="vertical-align-top">
-								<p class="mb20">字很多Credibly re-engineer best-of-breed
+								<p class="mb20">
+									字很多Credibly re-engineer best-of-breed
 									imperatives for viral innovation. Appropriately extend
 									sustainable channels before sustainable niches. Intrinsicly
-									seize functionalized niches for user-centric paradigms.</p>
+									seize functionalized niches for user-centric paradigms.
+								</p>
 							</div>
 							<div class="vertical-align-bottom">
-								<a href="#" class="btn btn-primary mb20">进入空间 <i
-									class="fa fa-angle-right smoothie"></i></a>
+								<a href="#" class="btn btn-primary mb20">进入空间 <i class="fa fa-angle-right smoothie"></i></a>
 							</div>
 						</div>
 					</div>

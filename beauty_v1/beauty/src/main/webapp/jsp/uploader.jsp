@@ -16,25 +16,25 @@
 		}
 	</script>
 	<!-- //Meta tag Keywords -->
-
+<% String path = request.getContextPath();%>
 	<!-- Custom-Files -->
-	<link rel="stylesheet" href="../css/bootstrap.css">
+	<link rel="stylesheet" href="<%=path%>/css/bootstrap.css">
 	<!-- Bootstrap-Core-CSS -->
-	<link rel="stylesheet" href="../css/style.css" type="text/css" media="all" />
+	<link rel="stylesheet" href="<%=path%>/css/style.css" type="text/css" media="all" />
 	<!-- Style-CSS -->
-	<link href="../css/font-awesome.min.css" rel="stylesheet">
+	<link href="<%=path%>/css/font-awesome.min.css" rel="stylesheet">
 	<!-- Font-Awesome-Icons-CSS -->
 	
-	<link href="../css/ups/animate.css" rel="stylesheet">
-	<link href="../css/ups/newstyle.css" rel="stylesheet"> 
+	<link href="<%=path%>/css/ups/animate.css" rel="stylesheet">
+	<link href="<%=path%>/css/ups/newstyle.css" rel="stylesheet"> 
     
 	<!-- Web-Fonts -->
 	<link href="http://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Raleway:300,400,700,300italic,400italic' rel='stylesheet' type='text/css'>
 	<!-- //Web-Fonts -->
 
-	<script src="../js/ups/jquery.min.js"></script>
-	<script src="../js/ups/modernizr.custom.js"></script>
+	<script src="<%=path%>/js/ups/jquery.min.js"></script>
+	<script src="<%=path%>/js/ups/modernizr.custom.js"></script>
 
 
 </head>
@@ -44,8 +44,7 @@
 		<!-- header -->
 		<header>
 			<div class="container-fluid">
-				<div
-					class="header d-lg-flex justify-content-between align-items-center py-3 px-sm-3">
+				<div class="header d-lg-flex justify-content-between align-items-center py-3 px-sm-3">
 					<!-- logo -->
 					<div id="logo">
 						<h1>
@@ -56,9 +55,8 @@
 					<div class="d-flex mt-lg-1 mt-sm-2 mt-3 justify-content-center">
 						<!-- search -->
 						<div class="search-w3layouts mr-3">
-							<form action="#" method="post"
-								class="search-bottom-wthree d-flex">
-								<input class="search" type="search" placeholder="Search Here..." required>
+							<form action="<%=path%>/jsp/searchresult.jsp" method="post" class="search-bottom-wthree d-flex">
+								<input class="search" type="search" name="searchname"  placeholder="Search Here..." required>
 								<button class="form-control btn" type="submit">
 									<span class="fa fa-search"></span>
 								</button>
@@ -66,10 +64,10 @@
 						</div>
 						<!-- //search -->
 						<!-- 登出&个人中心 -->
-						<a class="dwn-w3ls btn mr-1" href="usercenter.jsp" target="_blank">
+						<a class="dwn-w3ls btn mr-1" href="<%=path%>/jsp/usercenter.jsp" target="_blank">
 							<span class="fa fa-user-circle-o" title="个人中心"></span>
 						</a> 
-						<a class="dwn-w3ls btn" href="login.jsp" target="_self">
+						<a class="dwn-w3ls btn" href="<%=path%>/jsp/login.jsp" target="_self"> 
 							<span class="fa fa-sign-out" title="退出登录"></span>
 						</a>
 						<!-- //logout&usercenter -->
@@ -87,7 +85,7 @@
 			<div class="py-xl-4 ">
 				<div class="col-lg-12 mt-5 row">
 					<div class="col-lg-2">
-						<img alt="" src="../images/kb1.jpg" style="max-width: 100px;">
+						<img alt="" src="<%=path%>/images/kb1.jpg" style="max-width: 100px;">
 					</div>
 					<div class="col-lg-8  ">
 						<h2 class="mb-4">up's name</h2>
@@ -137,7 +135,7 @@
 							</div>
 							<div class="grid mask">
 								<figure>
-									<img class="img fade-down" src="../images/bg2.jpg">
+									<img class="img fade-down" src="<%=path%>/images/bg2.jpg">
 									<figcaption>
 										<a class="btn btn-primary btn-lg" href="#"><i class="fa fa-link"></i></a>
 									</figcaption>
@@ -153,19 +151,8 @@
 
 				<div class="col-sm-3 col-sm-offset-1 single-post-sidebar">
 					<h3 class="sidebar-title mt0 mb-5">最近更新</h3>
-
-					<div class="row sidebar-post">
-						<div class="col-md-4">
-							<img class="sb-img" src="../images/folio01.jpg" alt="Alt">
-						</div>
-						<div class="col-md-8 sidebar-post-content">
-							<h4>Blog Post A</h4>
-							<div class="blog-meta-main">
-								<span class="post-meta-link"><i class="fa fa-clock-o"></i> 更新于 2分钟前</span>
-							</div>
-						</div>
-					</div>
-
+					
+					<div id="rstdiv"></div>
 
 				</div><!-- col-md-6 -->	
 			</div>
@@ -180,8 +167,7 @@
 			<div class="d-md-flex px-md-3 position-relative text-center">
 				<!-- copyright -->
 				<div class="copy_right mx-md-auto mb-md-0 mb-3">
-					<p class="text-bl let">Copyright &copy; 2020. reachableBeauty
-						All rights reserved.</p>
+					<p class="text-bl let">Copyright &copy; 2020. reachableBeauty All rights reserved.</p>
 				</div>
 				<!-- //copyright -->
 				<!-- move top icon -->
@@ -196,9 +182,20 @@
 
 	<!-- JavaScript files-->
 	
-	<script src="../js/bootstrap/bootstrap.min.js"></script>
-	<script src="../js/ups/plugins.js"></script>
-	<script src="../js/ups/init.js"></script>
+	<script src="<%=path%>/js/bootstrap/bootstrap.min.js"></script>
+	<script src="<%=path%>/js/ups/plugins.js"></script>
+	<script src="<%=path%>/js/ups/init.js"></script>
+
+
+	<script type="text/javascript" src="<%=path%>/js/custom/getsidebar.js"></script>
+	<script type="text/javascript">
+	
+		var target = "<%=path %>/side/getupdate"
+		var testpicurl = "<%=path%>/images/folio01.jpg"
+		
+		window.onload = getsidebar(target,"21")
+
+	</script>
 
 </body>
 </html>
