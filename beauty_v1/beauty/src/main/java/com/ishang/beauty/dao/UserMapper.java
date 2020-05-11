@@ -32,5 +32,10 @@ public interface UserMapper {
      * 获取一周内有更新的关注up主
      * */
     List<User> selectlatestup(int followerid);
+    
+    /**
+     * 仅修改password
+     * */
+    int updatepswd(@Param("userid")int userid, @Param("pswd")String pswd);
 	
 }

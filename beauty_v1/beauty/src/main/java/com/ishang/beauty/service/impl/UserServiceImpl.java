@@ -55,4 +55,8 @@ public class UserServiceImpl implements UserService {
 		return dao.selectByPrimaryKey(id);
 	}
 
+	@Override
+	public int updatepswd(User record) {
+		return dao.updatepswd(record.getId(), record.getPassword());
+	}
 }

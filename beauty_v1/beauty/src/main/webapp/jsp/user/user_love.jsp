@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,26 +33,7 @@
 	                            <div class="masonry-portfolio row">
 	                                <div>
 	                                    <div class="masonry-portfolio-items">
-	                                        <div class="row" id="rstdiv">
-	                                        
-	                                            <div class="col-sm-4 masonry-portfolio-item mb30 apps">
-	                                                <div class="hover-effect smoothie">
-	                                                    <a href="#" class="smoothie">
-	                                                    <img src="<%=path%>/images/portfolio/folio-1.jpeg" alt="Image" class="img-responsive smoothie"></a>
-	                                                    <div class="hover-overlay smoothie text-center">
-	                                                        <div class="vertical-align-bottom user_alignleft">
-	                                                            <h4>up's name</h4>
-	                                                            <p>描述文字描述文字描述文字描述文字描述文字描述文字描述文字</p>
-	                                                        </div>
-	                                                    </div>
-	                                                    <div class="hover-caption dark-overlay smoothie text-center">
-	                                                        <div class="vertical-align-bottom">
-	                                                            <a href="#" class="btn btn-primary mb20">Details</a>
-	                                                        </div>
-	                                                    </div>
-	                                                </div>
-	                                            </div>
-	                                            
+	                                        <div class="row" id="rstdiv">                                            
 	                                        </div>
 	                                    </div>
 	                                </div>
@@ -66,15 +47,21 @@
 	</section>
 
 <script src="<%=path%>/js/jquery/jquery.min.js"></script>
+<script src="<%=path%>/js/custom/getcookie.js"></script>
+
 <script type="text/javascript">
 
 	var target = "<%=path %>/blog/getuserstar"
 	var testpicurl = "<%=path%>/images/portfolio/folio-1.jpeg"
+	var cookiestr = getCookie("user");
+	var cookieid = cookiestr.split("#")[2];
+	var id = parseInt(cookieid);
+	var cookiename = cookiestr.split("#")[0];
 	
-	window.onload = getstarmap(target,"2")
+	window.onload = getstarmap(target,cookieid)
 
 	function getstarmap(target,userid) {
-		
+		console.info("target:"+target+"  userid:"+userid)
 		$.ajax({
 			url: target,
 			type: 'POST',

@@ -29,7 +29,7 @@
 					<h1 class="text-base text-primary text-uppercase mb-4">美，一眼望穿</h1>
 					<h2 class="mb-4">Welcome back!</h2>
 					
-					<form id="loginForm" action="${pageContext.request.contextPath}/user/login" class="mt-4" method="get">
+					<form id="loginForm" action="${pageContext.request.contextPath}/user/login" class="mt-4" method="post">
 						<div class="form-group mb-4">
 							<input type="text" name="username" id="username" placeholder="输入您的登录名"
 								class="form-control border-0 shadow form-control-lg">
@@ -47,13 +47,12 @@
 						<h4 style="color:red">${errMsg}</h4>
 						
 						<button type="submit" class="btn btn-primary shadow px-5">登录</button>
-						
+						<button type="button" onclick="javascript:window.location.href='/beauty/user/toregist'"  class="btn  btn-default ml-5 px-5" style="color:grey;">注册</button>
 					</form>
-					<button onclick="window.location.href='${pageContext.request.contextPath}/user/toregist'" class="btn btn-default" style="color:grey">注册</button>
 				</div>
 			</div>
 			<p class="mt-5 mb-0 text-gray-400 text-center">
-				Copyright &copy; 2020. reachableBeauty All rights reserved.
+				Copyright &copy; 2020. reachable Beauty All rights reserved.
 			</p>
 		</div>
 	</div>
@@ -65,6 +64,8 @@
 	<!-- <script src="vendor/chart.js/Chart.min.js"></script> -->
 	<script src="<%=path%>/js/js.cookie.min.js"></script>
 	<script src="<%=path%>/js/front.js"></script>
+	<script src="<%=path%>/js/custom/getcookie.js"></script>
+	
 	<script type="text/javascript">
 	$(function(){
 		var cookiestr=getCookie("user");
@@ -79,23 +80,7 @@
 		//alert("记录上次登录的信息");
 		
 	});
-	//获取cookiehttps://blog.csdn.net/weixin_44540229/article/details/86519297
-	function getCookie(cookiename){
-		var name=cookiename+"=";
-		var str=document.cookie.split(';');
-		var le=str.length;
-		for(var i=0;i<str.length;i++){
-			var ind=str[i];
-			while (ind.charAt(0)==' ')
-				ind=ind.substring(1);
-			
-			var saf=ind.length;
-			if(ind.indexOf(name)!=-1)return ind.substring(name.length,ind.length);
 
-		}
-		return "";
-		
-	};
 	
 	</script>
 	

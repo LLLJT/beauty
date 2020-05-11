@@ -53,7 +53,7 @@
 					<!-- logo -->
 					<div id="logo">
 						<h1>
-							<a href="index.jsp"><span class="fa fa-linode mr-2"></span>reachableBeauty</a>
+							<a href="<%=path%>/index"><span class="fa fa-linode mr-2"></span>reachableBeauty</a>
 						</h1>
 					</div>
 					<!-- //logo -->
@@ -142,6 +142,9 @@
 			<div class="row myfollow" id="follows">
 				<h3 class="title">关注</h3>
 				
+				<c:if test="${updateuplist.size()==0}">
+					<h4>暂无关注</h4>
+				</c:if>
 				<c:forEach items="${updateuplist}" var="list" varStatus="status">
 					<span>
 					<a href="#" data-toggle="collapse" data-target="#up${list.id}">
@@ -152,14 +155,17 @@
 
 			</div>
 			<div class="card mb-3 myfollow-collapse">
-
+			
+				<c:if test="${updatemap.size()==0}">
+					<h4>暂无更新</h4>
+				</c:if>
 				<c:forEach items="${updatemap}" var="list" varStatus="status">
 					<div id="up${list.getKey() }" class="collapse card-body">
 						<c:forEach items="${list.getValue() }" var="blog">
-							<div class="row align-items-center flex-row">
+							<div class="row align-items-center flex-row ">
 								<img alt="" src="<%=path%>/images/oldE.jpg" />
 								<div class="col-lg-10">
-									<h4>${blog.title }</h4>
+									<h4 class="blogcontent" id="${blog.id }" >${blog.title }</h4>
 									<p>${ fn:substring(blog.content, 0, 100) } ...
 										<!-- <br>第一行为数据库数据，这一行开始是模拟数据。模拟登录用户为（Userid=2）
 										<br>首页轮播图：最新三个推荐blog的头图
@@ -224,6 +230,7 @@
 	</div>
 	<!-- //copyright bottom -->
 
+	<script src="<%=path%>/js/custom/getcookie.js"></script>
 	
 	<script type="text/javascript">
 		$(function(){
@@ -233,57 +240,39 @@
 			$("#welcomemsg").text("欢迎您,"+cookiename);	
 		});
 		
-		function getCookie(cookiename) {
-			var name = cookiename + "=";
-			var str = document.cookie.split(';');
-			var le = str.length;
-			
-			for (var i = 0; i < str.length; i++) {
-				var ind = str[i];
-				while (ind.charAt(0) == ' ')
-					ind = ind.substring(1);
-		
-				var saf = ind.length;
-				if (ind.indexOf(name) != -1)
-					return ind.substring(name.length, ind.length);
-			}
-			return "";
-		
-		};
+
 		//获取select到的
 	</script>
 
 	<script type="text/javascript">
-	
-	function getJsonLength(json) {
-		  var jsonLength = 0;
-		  for (var i in json) {
-		    jsonLength++;
-		  }
-		  return jsonLength;
-		}
+	//String target= "../index?userid="+result.get(0).getId();
+			$(function() {
 
- 	function loaddata(){
- 		var updatemap = '<%=request.getAttribute("updatemap")%>'
- 		console.info(updatemap)
- 		var updatelist = eval('(' + updatemap + ')');
- 		var length=getJsonLength(updatelist)
- 		//alert(length)
- 		/* for(var k in updatemap){
- 	        alert("key名称是："+k+",key的值是："+updatemap[k]);
- 	    } */
- 		var reclist = '<%=request.getAttribute("reclist")%>'
- 		console.info(reclist)
-	}
+			var cookiestr = getCookie("user");
+			var cookieid = cookiestr.split("#")[2];
+			var id = parseInt(cookieid);
+			var cookiename = cookiestr.split("#")[0];
+			var target="<%=path%>/index?userid="+id
 
-    window.onload=loaddata;
-    
+			$.ajax({
+				type : "post",
+				url : target,
+				dataType: 'html',
+				contentType : "application/json",
+				success : function (data) {
+				// data = jQuery.parseJSON(data);
+				//console.info(data);
+				$("#aaa").html(data);
+				}
+				    });
+
+		});
 	</script>
 	
 	<script type="text/javascript">
         $(function(){
             $(".blogcontent").click(function(e){
-				console.info(e.target);
+				//console.info(e.target);
                 console.info(e.target.id);
 				var url='<%=path%>/content?blogid=' + e.target.id
 				console.info(url)

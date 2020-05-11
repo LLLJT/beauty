@@ -129,15 +129,17 @@ public class BlogServiceImpl implements BlogService {
 		List<BlogStar> starlist =stardao.getuserstar(userid);
 		// for each
 		for(BlogStar star : starlist) {
-			Map<String,Object> map = new HashMap<String, Object>();
 			// blogid -> bloginfo { userid blogid picurl blogtitle }
 			// userid -> username
-			map.put("blogid", star.getBlogid());
-			Blog blog = dao.selectByPrimaryKey(star.getBlogid());
-			map.put("username", userdao.selectByPrimaryKey(blog.getUserid()).get(0).getUsername());
-			map.put("picurl", blog.getPicUrl1());
-			map.put("blogtitle", blog.getTitle());
-			rstlist.add(map);
+			Blog blog = dao.selectByPrimaryKey(star.getBlogid()); 
+			if(blog!=null ) {
+				Map<String,Object> map = new HashMap<String, Object>();
+				map.put("blogid", star.getBlogid());
+				map.put("username", userdao.selectByPrimaryKey(blog.getUserid()).get(0).getUsername());
+				map.put("picurl", blog.getPicUrl1());
+				map.put("blogtitle", blog.getTitle());
+				rstlist.add(map);
+			}
 		}
 
 		return rstlist;

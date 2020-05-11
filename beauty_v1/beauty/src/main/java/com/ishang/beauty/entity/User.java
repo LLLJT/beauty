@@ -80,6 +80,9 @@ public class User implements Serializable {
 	public void setRoleid(Integer roleid) {
 		this.roleid = roleid;
 	}
+	public void setRoleid(String roleid) {
+		this.roleid = Integer.parseInt(roleid);
+	}	
 
 	public Integer getSex() {
 		return sex;

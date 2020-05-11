@@ -45,4 +45,6 @@ public interface UserService {
 	int saveUser(User user);
 
 	List<User> findbyid(Integer id);
+	
+	public int updatepswd(User record);
 }

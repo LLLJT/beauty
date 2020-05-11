@@ -1,5 +1,6 @@
 package com.ishang.beauty.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -25,6 +26,7 @@ import com.github.pagehelper.PageInfo;
 import com.ishang.beauty.entity.User;
 import com.ishang.beauty.service.UserService;
 import com.ishang.beauty.utils.DataResponse;
+import com.ishang.beauty.utils.EncodingTool;
 import com.ishang.beauty.utils.Msg;
 
 @Controller
@@ -97,15 +99,19 @@ public class UserController {
 		 * }
 		 */
 
-		ModelAndView mv = new ModelAndView("backuserList");
+		ModelAndView mv = new ModelAndView("backuserList.jsp");
 		mv.addObject("pageInfo", page);
 		return mv;
 
 	}
 
-	@RequestMapping("/login")
+	@RequestMapping(value = "/login", method = RequestMethod.POST, produces = "text/html; charset=UTF-8")
 	public String login(@RequestParam("username") String username, @RequestParam("password") String password,
-			Model model, HttpServletRequest request, HttpServletResponse response) {
+			Model model, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+		request.setCharacterEncoding("UTF-8");
+		System.out.println("原来："+username);
+		username=EncodingTool.encodeStr(username);
+		System.out.println("处理后："+username);
 		User record = new User();
 		record.setUsername(username);
 		record.setPassword(password);
@@ -140,25 +146,28 @@ public class UserController {
 				// 覆盖之前的userCookie
 				response.addCookie(newCookie);
 			}
-
-			return "index";
+			/*
+			 * String target= "../index?userid="+result.get(0).getId();
+			 * System.out.println(target);
+			 */
+			return "../index";
 		} else {
 			model.addAttribute("errMsg", "用户名或密码错误，请重新输入");
 
-			return "login";
+			return "login.jsp";
 		}
 	}
 
 	//
 	@RequestMapping("/tologin")
 	public String tologin() {
-		return "login";
+		return "login.jsp";
 
 	}
 
 	@RequestMapping("/toregist")
 	public String toadd() {
-		return "regist";
+		return "regist.jsp";
 
 	}
 
@@ -174,13 +183,13 @@ public class UserController {
 		if (u.getUsername().equals(null) || u.getPassword().equals(null) || u.getRoleid().equals(null)) {
 			// 已经在前端验证
 			// mv.addObject("errMsg", "请填入必填字段");
-			mv.setViewName("regist");
+			mv.setViewName("regist.jsp");
 			return mv;
 		} else {
 			u.setDel_flag(1);
 			int r = service.addone(u);
 			// mv.addObject("success", "注册成功");
-			mv.setViewName("login");
+			mv.setViewName("login.jsp");
 			return mv;
 		}
 	}
@@ -189,7 +198,7 @@ public class UserController {
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "login";
+		return "login.jsp";
 
 	}
 
@@ -198,7 +207,7 @@ public class UserController {
 	public String saveUser(@RequestBody User user) {
 		user.setDel_flag(1);
 		service.saveUser(user);
-		return "backuserList";
+		return "backuserList.jsp";
 	}
 
 	// userList界面的update模态框获取用户信息
@@ -209,7 +218,7 @@ public class UserController {
 		user.setDel_flag(1);
 		service.updateone(user);
 		model.addAttribute("user", user);
-		return "backuserList";
+		return "backuserList.jsp";
 
 	}
 	//userList界面的delete模态框
@@ -218,7 +227,7 @@ public class UserController {
 		
 		System.out.println(user.getId());
 		service.deleteone(user.getId());
-		return "backuserList";
+		return "backuserList.jsp";
 		
 	}
 

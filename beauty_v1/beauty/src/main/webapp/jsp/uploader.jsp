@@ -48,7 +48,7 @@
 					<!-- logo -->
 					<div id="logo">
 						<h1>
-							<a href="index.jsp"><span class="fa fa-linode mr-2"></span>reachableBeauty</a>
+							<a href="<%=path%>/index"><span class="fa fa-linode mr-2"></span>reachableBeauty</a>
 						</h1>
 					</div>
 					<!-- //logo -->
@@ -185,7 +185,7 @@
 	<script src="<%=path%>/js/bootstrap/bootstrap.min.js"></script>
 	<script src="<%=path%>/js/ups/plugins.js"></script>
 	<script src="<%=path%>/js/ups/init.js"></script>
-
+	<script src="<%=path%>/js/custom/getcookie.js"></script>
 
 	<script type="text/javascript" src="<%=path%>/js/custom/getsidebar.js"></script>
 	<script type="text/javascript">

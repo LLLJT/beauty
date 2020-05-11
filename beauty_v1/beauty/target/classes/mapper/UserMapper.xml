@@ -39,6 +39,7 @@
 	<update id="updateByPrimaryKey" parameterType="com.ishang.beauty.entity.User">
 		update user
 		set 
+			username=#{username,jdbcType=VARCHAR},
 			password = #{password,jdbcType=VARCHAR},
 			roleid = #{roleid,jdbcType=INTEGER},
 			sex = #{sex,jdbcType=BIT},
@@ -53,7 +54,7 @@
 	<update id="updateByPrimaryKeyPlus" parameterType="com.ishang.beauty.entity.User">
 		update user
 		set 
-			username=#{username,jdbcType=VARCHAR} 
+			username=#{username,jdbcType=VARCHAR},
 			password = #{password,jdbcType=VARCHAR},
 			roleid = #{roleid,jdbcType=INTEGER},
 			sex = #{sex,jdbcType=BIT},
@@ -95,4 +96,13 @@
 			WHERE userid in (SELECT uploaderid from user_follow WHERE followerid = #{followerid, jdbcType=INTEGER})
 				<![CDATA[ AND DATE_SUB(CURDATE(),INTERVAL 7 day) <=DATE(createtime)  ]]>	)
 	</select>
+	
+	<!-- 仅修改password -->
+	<update id="updatepswd">
+		UPDATE `user`
+		SET
+			`password`  = #{pswd}
+		WHERE id= #{userid}
+	</update>
+	
 </mapper>

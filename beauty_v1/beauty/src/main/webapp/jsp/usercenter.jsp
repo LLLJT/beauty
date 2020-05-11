@@ -30,7 +30,7 @@
 					<!-- logo -->
 					<div id="logo">
 						<h1>
-							<a href="<%=path%>/jsp/login.jsp"><span class="fa fa-linode mr-2"></span>reachableBeauty</a>
+							<a href="<%=path%>/index"><span class="fa fa-linode mr-2"></span>reachableBeauty</a>
 						</h1>
 					</div>
 					<!-- //logo -->
@@ -100,7 +100,7 @@
 	<!-- //main banner -->
 
 	<!-- 子页面 -->
-	<iframe id="userframe" src="user/user_follow.jsp"> </iframe>
+	<iframe id="userframe" src="<%=path%>/jsp/user/user_follow.jsp"> </iframe>
 
 	<!-- //子页面 -->
 
@@ -111,6 +111,7 @@
 	<script src="../js/jquery.cookie/jquery.cookie.js"> </script>
 	<script src="../js/js.cookie.min.js"></script>
 	<script src="../js/front.js"></script> -->
+	<script src="<%=path%>/js/custom/getcookie.js"></script>
 
 	<script type="text/javascript">
 
@@ -120,30 +121,14 @@
 			var cookiestr = getCookie("user");
 			if (cookiestr != "")
 				var cookieid = cookiestr.split("#")[2];
-			var url = "${pageContext.request.contextPath}/center/" + value;
+			var url = "<%=path%>/center/" + value;
 
 			var frame = document.getElementById("userframe");
 			frame.src = url;
 			frame.style.height = frame.contentWindow.document.documentElement.scrollHeight + 'px'
 		}
 
-		function getCookie(cookiename) {
-			var name = cookiename + "=";
-			var str = document.cookie.split(';');
-			var le = str.length;
-			for (var i = 0; i < str.length; i++) {
-				var ind = str[i];
-				while (ind.charAt(0) == ' ')
-					ind = ind.substring(1);
 
-				var saf = ind.length;
-				if (ind.indexOf(name) != -1)
-					return ind.substring(name.length, ind.length);
-
-			}
-			return "";
-
-		};
 	</script>
 </body>
 </html>

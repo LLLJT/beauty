@@ -46,7 +46,7 @@ String searchname = request.getParameter("searchname");
 					<!-- logo -->
 					<div id="logo">
 						<h1>
-							<a href="index.jsp"><span class="fa fa-linode mr-2"></span>reachableBeauty</a>
+							<a href="<%=path%>/index"><span class="fa fa-linode mr-2"></span>reachableBeauty</a>
 						</h1>
 					</div>
 					<!-- //logo -->
@@ -148,6 +148,7 @@ String searchname = request.getParameter("searchname");
 	<script src="<%=path%>/js/jquery.cookie/jquery.cookie.js"> </script>
 	<script src="<%=path%>/js/js.cookie.min.js"></script>
 	<script src="<%=path%>/js/front.js"></script>
+	<script src="<%=path%>/js/custom/getcookie.js"></script>
 	
 	<script type="text/javascript">
 	function ajaxgetrst(th) {

@@ -3644,6 +3644,7 @@ tbody.collapse.show {
 
 .custom-control-label {
   margin-bottom: 0;
+  margin-top: -20px;
 }
 
 .custom-control-label::before {

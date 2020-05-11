@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,10 +52,11 @@ public class BlogController {
 		return "crud/blogTestList.jsp";
 	}
 	
-	@RequestMapping("/index")
+	@RequestMapping("/indexjsp")
 	public String loadindex(HttpServletRequest request,Model model){    
 		// 1、获取关注up主的最近更新（一周内）的up主列表 dtype: List<User>
 		int userid=2; //TODO 测试数据：2
+		if(request.getParameter("userid")!="")userid=Integer.parseInt(request.getParameter("userid"));
 		// 从cookie获取当前登录的userid
 		List<User> updateuplist=service.selectlatestup(userid);
 		model.addAttribute("updateuplist", updateuplist);
@@ -209,5 +211,17 @@ public class BlogController {
 			else return  "添加收藏";
 		}
 		return "";
+	}
+	
+	@RequestMapping("/index")
+	public String toindex(@CookieValue(value = "user", required = false) String testCookie) {
+		System.out.println(testCookie);
+		// TODO 第一次登录的user要登录两遍 没想好解决方法
+		if(testCookie==null) return "login.jsp";
+		String[] strarr=testCookie.split("#");
+		String str_id=strarr[2];
+		System.out.println(str_id);
+		if((str_id=="" || str_id.isEmpty()) ) str_id="1";
+		return ("../indexjsp?userid="+str_id);
 	}
 }

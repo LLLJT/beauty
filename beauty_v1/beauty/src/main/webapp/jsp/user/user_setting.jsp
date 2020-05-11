@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -102,6 +102,8 @@
 	<!-- <script src="vendor/chart.js/Chart.min.js"></script> -->
 	 <script src="<%=path%>/js/js.cookie.min.js"></script>
 	<script src="<%=path%>/js/front.js"></script>
+	<script src="<%=path%>/js/custom/getcookie.js"></script>
+	
 	<script type="text/javascript">
 		$(function() {
 			var cookiestr = getCookie("user");
@@ -124,24 +126,7 @@
 			
 			
 		});
-		//获取cookiehttps://blog.csdn.net/weixin_44540229/article/details/86519297
-		function getCookie(cookiename) {
-			var name = cookiename + "=";
-			var str = document.cookie.split(';');
-			var le = str.length;
-			for (var i = 0; i < str.length; i++) {
-				var ind = str[i];
-				while (ind.charAt(0) == ' ')
-					ind = ind.substring(1);
 
-				var saf = ind.length;
-				if (ind.indexOf(name) != -1)
-					return ind.substring(name.length, ind.length);
-
-			}
-			return "";
-
-		};
 		$("#update_btn")
 				.click(
 						function() {
@@ -165,8 +150,7 @@
 								alert("两次输入的密码不一致,请重新输入");
 								return false;
 							}
-							if (oldpassword == password
-									|| oldpassword == password1) {
+							if (oldpassword == password || oldpassword == password1) {
 								alert("新旧密码不能相同!");
 								return false;
 							}
@@ -183,16 +167,15 @@
 								"password" : password,
 								"id" : id
 							};
-							$
-									.ajax({
-										url : '${pageContext.request.contextPath}/center/modifypwd',
-										type : 'POST',
-										data : JSON.stringify(data1),
-										contentType : 'application/json',
-										success : function(result) {
-											alert("密码修改成功，即将返回个人中心");
-											window.location.href = "${pageContext.request.contextPath}/center/tocenter";
-										}
+							$.ajax({
+									url : '${pageContext.request.contextPath}/center/modifypwd',
+									type : 'POST',
+									data : JSON.stringify(data1),
+									contentType : 'application/json',
+									success : function(result) {
+										alert("密码修改成功，即将返回个人中心");
+										window.location.href = "${pageContext.request.contextPath}/center/tocenter";
+									}
 									});
 
 							alert("密码修改成功");

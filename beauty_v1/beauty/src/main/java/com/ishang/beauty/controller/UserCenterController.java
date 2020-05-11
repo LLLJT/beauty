@@ -2,17 +2,14 @@ package com.ishang.beauty.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.Format;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.ishang.beauty.entity.User;
 import com.ishang.beauty.service.impl.UserServiceImpl;
@@ -38,14 +34,14 @@ public class UserCenterController {
 
 	@RequestMapping("/user_follow")
 	public String user_follow() {
-		return "user/user_follow";
+		return "user/user_follow.jsp";
 
 	}
 
 	// 修改头像
 	@RequestMapping("/toupdateimg")
 	public String updateImg() {
-		return "updateimg";
+		return "updateimg.jsp";
 	}
 
 	// 头像上传
@@ -54,8 +50,9 @@ public class UserCenterController {
 		// 保存数据库的路径
 		String sqlPath = null;
 		// 定义文件保存的本地路径
-
-		String localPath = "C:\\Users\\24466\\Documents\\GitHub\\beauty\\beauty_v1\\beauty\\src\\main\\webapp\\images\\userimg\\";
+		// fbw: "D:\\git\\repository\\beauty\\beauty_v1\\beauty\\src\\main\\webapp\\images\\userimg"
+//		String localPath = "C:\\Users\\24466\\Documents\\GitHub\\beauty\\beauty_v1\\beauty\\src\\main\\webapp\\images\\userimg\\";
+		String localPath =  "D:\\git\\repository\\beauty\\beauty_v1\\beauty\\src\\main\\webapp\\images\\userimg";
 		// 定义文件名
 		String filename = null;
 		if (!user.getFile().isEmpty()) {
@@ -78,26 +75,26 @@ public class UserCenterController {
 
 		service.updateImg(user);
 		//model.addAttribute("image", user);
-		return "user/user_setting";
+		return "user/user_setting.jsp";
 
 	}
 
 	@RequestMapping("/tocenter")
 	public String tocenter() {
 
-		return "usercenter";
+		return "usercenter.jsp";
 	}
 
 	// 修改密码
 	@RequestMapping(value = "/modifypwd",method = RequestMethod.POST)
 	public String ModifyPwd(@RequestBody User user) {
-		user.setDel_flag(1);
-		user.setRoleid(2);
-		System.out.println(user.getBirthday());
+//		user.setDel_flag(1);
+//		user.setRoleid(2);
+//		System.out.println(user.getBirthday());
 		System.out.println(user);
-		System.out.println("以上为user内容，包含id和password");
-		service.updateone(user);
-		return "usercenter";
+//		System.out.println("以上为user内容，包含id和password");
+		service.updatepswd(user);
+		return "usercenter.jsp";
 
 	}
 
@@ -105,7 +102,7 @@ public class UserCenterController {
 	@RequestMapping(value = "/updateInfo" ,method = RequestMethod.POST)
 	public String UpdateInfo(@RequestBody User user) throws ParseException {
 		user.setDel_flag(1);
-		user.setRoleid(2);
+		/* user.setRoleid(2); */
 		/*
 		 * System.out.println(user.getBirthday());
 		 * //用SimpleDateFormat将get到的birthday转成yyyy-MM-dd型的string SimpleDateFormat
@@ -117,7 +114,7 @@ public class UserCenterController {
 		
 		System.out.println(user);
 		service.updateone(user);
-		return "index";
+		return "index.jsp";
 	}
 	/*
 	 * //读取用户信息
@@ -130,6 +127,17 @@ public class UserCenterController {
 	 * mv.setViewName("user/user_info"); mv.addObject("user", user); return mv;
 	 * 
 	 */
+	
+	@ResponseBody
+	@RequestMapping(value = "/loaduserinfo", method = RequestMethod.POST)
+	public Map<String, User> loaduserinfo(@RequestParam("userid") String str_userid) {
+		Map<String, User> map = new HashMap<String, User>();
+		int userid=1;
+		if(!( str_userid ==null || str_userid.isEmpty())) userid=Integer.parseInt(str_userid);
+		User result = service.selectbyid(userid).get(0);
+		map.put("cuser",result);
+		return map;
+	}
 		
 		
 		
@@ -137,25 +145,24 @@ public class UserCenterController {
 	//转到user_info.jsp
 	@RequestMapping("/toinfo")
 	public String ToInfo() {
-		return "user/user_info";
-		
+		return "user/user_info.jsp";
 	}
+	
 	//转到user_setting.jsp
 	@RequestMapping("/tosetting")
 	public String ToSetting() {
-		return "user/user_setting";
-		
+		return "user/user_setting.jsp";	
 	}
+	
 	//转到user_follow.jsp
 	@RequestMapping("/tofollow")
 	public String Tofollow() {
-		return "user/user_follow";
-		
+		return "user/user_follow.jsp";
 	}
+	
 	@RequestMapping("/tolove")
 	public String Tolove() {
-		return "user/user_love";
-		
+		return "user/user_love.jsp";
 	}
 	
 	
