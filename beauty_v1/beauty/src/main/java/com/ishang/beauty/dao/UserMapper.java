@@ -28,6 +28,13 @@ public interface UserMapper {
 	 */
 	int updateImg(User record);
 	
+	String selectImg(Integer id);
+	
+	/**
+	 * 模糊查找(正式)
+	 */
+	List<User> selectLike(String username);
+	
     /**
      * 获取一周内有更新的关注up主
      * */

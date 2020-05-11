@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,7 +64,7 @@
 							</form>
 						</div>
 						<!-- //search -->
-						<!-- 登出&个人中心 -->
+						<!-- 登出&个人中心  --> <!-- todo:更换索引userspace的url -->
 						<a class="dwn-w3ls btn mr-1" href="<%=path%>/jsp/usercenter.jsp" target="_blank">
 							<span class="fa fa-user-circle-o" title="个人中心"></span>
 						</a> 
@@ -83,20 +84,25 @@
 	<div class="py-5 banner_w3lspvt-2">
 		<div class="container pb-xl-5 pb-lg-3">
 			<div class="py-xl-4 ">
-				<div class="col-lg-12 mt-5 row">
-					<div class="col-lg-2">
-						<img alt="" src="<%=path%>/images/kb1.jpg" style="max-width: 100px;">
+				<c:forEach items="${uplist}" var="ulist" begin="0" end="0">
+					<div class="col-lg-12 mt-5 row">
+						<div class="col-lg-2">
+							<img alt="" src="<%=path%>/<c:out value="${ulist.profileimg}" />" style="max-width: 100px;">
+						</div>
+						<div class="col-lg-8  ">
+							<h2 class="mb-4">
+								<c:out value="${ulist.username}"></c:out>
+							</h2>
+							<h4>欢迎来到我的空间</h4>
+						</div>
+						<div class="col-lg-2 mt-4" style="height: 40px; text-align: center;">
+							<a href="#" class="btn button-style">关注 Follow</a>
+							<div class="mt-3">
+								<a href="${pageContext.request.contextPath}/center/upfanlist?id=${ulist.id}">粉丝数：${fan}</a>
+							</div>
+						</div>
 					</div>
-					<div class="col-lg-8  ">
-						<h2 class="mb-4">up's name</h2>
-						<h4>Welcome to our Website</h4>
-					</div>
-					<div class="col-lg-2 mt-4"
-						style="height: 40px; text-align: center;">
-						<a href="#" class="btn button-style">关注 Follow</a>
-						<div class="mt-3">粉丝数：xxx</div>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
 		</div>
 	</div>
@@ -195,6 +201,14 @@
 		
 		window.onload = getsidebar(target,"21")
 
+	</script>
+
+	<script type="text/javascript">
+		$(function() {
+			console.log('${fan}');
+			console.log('${fanlist}');
+			console.log('${uplist}');
+		});
 	</script>
 
 </body>

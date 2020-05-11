@@ -22,6 +22,7 @@
 	            <div class="row mb60 text-center">
 	                <div class="col-sm-6 text-left match-height">
 	                    <h3 class="section-title">我的收藏</h3>
+	                    <h5>收藏数：</h5><h5 id="number"></h5>
 	                </div>
 	            </div>
 	        </div>   
@@ -81,6 +82,8 @@
 
 	function afterajax(data) {
 		var n = data.rstmap.length
+		//todo: 添加收藏number
+		number.innerHTML=n
 		var myhtml=""
 		for (i=0; i<n; i++){
 			var blogid = data.rstmap[i].blogid

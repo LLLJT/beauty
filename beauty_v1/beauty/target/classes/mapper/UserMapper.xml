@@ -88,6 +88,18 @@
 		set profileimg=#{profileimg}
 		where id=#{id}
 	</update>
+
+	<!-- 在个人中心/index界面/修改头像界面显示 -->
+	<select id="selectImg" resultType="java.lang.String">
+		select profileimg
+		from user
+		where id=#{id}
+	</select>
+
+	<select id="selectLike" resultMap="BaseResultMap">
+		select * from user
+		where username like "%"#{username}"%"
+	</select>
 	
 	<select id="selectlatestup" parameterType="java.lang.Integer" resultMap="BaseResultMap">
 		select id, username, `password`, roleid, sex, birthday, school, introduction, profileimg, del_flag

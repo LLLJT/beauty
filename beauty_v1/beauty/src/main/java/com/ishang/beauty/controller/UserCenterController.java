@@ -4,10 +4,12 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ishang.beauty.entity.User;
+import com.ishang.beauty.entity.UserFollow;
 import com.ishang.beauty.service.impl.UserServiceImpl;
 
 /**
@@ -31,12 +34,6 @@ import com.ishang.beauty.service.impl.UserServiceImpl;
 public class UserCenterController {
 	@Autowired
 	private UserServiceImpl service;
-
-	@RequestMapping("/user_follow")
-	public String user_follow() {
-		return "user/user_follow.jsp";
-
-	}
 
 	// 修改头像
 	@RequestMapping("/toupdateimg")
@@ -76,15 +73,33 @@ public class UserCenterController {
 		service.updateImg(user);
 		//model.addAttribute("image", user);
 		return "user/user_setting.jsp";
-
 	}
-
+	
+	//跳转到个人中心
 	@RequestMapping("/tocenter")
-	public String tocenter() {
-
+	public String tocenter(Model model) {
 		return "usercenter.jsp";
 	}
 
+	// 获取查询到的头像
+	@RequestMapping("/getpic")
+	public String getPic(@RequestParam Integer id, HttpSession session) {
+
+		String getpic = service.selectImg(id);
+		System.out.println(getpic);
+		session.setAttribute("getpic", getpic);
+		// model.addAttribute("getpic", getpic);
+		return "usercenter.jsp";
+	}
+
+	@RequestMapping("/getpic2")
+	public String getPic2(@RequestParam Integer id, HttpSession session) {
+		String getpic = service.selectImg(id);
+		System.out.println(getpic);
+		session.setAttribute("getpic", getpic);
+		// model.addAttribute("getpic", getpic);
+		return "index.jsp";
+	}
 	// 修改密码
 	@RequestMapping(value = "/modifypwd",method = RequestMethod.POST)
 	public String ModifyPwd(@RequestBody User user) {
@@ -94,6 +109,7 @@ public class UserCenterController {
 		System.out.println(user);
 //		System.out.println("以上为user内容，包含id和password");
 		service.updatepswd(user);
+		//TODO 将新密码存入cookie中
 		return "usercenter.jsp";
 
 	}
@@ -101,32 +117,11 @@ public class UserCenterController {
 	//修改用户信息
 	@RequestMapping(value = "/updateInfo" ,method = RequestMethod.POST)
 	public String UpdateInfo(@RequestBody User user) throws ParseException {
-		user.setDel_flag(1);
-		/* user.setRoleid(2); */
-		/*
-		 * System.out.println(user.getBirthday());
-		 * //用SimpleDateFormat将get到的birthday转成yyyy-MM-dd型的string SimpleDateFormat
-		 * format= new SimpleDateFormat("yyyy-MM-dd");
-		 * System.out.println(format.format(user.getBirthday())); String
-		 * time=format.format(user.getBirthday()); //再将string转成date型 Date
-		 * date=format.parse(time); user.setBirthday(date);
-		 */
-		
+		user.setDel_flag(1);	
 		System.out.println(user);
 		service.updateone(user);
 		return "index.jsp";
 	}
-	/*
-	 * //读取用户信息
-	 * 
-	 * @RequestMapping("/selectInfo") public ModelAndView SelectInfo(Integer
-	 * id,Model model) {
-	 * 
-	 * List<User>user=service.selectbyid(id); ModelAndView mv =new ModelAndView();
-	 * System.out.println("通过id查到的用户信息为:"+user.get(0).toString());
-	 * mv.setViewName("user/user_info"); mv.addObject("user", user); return mv;
-	 * 
-	 */
 	
 	@ResponseBody
 	@RequestMapping(value = "/loaduserinfo", method = RequestMethod.POST)
@@ -139,9 +134,6 @@ public class UserCenterController {
 		return map;
 	}
 		
-		
-		
-	
 	//转到user_info.jsp
 	@RequestMapping("/toinfo")
 	public String ToInfo() {
@@ -154,23 +146,69 @@ public class UserCenterController {
 		return "user/user_setting.jsp";	
 	}
 	
-	//转到user_follow.jsp
-	@RequestMapping("/tofollow")
-	public String Tofollow() {
-		return "user/user_follow.jsp";
-	}
-	
 	@RequestMapping("/tolove")
 	public String Tolove() {
 		return "user/user_love.jsp";
 	}
 	
-	
-	//从数据库读入头像路径
-	public String selectimg() {
-		return "";
+	// 获取关注数
+
+	// 获取关注列表
+	@RequestMapping("/user_follow")
+	public String followList(@RequestParam Integer followerid, Model model) {
+		int fcount = service.followcount(followerid);
+		System.out.println(fcount);
+
+		List<UserFollow> flist = service.followList(followerid);
+
+		model.addAttribute("fcount", fcount);
+		model.addAttribute("flist", flist);
+
+		//list本身就是一个列表
+		System.out.println(flist);
+
+		return "user/user_follow.jsp";
 	}
 	
+	@RequestMapping("/uploader")
+	public String Uploader(@RequestParam Integer uploaderid,Model model) {
+		int fan=service.fancount(uploaderid);
+		System.out.println(fan);
+		//List<UserFollow> fanlist=service.FanList(uploaderid);
+		List<User> uplist=service.selectbyid(uploaderid);
+		//System.out.println(fanlist);
+		System.out.println(uplist);
+		model.addAttribute("fan", fan);
+		//model.addAttribute("fanlist", fanlist);
+		model.addAttribute("uplist", uplist);
+
+		return "uploader.jsp";
+
+	}
+	
+	//通过用户id查询password，用于修改密码(user_setting)
+	@RequestMapping("/findpwd")
+	public String findpwd(@RequestParam Integer id,HttpSession session) {
+		List<User> list=service.findbyid(id);
+		String pwd=list.get(0).getPassword();
+		session.setAttribute("pwd", pwd);
+		return "user/user_setting.jsp";
+	}
+	
+	//将结果放到uploaderFanList中
+	@RequestMapping("/upfanlist")
+	public String upfanlist(@RequestParam Integer id,Model model) {
+		int fan=service.fancount(id);
+		System.out.println(fan);
+		List<UserFollow> fanlist=service.FanList(id);
+		List<User> uplist=service.selectbyid(id);
+		System.out.println(fanlist);
+		System.out.println(uplist);
+		model.addAttribute("fan", fan);
+		model.addAttribute("fanlist", fanlist);
+		model.addAttribute("uplist", uplist);
+		return "uploaderFanList.jsp";
+	}
 	
 	
 }

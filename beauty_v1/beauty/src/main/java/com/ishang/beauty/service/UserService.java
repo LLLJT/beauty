@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.ishang.beauty.entity.User;
+import com.ishang.beauty.entity.UserFollow;
 
 @Service
 public interface UserService {
@@ -45,6 +46,20 @@ public interface UserService {
 	int saveUser(User user);
 
 	List<User> findbyid(Integer id);
+	
+	//关注数，关注列表，粉丝数，粉丝列表
+	int followcount(Integer followerid);
+	
+	List<UserFollow> followList(Integer followerid);
+	
+	String selectImg(Integer id);
+	
+	List<User>selectLike(String username);
+	
+	int fancount(Integer id);
+	
+	List<UserFollow> FanList(Integer id);
+	//关注数，关注列表，粉丝数，粉丝列表 end
 	
 	public int updatepswd(User record);
 }

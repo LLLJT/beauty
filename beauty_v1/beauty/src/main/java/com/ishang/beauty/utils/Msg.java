@@ -55,7 +55,6 @@ public class Msg {
 	}
 
 	public Msg add(String key, Object value) {
-		// TODO 自动生成的方法存根
 		this.getExtend().put(key, value);
 		return this;
 	}

@@ -13,4 +13,16 @@ public interface UserFollowMapper {
     List<UserFollow> selectAll();
 
     int updateByPrimaryKey(UserFollow record);
+    
+    //获取关注数
+    int selectFollowCount(Integer followerid);
+    
+    //获取关注列表
+    List<UserFollow> selectFollowList(Integer followerid);
+	
+    //获取粉丝数
+    int selectFanCount(Integer uploaderid);
+    
+    //获取粉丝列表
+    List<UserFollow> selectFanList(Integer uploaderid);
 }

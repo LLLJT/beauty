@@ -162,8 +162,9 @@
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="#">用户详细信息</a></li>
-							<li><a href="#">用户查找</a></li>
+						<!-- todo -->
+							<li><a href="${pageContext.request.contextPath}/user/userList">用户详细信息</a></li>
+							<li><a href="${pageContext.request.contextPath}/user/selectLike?username=">用户查询</a></li>
 						</ul>
 					</li>
 
@@ -212,13 +213,14 @@
 		<div class="col-md-4"></div>
 
 		<div class="col-md-4">
-			<form class="form-inline">
+		<!-- todo -->
+			<!-- <form class="form-inline">
 				<div class="form-group">
 					<label for="exampleInputName2">用户名：</label> 
-					<input type="text" class="form-control" id="exampleInputName2" placeholder="Input a username...">
+					<input type="text" class="form-control" id="search_useranme" placeholder="Input a username...">
 				</div>
-				<button type="submit" class="btn btn-default">查询用户</button>
-			</form>
+				<button type="submit" class="btn btn-default" id="search_btn">查询用户</button>
+			</form> -->
 		</div>
 		<div class="col-md-2"></div>
 

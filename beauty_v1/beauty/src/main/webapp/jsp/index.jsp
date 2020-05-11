@@ -59,7 +59,7 @@
 					<!-- //logo -->
 					<div class="d-flex mt-lg-1 mt-sm-2 mt-3 justify-content-center">
 					<!-- 头像 -->
-					<img src="<%=path%>/images/userimg/18470736f72f497ab6019a616b856456.jpeg" class="headpic">
+					<img src="<%=path%>/${getpic}" class="headpic">
 					<label id="welcomemsg" class="welcomemsg" style="color:#705ecf"></label>
 					
 						<!-- search -->
@@ -74,7 +74,7 @@
 						<!-- //search -->
 						<!-- 登出&个人中心 -->
 						
-						<a class="dwn-w3ls btn mr-1" href="${pageContext.request.contextPath}/jsp/usercenter.jsp" target="_blank">
+						<a class="dwn-w3ls btn mr-1" href="${pageContext.request.contextPath}/center/tocenter" target="_blank">
 							<span class="fa fa-user-circle-o" title="个人中心"></span>
 						</a> 
 						<a class="dwn-w3ls btn" href="${pageContext.request.contextPath}/user/logout" target="_self">
@@ -216,13 +216,12 @@
 			<div class="d-md-flex px-md-3 position-relative text-center">
 				<!-- copyright -->
 				<div class="copy_right mx-md-auto mb-md-0 mb-3">
-					<p class="text-bl let">Copyright &copy; 2020. reachableBeauty
-						All rights reserved.</p>
+					<p class="text-bl let">Copyright &copy; 2020. reachableBeauty All rights reserved.</p>
 				</div>
 				<!-- //copyright -->
 				<!-- move top icon -->
-				<a href="#home" class="move-top text-center"> <span
-					class="fa fa-level-up" aria-hidden="true"></span>
+				<a href="#home" class="move-top text-center"> 
+					<span class="fa fa-level-up" aria-hidden="true"></span>
 				</a>
 				<!-- //move top icon -->
 			</div>
@@ -239,20 +238,22 @@
 				var cookiename=cookiestr.split("#")[0];
 			$("#welcomemsg").text("欢迎您,"+cookiename);	
 		});
-		
-
-		//获取select到的
 	</script>
 
 	<script type="text/javascript">
-	//String target= "../index?userid="+result.get(0).getId();
-			$(function() {
+		$(function() {
 
 			var cookiestr = getCookie("user");
 			var cookieid = cookiestr.split("#")[2];
 			var id = parseInt(cookieid);
 			var cookiename = cookiestr.split("#")[0];
 			var target="<%=path%>/index?userid="+id
+					
+			$.ajax({
+				url:"${pageContext.request.contextPath}/center/getpic2?id="+id,
+				type:"GET",
+				success:function(){}
+			});
 
 			$.ajax({
 				type : "post",
