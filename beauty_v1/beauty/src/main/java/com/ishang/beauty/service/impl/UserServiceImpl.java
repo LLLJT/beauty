@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.ishang.beauty.dao.BlogStarMapper;
 import com.ishang.beauty.dao.UserFollowMapper;
 import com.ishang.beauty.dao.UserMapper;
-import com.ishang.beauty.entity.Blog;
 import com.ishang.beauty.entity.User;
 import com.ishang.beauty.entity.UserFollow;
 import com.ishang.beauty.service.UserService;
@@ -74,34 +73,51 @@ public class UserServiceImpl implements UserService {
 		return dao.selectByPrimaryKey(id);
 	}
 
-	public int followcount() {
+	public int followcount(Integer followerid) {
 		// TODO 自动生成的方法存根
-		return followdao.selectFanCount();
+		return followdao.selectFollowCount(followerid);
 	}
 
-	public List<UserFollow> followList() {
+	public List<UserFollow> followList(Integer followerid) {
 		// TODO 自动生成的方法存根
-		return followdao.selectFollowList();
+		return followdao.selectFollowList(followerid);
 	}
 
-	public int fancount() {
+	public String selectImg(Integer id) {
 		// TODO 自动生成的方法存根
-		return followdao.selectFanCount();
+		return dao.selectImg(id);
 	}
 
-	public List<UserFollow> fanList() {
+	public List<User> selectLike(String username) {
 		// TODO 自动生成的方法存根
-		return followdao.selectFanList();
+		return dao.selectLike(username);
 	}
 
-	public int blogcount() {
+	public int fancount(Integer id) {
 		// TODO 自动生成的方法存根
-		return blogdao.selectBlogCount();
+		return followdao.selectFanCount(id);
 	}
 
-	public List<Blog> blogList() {
+	public List<UserFollow> FanList(Integer id) {
 		// TODO 自动生成的方法存根
-		return blogdao.selectBlogList();
+		return followdao.selectFanList(id);
 	}
 
+	
+
+
+	/*
+	 * public int fancount() { // TODO 自动生成的方法存根 return followdao.selectFanCount();
+	 * }
+	 * 
+	 * public List<UserFollow> fanList() { // TODO 自动生成的方法存根 return
+	 * followdao.selectFanList(); }
+	 */
+	/*
+	 * public int blogcount() { // TODO 自动生成的方法存根 return blogdao.selectBlogCount();
+	 * }
+	 * 
+	 * public List<Blog> blogList() { // TODO 自动生成的方法存根 return
+	 * blogdao.selectBlogList(); }
+	 */
 }

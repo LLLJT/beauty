@@ -34,42 +34,6 @@ public class UserController {
 	@Autowired
 	private UserService service;
 
-	/*
-	 * @RequestMapping("/userList")
-	 * 
-	 * @ResponseBody public Msg getUserWithJson(@RequestParam(value = "pn",
-	 * defaultValue = "1") Integer pn, Model model) { // 第pn页显示五行数据
-	 * PageHelper.startPage(pn, 5); List<User> uList = service.findall();
-	 * PageInfo<User> page = new PageInfo<User>(uList, 5);
-	 * 
-	 * 测试page中的参数 System.out.println("页码数:"+page.getPageNum());
-	 * System.out.println("总页码:"+page.getPages());
-	 * System.out.println("总条数:"+page.getTotal());
-	 * System.out.println(page.getNavigatePages());
-	 *
-	 *
-	 * for(User u : list) {
-	 * System.out.println("id:"+u.getId()+"name:"+u.getUsername());
-	 * 
-	 * }
-	 * 
-	 * 
-	 * int []num=page.getNavigatepageNums(); for(int i:num) {
-	 * 
-	 * System.out.println(" "+i); } for(User u : list) {
-	 * System.out.println("id:"+u.getId()+"name:"+u.getUsername());
-	 * 
-	 * }
-	 * 
-	 * 
-	 * 
-	 * ModelAndView mv = new ModelAndView("backuserList"); mv.addObject("pageInfo",
-	 * page);
-	 * 
-	 * return Msg.success().add("pageInfo", page);
-	 * 
-	 * }
-	 */
 	@RequestMapping("/userList")
 	public ModelAndView findall(@RequestParam(value = "pn", defaultValue = "1") Integer pn, Model model) {
 
@@ -126,6 +90,9 @@ public class UserController {
 			// 由于CookieVersion 0不支持逗号，因此换成#号
 			String loginInfo = result.get(0).getUsername() + "#" + result.get(0).getPassword() + "#"
 					+ result.get(0).getId();
+			String loginInfo2 = result.get(0).getUsername() + "#" +'1'+ "#"
+					+ result.get(0).getId();
+			
 			// 如果记住密码设置cookie
 			if (re) {
 				Cookie userCookie = new Cookie("user", loginInfo);
@@ -133,9 +100,9 @@ public class UserController {
 				userCookie.setMaxAge(7 * 24 * 60 * 60);
 				userCookie.setPath("/");
 				response.addCookie(userCookie);
-			} else {// 没有选中记住密码，删除cookie
-				Cookie newCookie = new Cookie("user", null);
-				newCookie.setMaxAge(0);
+			} else {// 没有选中记住密码，只保存username和id，且保存7天
+				Cookie newCookie = new Cookie("user", loginInfo2);
+				newCookie.setMaxAge(7 * 24 * 60 * 60);
 				newCookie.setPath("/");
 				// 覆盖之前的userCookie
 				response.addCookie(newCookie);
@@ -205,39 +172,65 @@ public class UserController {
 	@RequestMapping(value = "/updateUser", method = RequestMethod.POST)
 	public String UpdateUser(@RequestBody User user, Model model) {
 
-		
 		user.setDel_flag(1);
 		service.updateone(user);
 		model.addAttribute("user", user);
 		return "backuserList";
 
 	}
-	//userList界面的delete模态框
-	@RequestMapping(value = "/deleteUser",method = RequestMethod.POST)
+
+	// userList界面的delete模态框
+	@RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
 	public String DeleteUser(@RequestBody User user) {
-		
+
 		System.out.println(user.getId());
 		service.deleteone(user.getId());
 		return "backuserList";
-		
+
 	}
+
 	@RequestMapping(value = "/toindex")
 	public String index() {
 		return "index";
-		
-	}
-	
-	
-	
-	
 
-	
-	
-	
-	
-	
-	
-	
-	
+	}
+
+	@RequestMapping("/selectLike")
+	public ModelAndView findlike(@RequestParam(value = "pn", defaultValue = "1") Integer pn,
+			@RequestParam ("username")String username, Model model,HttpServletRequest request,HttpServletResponse response) {
+
+		PageHelper.startPage(pn, 5);
+		List<User> list = service.selectLike(username);
+		PageInfo<User> page = new PageInfo<User>(list, 5);
+		System.out.println(page.getList());
+		
+		ModelAndView mv = new ModelAndView("backuserLike");
+		mv.addObject("pageInfo", page);
+		
+		// 设置将username传入cookie
+		if(username!=null) {
+					HttpSession session = request.getSession();
+					session.setAttribute("SESSION_UserName", username);
+		
+					// 由于CookieVersion 0不支持逗号，因此换成#号
+					String likeusername = username;
+					
+						Cookie userCookie = new Cookie("like", likeusername);
+						// 设置保存7天cookie
+						userCookie.setMaxAge(7 * 24 * 60 * 60);
+						userCookie.setPath("/");
+						response.addCookie(userCookie);
+					
+		}
+		
+		return mv;
+
+	}
+//backuserLike.jsp
+	@RequestMapping("/tolike")
+	public String tolike() {
+		return "backuserLike";
+
+	}
 
 }

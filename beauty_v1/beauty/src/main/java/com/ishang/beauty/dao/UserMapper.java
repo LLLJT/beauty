@@ -19,7 +19,7 @@ public interface UserMapper {
 	int updateByPrimaryKeyPlus(User record);
 
 	/**
-	 * 模糊查找
+	 * 模糊查找(初始)
 	 * */
 	List<User> selectlike(User record);
 	/**
@@ -28,8 +28,13 @@ public interface UserMapper {
 	int updateImg(User record);
 	
 	
+
+	String selectImg(Integer id);
+	/**
+	 * 模糊查找(正式)
+	 */
 	
-	
+	List<User> selectLike(String username);
 	
 	
 }

@@ -50,18 +50,26 @@ public interface UserService {
 	
 	//关注数，关注列表，粉丝数，粉丝列表
 	
-	int followcount();
+	int followcount(Integer id);
 	
-	List<UserFollow> followList();
+	List<UserFollow> followList(Integer id);
 	
-	int fancount();
+	String selectImg(Integer id);
 	
-	List<UserFollow> fanList();
+	List<User>selectLike(String username);
 	
-	int blogcount();
+	int fancount(Integer id);
 	
-	List<Blog> blogList();
-	
+	List<UserFollow> FanList(Integer id);
+	/*
+	 * int fancount();
+	 * 
+	 * List<UserFollow> fanList();
+	 * 
+	 * int blogcount();
+	 * 
+	 * List<Blog> blogList();
+	 */
 	
 	
 	

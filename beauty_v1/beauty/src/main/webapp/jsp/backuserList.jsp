@@ -176,8 +176,8 @@
 						data-toggle="dropdown" role="button" aria-haspopup="true"
 						aria-expanded="false">用户管理 <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">用户详细信息</a></li>
-							<li><a href="#">用户查找</a></li>
+							<li><a href="${pageContext.request.contextPath}/user/userList">用户详细信息</a></li>
+							<li><a href="${pageContext.request.contextPath}/user/selectLike?username=">用户查询</a></li>
 							
 
 						</ul></li>
@@ -231,15 +231,17 @@
 	<div class="row">
 		<div class="col-md-4"></div>
 
+		 
 		<div class="col-md-4">
-			<form class="form-inline">
+			<!-- <form class="form-inline">
 				<div class="form-group">
-					<label for="exampleInputName2">用户名：</label> <input type="text"
-						class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+					<label for="exampleInputName2">用户名：</label> <input type="text" 
+						class="form-control" id="search_useranme" placeholder="Jane Doe">
 				</div>
-				<button type="submit" class="btn btn-default">查询用户</button>
-			</form>
-		</div>
+				<button type="submit" class="btn btn-default" id="search_btn">查询用户</button>
+			</form> -->
+		</div> 
+		
 		<div class="col-md-2"></div>
 
 		<div class="col-md-2">
@@ -685,7 +687,7 @@
 			});
 			
 		
-			
+		
 			
 			
 			

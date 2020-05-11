@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +20,7 @@
 <!-- Web-Fonts -->
 <link href="http://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=devanagari,latin-ext"
 	rel="stylesheet">
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!-- Custom stylesheet - for your changes-->
 <link rel="stylesheet" href="<%=path%>/css/custom.css">
 <!-- JavaScript files-->
@@ -58,7 +60,7 @@
 					<!-- //logo -->
 					<div class="d-flex mt-lg-1 mt-sm-2 mt-3 justify-content-center">
 					<!-- 头像 -->
-					<img src="<%=path%>/images/userimg/18470736f72f497ab6019a616b856456.jpeg" class="headpic">
+					<img src="<%=path%>/${getpic}" class="headpic">
 					<label id="welcomemsg" class="welcomemsg" style="color:#705ecf"></label>
 					
 						<!-- search -->
@@ -295,6 +297,14 @@ $(function(){
 		var cookiename=cookiestr.split("#")[0];
 	$("#welcomemsg").text("欢迎您,"+cookiename);
 	
+	var cookieid=cookiestr.split("#")[2];
+	var id=parseInt(cookieid);
+	
+	$.ajax({
+		url:"${pageContext.request.contextPath}/center/getpic2?id="+id,
+		type:"GET",
+		success:function(){}
+	});
 	
 });
 

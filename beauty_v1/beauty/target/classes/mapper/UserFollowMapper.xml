@@ -51,29 +51,38 @@
     from user_follow
   </select>
  <!-- 获取关注数 -->
-  <select id="selectFollowCount" resultMap="BaseResultMap">
+  <select id="selectFollowCount" resultType="java.lang.Integer">
   select count(*) 
   from user_follow
-  where followerid=2
+  where followerid=#{followerid}
   </select>
   
   <!-- 获取关注列表 -->
   <select id="selectFollowList" resultMap="QueryMap">
-  select *
-  from user
-  where id in(select id from user_follow where followerid=2)
+ SELECT *
+FROM `user`
+where id in(
+select uploaderid 
+FROM user_follow 
+where followerid=#{followerid}
+)
   </select>
  <!-- 获取粉丝数 -->
  <select id="selectFanCount" resultType="java.lang.Integer">
- select count(*)
- from user_follow
- where uploaderid=3
+SELECT count(*)
+from user_follow
+where uploaderid=#{uploaderid}
  </select>
  <!-- 获取粉丝列表 -->
  <select id="selectFanList" resultMap="QueryMap">
- select *
- from user
- where id in(select id from user_follow where uploaderid=3)
+SELECT *
+from `user`
+where id in(
+SELECT followerid
+from user_follow
+where uploaderid=#{uploaderid}
+
+)
  </select>
  
   

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,16 +35,17 @@
 					<!-- logo -->
 					<div id="logo">
 						<h1>
-							<a href="${pageContext.request.contextPath}/user/toindex"><span class="fa fa-linode mr-2"></span>reachableBeauty</a>
+							<a href="${pageContext.request.contextPath}/user/toindex"><span
+								class="fa fa-linode mr-2"></span>reachableBeauty</a>
 						</h1>
 					</div>
 					<!-- //logo -->
 					<div class="d-flex mt-lg-1 mt-sm-2 mt-3 justify-content-center">
 
 						<!-- 头像 -->
-						<img
-							src="<%=path%>/images/userimg/18470736f72f497ab6019a616b856456.jpeg"
-							class="headpic"> 
+						<img id="headpic"
+							src="#"
+							class="headpic">
 
 						<!-- search -->
 						<div class="search-w3layouts mr-3">
@@ -60,10 +62,13 @@
 
 						<!-- //search -->
 						<!-- 登出&个人中心 -->
-						<a class="dwn-w3ls btn mr-1" href="${pageContext.request.contextPath}/center/tocenter" target="_blank">
-							<span class="fa fa-user-circle-o" title="个人中心"></span>
-						</a> <a class="dwn-w3ls btn" href="${pageContext.request.contextPath}/user/logout" target="_self"> <span
-							class="fa fa-sign-out" title="退出登录"></span>
+						<a class="dwn-w3ls btn mr-1"
+							href="${pageContext.request.contextPath}/center/tocenter"
+							target="_blank"> <span class="fa fa-user-circle-o"
+							title="个人中心"></span>
+						</a> <a class="dwn-w3ls btn"
+							href="${pageContext.request.contextPath}/user/logout"
+							target="_self"> <span class="fa fa-sign-out" title="退出登录"></span>
 						</a>
 						<!-- //logout&usercenter -->
 					</div>
@@ -77,7 +82,9 @@
 			<div class="container">
 				<div class="row" style="width: 100%; height: 300px">
 					<div class="up_center">
-						<h4><label id="centername" class="centername" style="color:white"></label></h4>
+						<h4>
+							<label id="centername" class="centername" style="color: white"></label>
+						</h4>
 					</div>
 					<div class="col-sm-12">
 						<div id="navbar-1">
@@ -113,7 +120,9 @@
 	<!-- //main banner -->
 
 	<!-- 子页面 -->
-	<iframe id="userframe" src="${pageContext.request.contextPath}/center/user_follow"> </iframe>
+	<iframe id="userframe"
+		src="#">
+	</iframe>
 
 	<!-- //子页面 -->
 
@@ -125,34 +134,54 @@
 	<script src="../js/js.cookie.min.js"></script>
 	<script src="../js/front.js"></script> -->
 
-<!-- JavaScript files-->
+	<!-- JavaScript files-->
 	<script src="<%=path%>/js/jquery/jquery.min.js"></script>
 	<script src="<%=path%>/js/popper.js/umd/popper.min.js"></script>
 	<!-- popper.min.js 用于弹窗、提示、下拉菜单 -->
 	<script src="<%=path%>/js/bootstrap/bootstrap.min.js"></script>
-	<script src="<%=path%>/js/jquery.cookie/jquery.cookie.js"> </script>
+	<script src="<%=path%>/js/jquery.cookie/jquery.cookie.js">
+		
+	</script>
 	<script src="<%=path%>/js/js.cookie.min.js"></script>
 	<script src="<%=path%>/js/front.js"></script>
 
 	<script type="text/javascript">
-	$(function(){
-		var cookiestr=getCookie("user");
-		if (cookiestr != "")
-			var cookiename = cookiestr.split("#")[0];
-		$("#centername").text(cookiename+"的个人空间");
+		$(function() {
+			var getpic="${getpic}";
+			//alert(getpic);
+			var concatpic='/beauty/'+getpic;
+			$("#headpic").attr('src',concatpic);
 			
-		
-	});	
-	
-	
+			var cookiestr = getCookie("user");
+			if (cookiestr != "")
+				var cookiename = cookiestr.split("#")[0];
+			var cookieid = cookiestr.split("#")[2];
+			$("#centername").text(cookiename + "的个人空间");
+			var url = "${pageContext.request.contextPath}/center/user_follow?followerid="
+					+ cookieid;
+			$("#userframe").attr("src", url);
+
+			var id=parseInt(cookieid);
+			$.ajax({
+				url:"${pageContext.request.contextPath}/center/getpic?id="+id,
+				type:"GET",
+				success:function(){}
+			});
+			
+		});
+
 		function change_frame(value) {
 			//beauty/center/selectInfo?id=xxx
 			//从cookie中取出cookieid
 			var cookiestr = getCookie("user");
 			if (cookiestr != "")
 				var cookieid = cookiestr.split("#")[2];
-			var url = "${pageContext.request.contextPath}/center/" + value;
-
+			if (value == 'user_follow')
+				var url = "${pageContext.request.contextPath}/center/" + value
+						+ "?followerid=" + cookieid;
+			else {
+				var url = "${pageContext.request.contextPath}/center/" + value;
+			}
 			var frame = document.getElementById("userframe");
 			frame.src = url;
 			frame.style.height = frame.contentWindow.document.documentElement.scrollHeight

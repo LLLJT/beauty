@@ -114,6 +114,18 @@
 	 <script src="<%=path%>/js/js.cookie.min.js"></script>
 	<script src="<%=path%>/js/front.js"></script>
 	<script type="text/javascript">
+
+	$(document).ready(function(){
+		  $("#inputGroupFile01").change(function(){
+			  var text=$("#inputGroupFile01").val();
+			  console.info(text);
+			  var i=text.lastIndexOf("\\");
+			  text=text.substring(i+1);
+			  $(".custom-file-label").text(text);
+		  });
+		});
+	
+	
 		$(function() {
 			var cookiestr = getCookie("user");
 			if (cookiestr != "") {
@@ -124,6 +136,7 @@
 				alert("cookie里面字符串为"+cookiestr);
 				alert("当前用户id为："+cookieid);	
 				 */
+				 
 			}
 			$("#inputGroupFile01").change(function(){
 				  var text=$("#inputGroupFile01").val();
@@ -165,12 +178,44 @@
 							 alert("id为："+getCookie("user").split("#")[2]);
 							 alert("password为："+getCookie("user").split("#")[1]);
 							 */
-							var cookieid = getCookie("user").split("#")[2];
-							//从cookie中获取的pwd就是登录密码，与旧密码比较
-							var cookiepwd = getCookie("user").split("#")[1];
-							if (cookiepwd != oldpassword) {
+							 var cookiestr=getCookie("user");
+							 var cookieid=cookiestr.split("#")[2];
+							 var id=parseInt(cookieid);
+							
+							 $.ajax({
+									url:"${pageContext.request.contextPath}/center/findpwd?id="+id,
+									type:'GET',
+									success:function(){}
+									
+									
+								});
+							 //数据库Password,String型
+								var sqlpwd='${pwd}';
+								
+						
+							 
+							 
+							
+							//修改了user_setting对旧密码的判断，考虑到没记住密码的情况
+							
+						
+							
+							//if(cookiepwd=="1"){}
+							//通过cookieid查询数据库内的密码
+						
+							
+							
+							
+							
+							if (sqlpwd != oldpassword) {
 								alert("旧密码不正确，无法进行修改操作");
 								return false;
+							}
+							//由于get到了数据库的密码，我们再得寸进尺亿点点
+							if(sqlpwd==password){
+								alert("新输入的密码不能与旧密码一致");
+								return false;
+								
 							}
 							if (password1 != password) {
 								alert("两次输入的密码不一致,请重新输入");

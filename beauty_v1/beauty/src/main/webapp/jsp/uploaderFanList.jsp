@@ -7,6 +7,22 @@
 <meta charset="UTF-8">
 <title>xx 的 主页</title>
 <% String path=request.getContextPath();%>
+<link href="<%=path%>/css/bootstrap.css" rel="stylesheet">
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+ 
+<link
+	href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900|Dancing+Script:400,700|Raleway:400,100,300,700,900|Reenie+Beanie&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+<link href="<%=path%>/css/users/userspace_style.css" rel="stylesheet">
+<link rel="stylesheet" href="<%=path%>/css/custom.css">
+<link rel="stylesheet" href="<%=path%>/css/users/follow.css">
 	<script>
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
@@ -99,7 +115,7 @@
 					<div class="col-lg-2 mt-4"
 						style="height: 40px; text-align: center;">
 						<a href="#" class="btn button-style">关注 Follow</a>
-						<div class="mt-3"><a href="${pageContext.request.contextPath}/center/upfanlist?id=${ulist.id}">粉丝数：${fan}</a></div>
+						<div class="mt-3"><a href="${pageContext.request.contextPath}/center/user_follow?followerid=${ulist.id}">粉丝数：${fan}</a></div>
 					</div>
 				</div>
 				</c:forEach>
@@ -114,69 +130,43 @@
 			<div class="row c-acolor">
 			<span class="col-md-1 fa fa-sort-amount-desc fa-2x mr-2"></span>
 				<div class="col-md-2">
-					<h4><a href="#">时间<i class="fa fa-clock-o ml-2"></i></a></h4>
+					<h4><a href="#">粉丝列表<i class="fa fa-clock-o ml-2"></i></a></h4>
 				</div>
-				<div class="col-md-2">
-					<h4><a href="#">热度<i class="fa fa-thermometer-full ml-2"></i></a></h4>
-				</div>
+				
 				
 			</div>
 		</div>
 	</section>
 	<!-- //order nav -->
+<!-- 粉丝列表 -->
+<section class="white-wrapper allow-overflow">
+		<div class="">
+			<ul class="relation-list">
+			<c:forEach items="${fanlist}" var="list" >
+				<li class="list-item row">
+					<a href="${pageContext.request.contextPath}/center/uploader?uploaderid=<c:out value="${list.id}"/>"  target="_blank" class="cover"> 
+						<img src="<%=path%>/<c:out value="${list.profileimg}" />" alt="星s巨寒">
+					</a>
+					<div class="content">
+						<a href="https://space.bilibili.com/12065306/" target="_blank"
+							class="title"> <span><c:out value="${list.username}" /></span>
+						</a>
+						<p title="<c:out value="${list.introduction}" />"
+							class="desc"><c:out value="${list.introduction}" /></p>
+						<div class="fans-action">
+							<div class="be-dropdown fans-action-btn fans-action-follow">
+								<span class="fans-action-text">已关注</span>
+							</div>
+						</div>
+					</div></li>
+		</c:forEach>
+				
+			</ul>
+</div></section>
+
 
 	<!--  CONTENT WRAPPER -->
-	<div id="content-wrapper" class="c-newfont">		
-		<section id="about" class="page-section">
-			<div class="row white">
-				<div class="col-sm-9">
-					<div class="row">						
-						<div class="col-md-12 blog-bg">
-							<div class="col-md-2 col-sm-2 col-xs-2 blog-meta fade-down float-left">
-								<h3>Most</h3>
-								<h3>Popular</h3>
-								<div class="blog-counts">
-									<h5><i class="fa fa-comment"></i><span class="counter">14</span></h5>
-									<h5><i class="fa fa-heart"></i><span class="counter">56</span></h5>
-								</div>
-							</div>
-							<div class="grid mask">
-								<figure>
-									<img class="img fade-down" src="../images/bg2.jpg">
-									<figcaption>
-										<a class="btn btn-primary btn-lg" href="#"><i class="fa fa-link"></i></a>
-									</figcaption>
-								</figure>
-							</div>
-							<div class="col-md-10 col-md-offset-2 col-sm-10 col-xs-10 col-xs-offset-2 blog-content fade-up">
-								<p>Armed with insight, we embark on designing the right brand experience that engages the audience. It encompasses both the strategic direction and creative execution that solves a business problem and brings the brand to life.</p>
-							</div>
-						</div><!-- /col -->					
-					</div><!-- /row -->
-				</div>	
-
-
-				<div class="col-sm-3 col-sm-offset-1 single-post-sidebar">
-					<h3 class="sidebar-title mt0 mb-5">最近更新</h3>
-
-					<div class="row sidebar-post">
-						<div class="col-md-4">
-							<img class="sb-img" src="../images/folio01.jpg" alt="Alt">
-						</div>
-						<div class="col-md-8 sidebar-post-content">
-							<h4>Blog Post A</h4>
-							<div class="blog-meta-main">
-								<span class="post-meta-link"><i class="fa fa-clock-o"></i> 更新于 2分钟前</span>
-							</div>
-						</div>
-					</div>
-
-
-				</div><!-- col-md-6 -->	
-			</div>
-		</section>
-
-	</div>
+	
 	<!-- CONTENT WRAPPER -->
 
 	<!-- copyright bottom -->
