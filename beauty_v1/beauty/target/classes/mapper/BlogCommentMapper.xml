@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ishang.beauty.dao.BlogCommentMapper">
+  
+  <resultMap id="BaseResultMap" type="com.ishang.beauty.entity.BlogComment">
+	  <id column="id" jdbcType="INTEGER" property="id" />
+	  <result column="userid" jdbcType="INTEGER" property="userid" />
+	  <result column="blogid" jdbcType="INTEGER" property="blogid" />
+	  <result column="cmtid" jdbcType="INTEGER" property="cmtid" />
+	  <result column="comment" jdbcType="VARCHAR" property="comment" />
+	  <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+	  <result column="likenum" jdbcType="INTEGER" property="likenum" />
+	  <result column="del_flag" jdbcType="BIT" property="delFlag" />
+  </resultMap>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from blog_comment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insert" parameterType="com.ishang.beauty.entity.BlogComment">
+    insert into blog_comment (id, userid, blogid, cmtid, `comment`, createtime, likenum, del_flag)
+    values (
+	    #{id,jdbcType=INTEGER},
+	    #{userid,jdbcType=INTEGER}, 
+	    #{blogid,jdbcType=INTEGER}, 
+	    #{cmtid,jdbcType=INTEGER}, 
+	    #{comment,jdbcType=VARCHAR}, 
+	    #{createtime,jdbcType=TIMESTAMP}, 
+	    #{likenum,jdbcType=INTEGER}, 
+	    #{delFlag,jdbcType=BIT})
+  </insert>
+  
+  <update id="updateByPrimaryKey" parameterType="com.ishang.beauty.entity.BlogComment">
+    update blog_comment
+    set 
+	    userid = #{userid,jdbcType=INTEGER},
+		blogid = #{blogid,jdbcType=INTEGER},
+	    cmtid = #{cmtid,jdbcType=INTEGER},
+	    `comment` = #{comment,jdbcType=VARCHAR},
+	    createtime = #{createtime,jdbcType=TIMESTAMP},
+	    likenum = #{likenum,jdbcType=INTEGER},
+	    del_flag = #{delFlag,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, userid, blogid, cmtid, `comment`, createtime, likenum, del_flag
+    from blog_comment
+    where id = #{id,jdbcType=INTEGER}
+    <![CDATA[ and createtime <= NOW()	]]>
+  </select>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, userid, blogid, cmtid, `comment`, createtime, likenum, del_flag
+    from blog_comment
+    where del_flag=1
+    <![CDATA[ and createtime <= NOW()	]]>
+  </select>
+  
+  	<!-- 模糊查找 -->
+	<select id="selectlike" parameterType="com.ishang.beauty.entity.BlogComment" resultMap="BaseResultMap">
+		select id, userid, blogid, cmtid, `comment`, createtime, likenum, del_flag
+    	from blog_comment
+		where `comment` like concat('%',#{`comment`,jdbcType=VARCHAR},'%')
+		and del_flag=1
+		<![CDATA[ and createtime <= NOW()	]]>
+	</select>
+
+	<!-- 获取某blog的normal评论list ( 排除reply ) -->
+	<select id="selectncmt" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select id, userid, blogid, cmtid, `comment`, createtime, likenum, del_flag
+    	from blog_comment
+		WHERE blogid = #{blogid,jdbcType=INTEGER}
+		and ISNULL(cmtid) and del_flag=1
+		<![CDATA[ and createtime <= NOW()	]]>
+		ORDER BY likenum DESC, createtime ASC
+	</select>
+
+	<!-- 获取某blog的所有reply -->
+	<select id="selectallreply" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+		select id, userid, blogid, cmtid, `comment`, createtime, likenum, del_flag
+    	from blog_comment
+		WHERE blogid = #{blogid,jdbcType=INTEGER}
+		and NOT(ISNULL(cmtid)) and del_flag=1
+		<![CDATA[ and createtime <= NOW()	]]>
+	</select>
+	
+	<!-- 获取某normal cmt的所有reply -->
+	<select id="selectreply" resultMap="BaseResultMap">
+		select id, userid, blogid, cmtid, `comment`, createtime, likenum, del_flag
+    	from blog_comment
+    	WHERE blogid = #{blogid}
+		and cmtid = #{cmtid}
+		and del_flag=1
+		<![CDATA[ and createtime <= NOW()	]]>
+<!-- 		WHERE blogid = #{blogid,jdbcType=INTEGER}
+		and cmtid = #{cmtid,jdbcType=INTEGER} -->
+	</select>
+
+	<!-- 获取某blog的评论数 -->
+	<select id="getblogcmt" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		SELECT COUNT(0) FROM blog_comment
+		WHERE blogid = #{blogid,jdbcType=INTEGER} and del_flag=1
+		<![CDATA[ and createtime <= NOW()	]]>
+	</select>
+	
+</mapper>
