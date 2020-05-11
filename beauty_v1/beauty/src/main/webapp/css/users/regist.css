@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+em {
+	margin-right: 20px;
+}
+
+.form-required {
+	width: 90%;
+	display: inline-block;
+}
+
+form {
+	height: 220px;
+	overflow-y: scroll;
+}
+
+.px-5 {
+	margin-top: 20px;
+}
