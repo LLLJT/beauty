@@ -52,10 +52,10 @@
 
 						<!-- //search -->
 						<!-- 登出&个人中心 -->
-						<a class="dwn-w3ls btn mr-1" href="${pageContext.request.contextPath}/center/tocenter" target="_blank">
+						<a class="dwn-w3ls btn mr-1" href="<%=path%>/center/tocenter" target="_blank">
 							<span class="fa fa-user-circle-o" title="个人中心"></span>
 						</a> 
-						<a class="dwn-w3ls btn" href="${pageContext.request.contextPath}/user/logout" target="_self"> 
+						<a class="dwn-w3ls btn" href="<%=path%>/user/logout" target="_self"> 
 							<span class="fa fa-sign-out" title="退出登录"></span>
 						</a>
 						<!-- //logout&usercenter -->
@@ -129,12 +129,12 @@
 				var cookiename = cookiestr.split("#")[0];
 			var cookieid = cookiestr.split("#")[2];
 			$("#centername").text(cookiename + "的个人空间");
-			var url = "${pageContext.request.contextPath}/center/user_follow?followerid="	+ cookieid;
+			var url = "<%=path%>/center/user_follow?followerid="	+ cookieid;
 			$("#userframe").attr("src", url);
 
 			var id = parseInt(cookieid);
 			$.ajax({
-				url : "${pageContext.request.contextPath}/center/getpic?id="+ id,
+				url : "<%=path%>/center/getpic?id="+ id,
 				type : "GET",
 				success : function() {
 					console.info("user info succeed")
@@ -151,10 +151,9 @@
 			if (cookiestr != "")
 				var cookieid = cookiestr.split("#")[2];
 			if (value == 'user_follow')
-				var url = "${pageContext.request.contextPath}/center/" + value
-						+ "?followerid=" + cookieid;
+				var url = "<%=path%>/center/" + value + "?followerid=" + cookieid;
 			else {
-				var url = "${pageContext.request.contextPath}/center/" + value;
+				var url = "<%=path%>/center/" + value;
 			}
 
 			var frame = document.getElementById("userframe");

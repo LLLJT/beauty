@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSONObject;
 import com.ishang.beauty.entity.User;
 import com.ishang.beauty.entity.UserFollow;
 import com.ishang.beauty.service.impl.UserServiceImpl;
@@ -98,7 +99,8 @@ public class UserCenterController {
 		System.out.println(getpic);
 		session.setAttribute("getpic", getpic);
 		// model.addAttribute("getpic", getpic);
-		return "index.jsp";
+//		return "index.jsp";
+		return "../index";
 	}
 	// 修改密码
 	@RequestMapping(value = "/modifypwd",method = RequestMethod.POST)
@@ -155,17 +157,16 @@ public class UserCenterController {
 
 	// 获取关注列表
 	@RequestMapping("/user_follow")
-	public String followList(@RequestParam Integer followerid, Model model) {
+	public String followList(@RequestParam Integer followerid,HttpServletRequest request, Model model) {
 		int fcount = service.followcount(followerid);
 		System.out.println(fcount);
 
 		List<UserFollow> flist = service.followList(followerid);
-
 		model.addAttribute("fcount", fcount);
 		model.addAttribute("flist", flist);
-
+		//request.setAttribute("flist", flist);
 		//list本身就是一个列表
-		System.out.println(flist);
+		//System.out.println(flist);
 
 		return "user/user_follow.jsp";
 	}

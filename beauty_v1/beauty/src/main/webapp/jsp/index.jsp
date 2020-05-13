@@ -234,9 +234,11 @@
 	<script type="text/javascript">
 		$(function(){
 			var cookiestr = getCookie("user");
-			if(cookiestr!="")
+			if(cookiestr!=""){
 				var cookiename=cookiestr.split("#")[0];
-			$("#welcomemsg").text("欢迎您,"+cookiename);	
+				cookiename=decodeURIComponent(cookiename)
+				$("#welcomemsg").text("欢迎您,"+cookiename);	
+			}
 		});
 	</script>
 
@@ -250,7 +252,7 @@
 			var target="<%=path%>/index?userid="+id
 					
 			$.ajax({
-				url:"${pageContext.request.contextPath}/center/getpic2?id="+id,
+				url:"<%=path%>/center/getpic2?id="+id,
 				type:"GET",
 				success:function(){}
 			});
@@ -265,7 +267,7 @@
 				//console.info(data);
 				$("#aaa").html(data);
 				}
-				    });
+			});
 
 		});
 	</script>

@@ -166,7 +166,11 @@ String searchname = request.getParameter("searchname");
 				console.log(xhr)
 				/* alert("succeed"); 
 				alert(th)*/
-				switchoutput(th,response)
+				if(response.rstlist!=null){
+					switchoutput(th,response)
+				}else{
+					rstdiv.innerHTML="<h3>暂无结果</h3>"	
+				}
 			},
 			error:function(){
 				alert("error");

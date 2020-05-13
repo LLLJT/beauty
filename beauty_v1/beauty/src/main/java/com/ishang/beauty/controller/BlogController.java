@@ -1,6 +1,7 @@
 package com.ishang.beauty.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -55,7 +56,7 @@ public class BlogController {
 	@RequestMapping("/indexjsp")
 	public String loadindex(HttpServletRequest request,Model model){    
 		// 1、获取关注up主的最近更新（一周内）的up主列表 dtype: List<User>
-		int userid=2; //TODO 测试数据：2
+		int userid=2; // 测试数据：2
 		if(request.getParameter("userid")!="")userid=Integer.parseInt(request.getParameter("userid"));
 		// 从cookie获取当前登录的userid
 		List<User> updateuplist=service.selectlatestup(userid);
@@ -128,8 +129,6 @@ public class BlogController {
 		if(rstlist.size()>0) {
 			System.out.println("succeed");
 			map.put("rstlist", rstlist);
-		}else {
-			System.out.println("failed");
 		}
 		return map;
 	}
@@ -216,12 +215,68 @@ public class BlogController {
 	@RequestMapping("/index")
 	public String toindex(@CookieValue(value = "user", required = false) String testCookie) {
 		System.out.println(testCookie);
-		// TODO 第一次登录的user要登录两遍 没想好解决方法
-		if(testCookie==null) return "login.jsp";
+		if(testCookie==null) return "index.jsp";
 		String[] strarr=testCookie.split("#");
 		String str_id=strarr[2];
 		System.out.println(str_id);
 		if((str_id=="" || str_id.isEmpty()) ) str_id="1";
 		return ("../indexjsp?userid="+str_id);
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/getupblog",method = RequestMethod.GET)
+	public Map getupblog(@RequestParam("upid") String str_up) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		int upid=21;
+		if(str_up!=""||str_up!=null) upid=Integer.parseInt(str_up);
+		List<Blog> list=service.findbyentity(upid, "hot", true);
+		if(list.size()>0) {
+			Blog firstblog=list.get(0);
+			int heart=service.getnum(firstblog.getId(), "star");
+			int comment=service.getnum(firstblog.getId(), "cmt");
+			map.put("rstblog", firstblog);
+			map.put("n_star", heart);
+			map.put("n_cmt",comment);
+		}
+		return map;
+	}
+		
+	
+	
+	@ResponseBody
+	@RequestMapping(value = "/switchorder",method = RequestMethod.GET)
+	public Map<String, Object> switchupblog(@RequestParam("upid") String str_up, @RequestParam("keyword") String keyword, @RequestParam("order") String str_order) {
+		
+		Map<String,Object> map = new HashMap<String, Object>();
+		List<Blog> rstlist = new ArrayList<Blog>();
+		
+		int upid=21;
+		if(str_up!=""||str_up!=null) upid=Integer.parseInt(str_up);
+		
+		Boolean order=true;  // desc: true; asc: false
+		if(str_order.equals("false")) order=false;
+		
+		//keyword: "time" or "star"
+		if(keyword.equals("time")) {
+			rstlist=service.findbyentity(upid, keyword, order);
+		}else {
+			rstlist=service.findbyentity(upid, "hot", order);
+		}
+		
+		int n = rstlist.size();
+		int[] starnum = new int[n];
+		int[] cmtnum = new int[n];
+		for(int i=0; i<n; i++) {
+			int id = rstlist.get(i).getId();
+			starnum[i]=service.getnum(id, "star");
+			cmtnum[i]=service.getnum(id, "cmt");
+		}
+				
+		map.put("rstlist", rstlist);
+		map.put("stararr", starnum);
+		map.put("cmtarr", cmtnum);
+		
+		return map;
+	}
+	
 }

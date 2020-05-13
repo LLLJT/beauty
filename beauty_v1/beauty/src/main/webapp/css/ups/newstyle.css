@@ -169,6 +169,8 @@
 }
 
 .blog-content {
+	height: 150px;
+    overflow: hidden;
     position: relative;
     top:-50px;
     padding-top: 10px;
@@ -690,3 +692,74 @@
     margin-left: -17px;
     top: 55px;
 }
+
+
+.upblog-container{
+	width: 90%;
+	margin-top: -50px;
+	margin-left: 20px;
+}
+
+.upblog{
+	margin-bottom: 25px;
+}
+
+.upblog-word{
+	height: auto;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    position: relative;
+    border: 1px solid #ddd;
+}
+
+.upblog-word img{
+	max-width: 100%;
+}
+
+.upblog:hover .upblog-word,
+.upblog-word.active {
+    -webkit-box-shadow: 1px 2px 16px 2px #d8d8d8;
+    -moz-box-shadow: 1px 2px 16px 2px #d8d8d8;
+    box-shadow: 1px 2px 16px 2px #d8d8d8;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+
+.upblog-word h4{
+	height: 1.5em;
+	font-size: 20px;
+    color: #000;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.29);
+    letter-spacing: 1px;
+    font-weight: 500;
+	overflow: hidden;
+	width: 100%;
+	white-space: normal;
+}
+
+.upblog-word p{
+	font-size: small; 
+	max-height: 7em; 
+	margin: 0;
+    color: #656161;
+	overflow: hidden;
+	width:100%;
+	min-height: 3em;
+}
+
+.upblog-word:hover .upblog-word h4 {
+    box-shadow: none;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+
+

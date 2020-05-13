@@ -55,6 +55,7 @@ function afterajax(data, userid) {
         		)
 	}
 	rstdiv.innerHTML=myhtml	
+	if(myhtml=="") return true
 }
 
 function opencontent(obj) {

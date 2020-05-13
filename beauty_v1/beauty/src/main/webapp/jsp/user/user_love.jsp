@@ -22,8 +22,8 @@
 	            <div class="row mb60 text-center">
 	                <div class="col-sm-6 text-left match-height">
 	                    <h3 class="section-title">我的收藏</h3>
-	                    <h5>收藏数：</h5><h5 id="number"></h5>
-	                </div>
+	                    <h5>收藏数：<span class="badge"  id="number"></span></h5>
+	               </div>
 	            </div>
 	        </div>   
 	        <div class="container-fluid" style="width: 90%">
@@ -103,19 +103,13 @@
 	        		+ '</div> </div>'
 	        		+ '<div class="hover-caption dark-overlay smoothie text-center">'
 	        		+ '<div class="vertical-align-bottom">'
-	        		+ '<a href="#" class="btn btn-primary mb20" id="' + blogid + '" onclick="opencontent(this)">Details</a>'
+	        		+ '<a href="/beauty/content?blogid=' + blogid + '" class="btn btn-primary mb20" target="_parent"">Details</a>'
 	        		+ '</div> </div> </div> </div>'
 	        		)
 		}
 		rstdiv.innerHTML=myhtml	
 	}
-	
-	function opencontent(obj) {
-		console.info(obj.id);
-		var url='/beauty/content?blogid=' +obj.id
-		console.info(url)
-		window.location.href=url
-	}
+
 
 </script>
 </body>

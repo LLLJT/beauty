@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,6 +35,7 @@
 				</div>
 			</div>
 			<div class="row nopaddingleftright">
+			
 				<c:forEach items="${flist}" var="list" varStatus="index" begin="0" end="3" step="1">
 					<div class="team-item col-md-3 match-height nopaddingleftright">
 						<div class="hover-effect smoothie match-height">
@@ -56,6 +58,7 @@
 						</div>
 					</div>
 				</c:forEach>
+				
 			</div>
 			
 			<!-- 全部关注 从第5个开始 -->
@@ -111,8 +114,11 @@
 			$.ajax({
 				url : url,
 				type : "GET",
-				success : function(res) {
-					console.info(res)
+				dataType: "html",
+				success:function(response,status,xhr){
+					/* console.log(response)*/
+					console.log(status)
+					console.log(xhr) 
 				}
 			});
 		});
